@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./SideBar.module.scss";
 import classNames from "classnames/bind";
 import Label from "../../Label/Label";
-import ITEM_SIDEBAR_MAIN from "../../../const/ITEM_SIDEBAR_MAIN";
-import Tippy from "@tippyjs/react";
+
+
 import "tippy.js/dist/tippy.css"; // optional
+import SideBarMain from "./SideBarMain/SideBarMain";
+import SideBarMiddle from "./SideBarMiddle/SideBarMiddle";
 
 const cx = classNames.bind(styles);
 
@@ -21,22 +23,10 @@ function SideBar() {
             </div>
           </div>
         </nav>
-        <nav className={cx("cnk-navbar") + "" + cx("cnk-navbar-main")}>
-          <ul className={cx("cnk-navbar-menu")}>
-            {ITEM_SIDEBAR_MAIN.map((item) => (
-              <Tippy content={item.text} placement='right' key={item.id}>
-                <li className={cx("cnk-navbar-item")}>
-                  <Label
-                    title={item.text}
-                    icon={item.icon}
-                    live={item.live}
-                    to={item.to}
-                  />
-                </li>
-              </Tippy>
-            ))}
-          </ul>
-        </nav>
+        <SideBarMain />
+        <div className={cx('cnk-sidebar-divide')}>
+        </div>
+        <SideBarMiddle />
       </div>
     </aside>
   );

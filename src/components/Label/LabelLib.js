@@ -9,7 +9,7 @@ import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 
 const cx = classNames.bind(styles);
 
-function Label({ to, href, title, icon, live,iconRight }) {
+function LabelLib({ to, href, title, imgIcon, live,iconRight }) {
   let Component = Link;
   if (to) {
     Component = Link;
@@ -18,13 +18,10 @@ function Label({ to, href, title, icon, live,iconRight }) {
   }
   return (
     <Component className={cx("label")} to={to} href={href}>
-      <FontAwesomeIcon className={cx("label-icon")} icon={icon} />
-      <span>{title}</span>
-      {live && (
-        <figure className={cx("label-tag")}>
-          <img src={live} alt="" />
-        </figure>
-      )}
+      <i className={cx('label-icon')}>
+        <img src={imgIcon} alt=''/>
+      </i>
+      <span className={cx('label-lib-text')}>{title}</span>
       {!iconRight &&
       <button className={cx('shuffer-icon')}>
         <FontAwesomeIcon className={cx('label-icon-shuffle')} icon={faCirclePlay} />
@@ -34,4 +31,4 @@ function Label({ to, href, title, icon, live,iconRight }) {
   );
 }
 
-export default Label;
+export default LabelLib;

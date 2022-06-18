@@ -18,7 +18,7 @@
   --layout-bg: #fff;
   --sidebar-bg: hsla(0, 0%, 100%, 0.05);
   --sidebar-popup-bg: #f2f2f2;
-  --alpha-bg: rgba(0, 0, 0, 0.05);
+  --alpha-bg: hsla(0,0%,100%,0.1);;
   --contrast-bg: rgba(20, 20, 20, 0.4);
   --contrast-bg-1: rgba(20, 20, 20, 0.4);
   --contrast-color: rgba(254, 255, 255, 0.8);
@@ -41,8 +41,8 @@
   --select-bg: rgba(0, 0, 0, 0.15);
   --text-primary: #fff;
   --text-secondary: rgba(0, 0, 0, 0.6);
-  --purple-primary: #6b3483;
-  --text-item-hover: #6b3483;
+  --purple-primary: #ed2b91;
+  --text-item-hover: #fff;
   --link-text-hover: #9c32ca;
   --player-text: #32323d;
   --search-text: #282828;
@@ -53,7 +53,7 @@
   --navigation-text-hover: #ffffff;
   --sidebar-title: rgba(0, 0, 0, 0.7);
   --song-item-action: rgba(50, 50, 61, 0.5);
-  --border-primary: rgba(0, 0, 0, 0.1);
+  --border-primary: hsla(0,0%,100%,0.1);
   --border-secondary: rgba(0, 0, 0, 0.05);
   --border-box: rgba(0, 0, 0, 0.2);
   --spotlight-item: #f1f1f1;
@@ -111,8 +111,7 @@ body {
   overflow: hidden;
 }
 button,
-input,
-[tabindex] {
+input{
   padding: 0;
   border: none;
   font: inherit;
@@ -144,11 +143,29 @@ li {
   color: var(--text-placeholder-sidebar);
   border-left: 3px solid transparent;
   cursor: pointer;
-  &:active{
-    background: #000;
+  &.active{
+    background-color: var(--alpha-bg);
+    color: var(--text-item-hover);
+    border-left: 3px solid var(--purple-primary);
+  }
+  .shuffer-icon{
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    padding: 0!important;
+    border-radius: 999px;
+    position: absolute;
+    right: 20px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+
   }
 }
 .cnk-navbar-item:hover {
+  .shuffer-icon{
+    display: flex;
+  }
   color: var(--navigation-text-hover);
 }
 img {
@@ -158,4 +175,30 @@ img {
 span{
   white-space: nowrap;
   line-height: normal;
+}
+.cnk-sidebar-divide{
+    position: relative;
+    height: 1px;
+}
+.cnk-sidebar-divide::after{
+  content: "";
+  border-top: 1px solid var(--border-primary);
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  top: 0;
+}
+
+.cnk-sidebar-middle{
+  position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.cnk-navbar-main{
+  position: relative;
+  margin-bottom: 15px;
+}
+.is-upper{
+  text-transform: uppercase;
 }
