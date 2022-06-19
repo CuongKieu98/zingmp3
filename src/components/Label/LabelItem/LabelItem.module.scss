@@ -1,0 +1,28 @@
+.label-btn {
+  cursor: pointer;
+  .btn-label {
+    padding: 12px 20px 12px 17px;
+    display: flex !important;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    width: 100%;
+    font-size: 14px;
+    line-height: normal;
+  }
+}
+.label-btn:hover {
+  background-color: var(--alpha-bg);
+  color: var(--text-item-hover);
+}
+.icon-setting {
+  font-size: 20px;
+  &:first-child {
+    margin-right: 10px;
+  }
+  &:last-child {
+    margin-left: auto;
+  }
+}

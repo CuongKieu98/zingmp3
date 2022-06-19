@@ -162,3 +162,59 @@
   background-color: var(--primary-bg);
   border: 1px solid transparent;
 }
+.setting-item {
+  position: relative;
+  margin-right: 10px;
+  & button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--alpha-bg);
+    border-radius: 999px;
+    //
+    font-size: 14px;
+    border-radius: 999px;
+    line-height: normal;
+    border: 0;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+
+  }
+  
+}
+//menu setting
+.menu-setting{
+  background-color: var(--primary-bg);
+  border-radius: 8px;
+  position: absolute;
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 20%);
+  width: 240px;
+  z-index: 101;
+  line-height: normal;
+  right: 0;
+  padding-top: 0!important;
+  & ul{
+    list-style: none;
+  }  
+}
+.menu-list{
+  padding: 10px 0;
+}
+.menu-list .li-header {
+  color: var(--navigation-text);
+}
+.menu-list .li-footer {
+  color: var(--text-secondary);
+}
+.setting-footer{
+  border-top: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: auto;
+}
