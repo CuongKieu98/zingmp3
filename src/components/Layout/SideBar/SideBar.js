@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SideBar.module.scss";
 import classNames from "classnames/bind";
-import Label from "../../Label/Label";
+
 
 
 import "tippy.js/dist/tippy.css"; // optional

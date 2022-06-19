@@ -1,6 +1,4 @@
 
-import { faAngellist} from "@fortawesome/free-brands-svg-icons";
-import {  faCircleDot, faCirclePlay, faComment, faContactCard } from "@fortawesome/free-regular-svg-icons";
 import images from "../assets/images";
 
 const ITEM_LIBRARY = [

@@ -78,6 +78,7 @@ function SideBarMiddle() {
             </ul>
           </nav>
         </div>
+      
       </div>
       <div className={cx("cnk-addplaylist-sidebar")}>
         <button className={cx("btn-sidebar-add")}>

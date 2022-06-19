@@ -5,6 +5,8 @@ const images = {
     myalbum : require('~/assets/images/myalbum.svg').default,
     myhistory : require('~/assets/images/myhistory.svg').default,
     myupload : require('~/assets/images/myupload.svg').default,
+    theme : require('~/assets/images/theme.svg').default,
+    hexagon : require('~/assets/images/hexagon.svg').default,
     
 };
 export default images;
