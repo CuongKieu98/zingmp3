@@ -23,7 +23,7 @@
   --contrast-bg-1: rgba(20, 20, 20, 0.4);
   --contrast-color: rgba(254, 255, 255, 0.8);
   --banner-home-dot: #d8d8d8;
-  --loading-bg: rgba(0, 0, 0, 0.05);
+  --loading-bg: hsla(0,0%,100%,0.1);;
   --loading-bg-animation: #f5f5f5;
   --scroll-thumb-bg: hsla(0,0%,100%,0.3);
   --no-content-bg: #f9f9f9;
@@ -43,7 +43,7 @@
   --text-secondary: hsla(0,0%,100%,0.5);
   --purple-primary: #ed2b91;
   --text-item-hover: #fff;
-  --link-text-hover: #9c32ca;
+  --link-text-hover: #fe63da;;
   --player-text: #32323d;
   --search-text: #eee;
   --text-placeholder: #757575;
@@ -87,6 +87,10 @@
   --chart-icon-play-color: #fff;
   --linear-gradient-bg: linear-gradient(180deg, #740091, #2d1a4c);
   --padding-section: 59px;
+  --scale-rate-second: calc(196 / 230);
+  --scale-rate-third: calc(162 / 230);
+  --offset-x-second: calc(0px - ((230px - (230px * var(--scale-rate-second))) / 2 + 20px));
+  --offset-x-third: calc(0px - ((230px - (230px * var(--scale-rate-third))) / 2 + 40px));
 }
 * {
   margin: 0;
@@ -248,4 +252,25 @@ h3{
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--scroll-thumb-bg);
+}
+.cnk-playlist{
+  margin-top: 30px !important;
+}
+.cnk-playlist-container{
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: 100%; 
+}
+.cnk-playlist-title{
+  margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    color: var(--text-primary);
+    font-weight: 700;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
 }

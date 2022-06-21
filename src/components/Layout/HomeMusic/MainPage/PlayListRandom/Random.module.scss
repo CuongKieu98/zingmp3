@@ -1,0 +1,35 @@
+.cnk-playlist-wp{
+    display: flex;
+    margin: 0 -15px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+}
+.cnk-playlist-wp-container{
+    transform: translate3d(0px, 0px, 0px);
+    display: flex;
+    z-index: 3;
+    width: 100%;
+}
+.cnk-playlist-item{
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 1px;
+    padding-left: 14px;
+    padding-right: 14px;
+    float: left;
+    flex-shrink: 0;
+}
+@media screen and (min-width: 1350px) and (max-width: 1637px){
+    .cnk-playlist-item{
+        width: 20%;
+
+    }
+}
+.cnk-playlist-normal{
+    line-height: normal; 
+}

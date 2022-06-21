@@ -7,6 +7,10 @@ const images = {
     myupload : require('~/assets/images/myupload.svg').default,
     theme : require('~/assets/images/theme.svg').default,
     hexagon : require('~/assets/images/hexagon.svg').default,
+    chevronleft : require('~/assets/images/chevronleft.svg').default,
+    bgads : require('~/assets/images/bgads.jpg'),
+    iconplay : require('~/assets/images/iconplay.svg').default,
+    playmucsicicon : require('~/assets/images/playmucsicicon.svg').default,
     
 };
 export default images;

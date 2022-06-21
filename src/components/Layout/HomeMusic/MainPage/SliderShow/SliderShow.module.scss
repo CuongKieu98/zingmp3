@@ -1,42 +1,88 @@
-/* Slideshow */
-
+@media (min-width: 1024px) {
+}
 .slideshow {
-  margin: 0 auto;
-  // overflow: hidden;
-  max-width: 200px;
+  flex-wrap: wrap;
+  backface-visibility: hidden;
 }
-
-.slideshowSlider {
-  white-space: nowrap;
-  transition: ease 1000ms;
+.slideshow-slider {
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
-
-.slide {
-  display: inline-block;
-
-  height: 200px;
-  width: 100%;
-  border-radius: 40px;
+.slide-container {
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  min-height: 15.2vw;
+  transform-style: preserve-3d;
 }
-
-/* Buttons */
-
-.slideshowDots {
-  text-align: center;
+.cnk-gallery-prev {
+  left: 25px;
 }
-
-.slideshowDot {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-
+.cnk-gallery-next {
+  right: 25px;
+}
+.cnk-gallery-next,
+.cnk-gallery-prev {
+  display: flex;
+  top: 50%;
+  width: 55px;
+  z-index: 15;
+  height: 55px;
   cursor: pointer;
-  margin: 15px 7px 0px;
-
-  background-color: #c4c4c4;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(0, -50%);
+  background-color: rgba(255, 255, 255, 0.15);
 }
+.icon-slide-prev {
+  transform: translate(-2px, -1px);
+  width: 27px;
+  margin: auto;
+  height: 27px;
+  font-size: 2.7rem;
+  color: var(--white);
+}
+.icon-slide-next {
+  transform: translateX(1px);
+  width: 27px;
+  margin: auto;
+  height: 27px;
+  font-size: 2.7rem;
+  color: var(--white);
+}
+.button-move {
+  height: 100%;
+  // display: none;
+}
+.cnk-card {
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.slide {
+  top: 50%;
+  width: 100%;
 
-.slideshowDot.active {
-  background-color: #6a0dad;
+  transition: all 0.6s;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  z-index: 9;
+  transition: transform 0.6s ease-in-out;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.cnk-card-img {
+  width: 100%;
+  will-change: transform;
+  transition: transform 0.7s;
+  backface-visibility: hidden;
+  transform: perspective(1px) translateZ(0);
 }
