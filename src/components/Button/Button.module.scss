@@ -1,0 +1,30 @@
+
+.cnk-btn:hover{
+    background-color: var(--hover-tooltip-opacity);
+    -webkit-filter: brightness(.9);
+    filter: brightness(.9);
+}
+.cnk-btn{
+    // font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    line-height: 0;
+    border: 0;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+.btn-icon{
+    font-size: 20px;
+    color: var(--white);
+}
+.cnk-content{
+    font-size: 10px;
+}
+.padding-heart{
+    padding-top: 5px;
+}

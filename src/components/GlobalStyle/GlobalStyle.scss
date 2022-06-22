@@ -15,7 +15,7 @@
   --dark-alpha-80: rgba(0, 0, 0, 0.8);
   --hover-tooltip-opacity: hsla(0, 0%, 100%, 0.3);
   --primary-bg: #6a39af;;
-  --layout-bg: #fff;
+  --layout-bg: #37075d;;
   --sidebar-bg: hsla(0, 0%, 100%, 0.05);
   --sidebar-popup-bg: #f2f2f2;
   --alpha-bg: hsla(0, 0%, 100%, 0.1);
@@ -63,7 +63,7 @@
   --thumbnail-player: hsla(0, 0%, 100%, 0.8);
   --main-box-shadow: hsla(0, 0%, 81.2%, 0.4);
   --new-release-box-shadow: hsla(0, 0%, 81.2%, 0.4);
-  --sticky-header-box-shadow: rgba(0, 0, 0, 0.08);
+  --sticky-header-box-shadow: rgba(0,0,0,0.1);;
   --notify-box-shadow: rgba(0, 0, 0, 0.2);
   --portal-menu-box-shadow: rgba(0, 0, 0, 0.3);
   --main-text-stroke: #6b3483;
@@ -271,6 +271,4 @@ h3{
     color: var(--text-primary);
     font-weight: 700;
     text-transform: capitalize;
-    margin: 0;
-    padding: 0;
 }

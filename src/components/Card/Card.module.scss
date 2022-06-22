@@ -1,144 +1,206 @@
-.opacity{
-    visibility: visible;
+.opacity {
+  visibility: visible;
 }
 .cnk-playlist-action {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  &:hover ~ .cnk-card-action {
+    visibility: visible;
+  }
 }
-.cnk-card-img:hover{
-    cursor: pointer;
-  
+.cnk-card-img:hover {
+  cursor: pointer;
 }
-.cnk-card-img{
-    display: block;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-    flex-shrink: 0;
+.cnk-card-img {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  flex-shrink: 0;
 }
-.cnk-card-img figure{
-    line-height: 0;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 5px;
-    overflow: hidden;
+.cnk-card-img figure {
+  line-height: 0;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .cnk-card-img:hover img {
-    transform: scale(1.1) translateZ(0);
+  transform: scale(1.1) translateZ(0);
 }
 .cnk-card-img img {
-    transition: transform .7s;
+  transition: transform 0.7s;
 }
-.cnk-card-img .cnk-card-action {
-    visibility: visible;
+.cnk-card-img:hover .cnk-card-action {
+  visibility: visible;
 }
-.cnk-card .cnk-card-action{
-    height: 50px;
+.cnk-card .cnk-card-action {
+  height: 50px;
 }
-.cnk-card-action{
+.cnk-card-action {
+  width: 100%;
+  justify-content: space-evenly;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  z-index: 98;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
+.cnk-card .card-like {
+  line-height: 0;
+  font-size: 20px;
+  border: 0;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border-radius: 999px;
+  user-select: none;
+}
+.card-like:hover {
+  background-color: var(--hover-tooltip-opacity);
+}
+.icon-card-like {
+  color: var(--white);
+  font-size: 20px;
+}
+.card-like .icon:last-child {
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(-80px);
+  pointer-events: none;
+  font-size: 20px;
+}
+.card-like .icon:last-child {
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
 
-    width: 100%;
-    justify-content: space-evenly;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    right: auto;
-    z-index: 98;
-    transform: translateX(-50%) translateY(-50%);
-    display: flex;
-    align-items: center;
+.btn-action-play {
+  line-height: 0;
+  &:hover {
+    filter: brightness(0.9);
+  }
+  border: 0;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 14px;
+  border-radius: 999px;
+  user-select: none;
 }
-.cnk-card .card-like{
-    line-height: 0;
-    font-size: 20px;
-    border: 0;
-    display: inline-block;
-    font-weight: 400;
-    text-transform: none;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    border-radius: 999px;
-    user-select: none;
+.icon-card-play {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  color: var(--white);
 }
-.icon-card-like{
-    color: var(--white);
-    font-size: 20px;
+.cnk-card-img:hover .opacity {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--dark-alpha-50);
 }
-.card-like .icon:last-child{
-    opacity: 0;
-    visibility: visible;
-    transform: translateY(-80px);
-    pointer-events: none;
-    font-size: 20px;
+.image {
+  line-height: 0;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 5px;
+  overflow: hidden;
 }
-.card-like .icon:last-child{
-    transition: all .5s;
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: -1;
+figure {
+  background-color: var(--loading-bg);
+}
+.btn-more {
+  line-height: 0;
+  font-size: 20px;
+  border-radius: 999px;
+  border: 0;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.icon-card-more {
+  font-size: 20px;
+  color: var(--white);
 }
 
-.icon-card-likefull{
-    //color: var(--purple-primary)!important;
+//card content
+.cnk-card-content {
+  margin-top: 8px;
 }
-.btn-action-play{
-    line-height: 0;
-    &:hover{
-        filter: brightness(.9);
-    }
-    border: 0;
-    display: inline-block;
-    font-weight: 400;
-    text-transform: none;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    font-size: 14px;
-    border-radius: 999px;
-    user-select: none;
+.cnk-card-title {
+  margin-top: 8px;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.36;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.icon-card-play{
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    object-fit: contain;
-    color: var(--white);
+.cnk-card-title:hover {
+  color: var(--link-text-hover);
 }
-.opacity{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--dark-alpha-50);
+a:hover .cnk-card-name {
+  color: var(--link-text-hover);
+}
+.subtitle-author {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.36;
+  color: var(--text-secondary);
+}
+.cnk-card-author {
+  color: var(--text-secondary) !important;
+}
+a:hover.cnk-card-author {
+  color: var(--link-text-hover) !important;
+  text-decoration: underline;
+}
 
-        visibility: hidden;
-
+.subtitle-author {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.33;
 }
-.image{
-    line-height: 0;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 5px;
-    overflow: hidden;
+.cnk-card-author::before {
+  content: " ";
 }
-figure{
-    background-color: var(--loading-bg);
+.cnk-card-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.33;
+  color: var(--text-secondary);
+  white-space: normal !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
-.img-card{
-
-}
-// a:hover {
-//     color: var(--link-text-hover);
-// }

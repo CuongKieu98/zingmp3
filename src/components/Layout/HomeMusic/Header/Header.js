@@ -7,8 +7,23 @@ import LevelRight from "./LevelRight/LevelRight";
 const cx = classNames.bind(styles);
 
 function Header() {
+  const [bgHeader,setBgHeader] = useState('');
+  const [y,setY] = useState(window.scrollY)
+
+
+ 
+
+  useEffect(() => {
+    const changeBackground = () => {
+
+        console.log('test',window.scrollY)
+    };
+    window.addEventListener('scroll', changeBackground, true);
+    return () => window.removeEventListener('scroll', changeBackground,true);
+  }, []);
+
   return (
-    <header className={cx("cnk-header")}>
+    <header  className={cx("cnk-header")+ " " + cx(bgHeader)}>
       <div className={cx("level")}>
         <LevelLeft />
         <LevelRight />

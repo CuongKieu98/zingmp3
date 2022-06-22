@@ -11,6 +11,8 @@ const images = {
     bgads : require('~/assets/images/bgads.jpg'),
     iconplay : require('~/assets/images/iconplay.svg').default,
     playmucsicicon : require('~/assets/images/playmucsicicon.svg').default,
+    circle : require('~/assets/images/circle.svg').default,
+    live : require('~/assets/images/live.svg').default,
     
 };
 export default images;

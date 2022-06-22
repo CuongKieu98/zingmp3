@@ -2,32 +2,59 @@ import React from "react";
 import styles from "./Card.module.scss";
 import classNames from "classnames/bind";
 import * as Icon from "react-bootstrap-icons";
-import images from "../../assets/images";
+
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
-const Card = ({ content, href, img, hrefAuth, Author, subTiltle }) => {
+const Card = ({ content, href, img, author = [], subTiltle }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    alert("clicked");
+  };
+  const ath = author.map(auth => {
+    return (
+      <Link>{auth.name}</Link>
+    )
+  })
+  const RenderAuthor = () => {
+    //get max 3 author
+    return author.slice(0,3).map((auth, index) => {
+      return (
+        <Link key={index} className={cx("cnk-card-author")} to={auth.profile}>
+          {auth.name}
+        </Link>
+      );
+    });
+  };
   return (
     <div className={cx("cnk-card")}>
       <div>
         <a title={content} href={href}>
           <div className={cx("cnk-card-img")}>
             <figure className={cx("image")}>
-              <img className={cx('img-card')} src={img} alt="" />
+              <img className={cx("img-card")} src={img} alt="" />
             </figure>
             <div className={cx("opacity")}></div>
             <div className={cx("cnk-playlist-action")}>
               <div className={cx("cnk-card-action")}>
-                <button className={cx('card-like')}>
-                  <Icon.Heart className={cx('icon-card-like')+  " " + cx('icon')} />
-                  <Icon.HeartFill className={cx('icon-card-likefull')+  " " + cx('icon')}/>
+                <Button
+                  onClick={(e) => handleClick(e)}
+                  title={"Thêm vào thư viện"}
+                  setIcon={Icon.Heart}
+                  className={'padding-heart'}
+                />
+                <button
+                  className={cx("btn-action-play")}
+                  onClick={(e) => handleClick(e)}
+                >
+                  <Icon.PlayCircle className={cx("icon-card-play")} />
                 </button>
-                <button className={cx('btn-action-play')}>
-                  <Icon.PlayCircle className={cx('icon-card-play')}/>
-                  {/* //<img src={images.playmusicicon} className={cx('icon-card-play')} alt=''/> */}
-                </button>
-                <button>
-                  <Icon.ThreeDots />
-                </button>
+                <Button
+                  onClick={(e) => handleClick(e)}
+                  title={"Khác"}
+                  setIcon={Icon.ThreeDots}
+                />
               </div>
             </div>
           </div>
@@ -36,14 +63,15 @@ const Card = ({ content, href, img, hrefAuth, Author, subTiltle }) => {
       <div className={cx("cnk-card-content")}>
         <h4 className={cx("cnk-card-title")}>
           <a title={content} href={href}>
-            <span>{content}</span>
+            <span className={cx("cnk-card-name")}>{content}</span>
           </a>
         </h4>
-        <h3>
-          {Author && (
-            <a className={cx("cnk-card-author")} href={hrefAuth}>
-              {Author}
-            </a>
+        <h3 className={cx("subtitle-author")}>
+
+          {author.length > 0 && (
+            <React.Fragment>
+              <RenderAuthor />{author.length >3 && "..."}
+            </React.Fragment>
           )}
           {subTiltle && (
             <span className={cx("cnk-card-subtitle")}>{subTiltle}</span>
