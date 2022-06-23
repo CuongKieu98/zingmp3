@@ -7,6 +7,7 @@ import * as Icon from "react-bootstrap-icons";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import CardSinger from "../../../../Card/Singer/Singer";
+import Event from "../../../../Card/Event/Event";
 
 const cx = classNames.bind(styles);
 const Random = ({
@@ -17,6 +18,7 @@ const Random = ({
   content = {},
   isCardNm,
   isSinger,
+  isEvent,
 }) => {
   const refSlider = useRef();
   const settings = {
@@ -45,7 +47,7 @@ const Random = ({
     ],
   };
   const RenderTitle = () => {
-    if (isMedia) {
+    if (isMedia ) {
       return (
         <div className={cx("media-header")}>
           <div className={cx("media-left")}>
@@ -69,7 +71,7 @@ const Random = ({
       return (
         <h3 className="cnk-playlist-title">
           {title}
-          {isRadio && (
+          {(isRadio || isEvent) && (
             <div className={cx("cnk-discovery-btn")}>
               <Icon.ChevronLeft
                 className={cx("cnk-btn-arrow")}
@@ -140,6 +142,22 @@ const Random = ({
           ))}
         </Slider>
       );
+    }
+    else if(isEvent){
+      return (
+        <Slider ref={refSlider} slidesToShow={3} slidesToScroll={3} autoplay={false} >
+        {playLists.map((list) => (
+          <div
+            key={list.id}
+            className={cx("cnk-playlist-item") + " " + cx("is33")}
+          >
+            <div className={cx("cnk-playlist-normal")}>
+              <Event href={list.href} img={list.img} content={list.content} title={list.title}/>
+            </div>
+          </div>
+        ))}
+     </Slider>
+      )
     }
   };
 

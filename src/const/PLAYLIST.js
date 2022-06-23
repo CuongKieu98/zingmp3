@@ -483,7 +483,50 @@ const LIST_SINGER = [
   },
 ];
 
-const LIST_EVENT = [];
+const LIST_EVENT = [
+  {
+    id: 1,
+    img: singer.phathanh,
+    href: "",
+    title: "PHÁT HÀNH BÀI HÁT",
+    content:"Một Ngàn Nỗi Đau- Hứa Kim Tuyền",
+  },
+  {
+    id: 2,
+    img: singer.xone,
+    href: "",
+    title: "TAKESHOW",
+    content:"Gặp gỡ PAY hát cùng Thịnh Suy",
+  },
+  {
+    id: 3,
+    img: singer.sinhnhat,
+    href: "",
+    title: "SINH NHẬT SAO",
+    content:"Sinh Nhật Sao x Hoàng Duyên",
+  },
+  {
+    id: 3,
+    img: singer.minishow,
+    href: "",
+    title: "MINISHOW",
+    content:"Minishow Vũ Cát Tường",
+  },
+  {
+    id: 3,
+    img: singer.event2,
+    href: "",
+    title: "TALKSHOW",
+    content:"Thiều Bảo Trâm tiết lộ gu bạn trai",
+  },
+  {
+    id: 3,
+    img: singer.minishow2,
+    href: "",
+    title: "MINISHOW",
+    content:"Minishow Trịnh Thăng Bình",
+  },
+];
 const LIST_MIXTAPE = [];
 const LIST_NER_RELEASE = [];
 export {
@@ -494,4 +537,5 @@ export {
   LIST_FOR_FAN,
   LIST_NEW_EVERYDAY,
   LIST_SINGER,
+  LIST_EVENT,
 };

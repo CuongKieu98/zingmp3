@@ -13,6 +13,14 @@ const images = {
     playmucsicicon : require('~/assets/images/playmucsicicon.svg').default,
     circle : require('~/assets/images/circle.svg').default,
     live : require('~/assets/images/live.svg').default,
+    pn1 : require('~/assets/images/pn1.png'),
+    pn2 : require('~/assets/images/pn2.png'),
+    pn3 : require('~/assets/images/pn3.png'),
+    pn4 : require('~/assets/images/pn4.png'),
+    pn5 : require('~/assets/images/pn5.png'),
+    pn6 : require('~/assets/images/pn6.png'),
+    pn7 : require('~/assets/images/pn7.png'),
+    pn8 : require('~/assets/images/pn8.png'),
     
 };
 export default images;

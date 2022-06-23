@@ -1,0 +1,125 @@
+.now-playing-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-height: 70px;
+    z-index: 100;
+}
+.player-controls{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    bottom: 0;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: var(--layout-bg);
+}
+.clickable{
+    cursor: pointer;
+}
+.level{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+.player-controls-container{
+    background-image: url('../../../../assets/bgs/zma.png');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+//
+    height: 90px;
+    min-width: 768px;
+    padding: 0 20px;
+    background-color: var(--player-bg);
+    border-top: 1px solid var(--border-player);
+    //background-image: var(--miniplayer-bg-img);
+}
+.player-controls-left{
+    display: flex;
+    position: relative;
+    width: 30%;
+    z-index: 1;
+    align-items: center;
+    justify-content: flex-start;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+
+}
+.level-item{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+}
+.is-narrow{
+
+}
+.player-controls-center{
+    flex-grow: 1;
+    max-width: 40vw;
+    
+
+}
+.level-item{
+    flex-grow: 1;
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    //flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+}
+.action{
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+
+}
+.time-bar{
+    flex-grow: 1;
+    margin-bottom: 5px!important;
+
+}
+.time-left{
+    text-align: right;
+    margin-right: 10px;
+    opacity: .5;
+    //time
+    min-width: 45px;
+    font-size: 12px;
+    color: var(--player-text);
+    font-weight: 500;
+}
+.cnk-duration-bar{
+    display: flex;
+    justify-content: center;
+    height: 15px;
+    width: 100%;
+    cursor: pointer;
+
+}
+.time-right{
+    margin-left: 10px;
+    //time
+    min-width: 45px;
+    font-size: 12px;
+    color: var(--player-text);
+    font-weight: 500;
+}
+.player-controls-right{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: flex-end;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
