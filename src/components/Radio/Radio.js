@@ -10,7 +10,7 @@ import * as Icon from "react-bootstrap-icons";
 
 const cx = classNames.bind(styles);
 
-function Radio() {
+function Radio({content,img,imgHost,subTiltle,href}) {
   return (
     <div className={cx('radio-container')}>
         <div className={cx('radio-content')}>
@@ -18,12 +18,12 @@ function Radio() {
               <img src={images.circle} alt='' className={cx('img-details')}/>
                 <div className={cx('radio-card-img')}>
                   <figure className={cx('img')}>
-                    <img className={cx('img-detail')} src={playListImg.bolerometvl} alt=''/>
+                    <img className={cx('img-detail')} src={img} alt=''/>
                   </figure>
                 </div>
                 <div className={cx('opacity')}></div>
                 <figure className={cx('img-host')}>
-                <img src={playListImg.bolerometvl} alt=''/>
+                <img src={imgHost} alt=''/>
                 </figure>
                 <div className={cx('action-play')}>
                   <button className={cx('btn-action-play')}><Icon.PlayCircle className={cx('icon-play')}/></button>
@@ -34,8 +34,8 @@ function Radio() {
 
             </div>
             <div className={cx('radio-bot-content')}>
-              <h3 className={cx('title')}>V-POP</h3>
-              <h3 className={cx('sub-title')}>1k1 đang nghe</h3>
+              <h3 className={cx('title')}>{content}</h3>
+              <h3 className={cx('sub-title')}>{subTiltle}</h3>
             </div>
         </div>
     </div>

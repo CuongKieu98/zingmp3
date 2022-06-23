@@ -1,0 +1,11 @@
+.cnk-item{
+    position: relative;
+    &:hover{
+        filter: brightness(.8);
+    }
+}
+.img{
+    height: 0;
+    padding-bottom: 120%;
+    background-color: transparent;
+}
