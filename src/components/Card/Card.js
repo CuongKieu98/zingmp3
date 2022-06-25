@@ -44,12 +44,12 @@ const Card = ({ content, href, img, author = [], subTiltle }) => {
                   setIcon={Icon.Heart}
                   className={'padding-heart'}
                 />
-                <button
-                  className={cx("btn-action-play")}
+                <Button
                   onClick={(e) => handleClick(e)}
-                >
-                  <Icon.PlayCircle className={cx("icon-card-play")} />
-                </button>
+                  setIcon={Icon.PlayFill}
+                  className={'is40'}
+                />
+
                 <Button
                   onClick={(e) => handleClick(e)}
                   title={"Khác"}

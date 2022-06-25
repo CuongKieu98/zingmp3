@@ -22,9 +22,30 @@
     font-size: 20px;
     color: var(--white);
 }
+button[disabled]{
+    box-shadow: none;
+    opacity: .5;
+    cursor: not-allowed;
+}
 .cnk-content{
     font-size: 10px;
 }
 .padding-heart{
     padding-top: 5px;
+}
+
+//set w,h
+.is36{
+    width: 36px;
+    height: 36px;
+}
+.is40{
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--white);
+}
+.is16{
+    width: 16px;
+    height: 16px;
+    padding-top: 1px;
 }

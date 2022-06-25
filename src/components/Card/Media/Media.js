@@ -8,7 +8,7 @@ import * as Icon from 'react-bootstrap-icons'
 
 const cx = classNames.bind(styles);
 
-function Media({props}) {
+function Media({song,img}) {
   return (
     <div className={cx('media')}>
         <div className={cx('media-left')}>
@@ -16,7 +16,7 @@ function Media({props}) {
                 <div className={cx('thumbnail-wrapper')}>
                     <div className={cx('thumbnail')}>
                         <figure className={cx('image')}>
-                                <img src='' alt=''/>
+                                <img src={img} alt=''/>
                         </figure>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ function Media({props}) {
                     <span className={cx('song-title-item')}>
                         <Link to={"/"}>
                             <div className={cx('title-wrapper')}>
-                                <span className={cx('title-item')}>Vì Mẹ Anh Bắt Chia Tay</span>
+                                <span className={cx('title-item')}>{song}</span>
                             </div>
                         </Link>
                     </span>
@@ -47,7 +47,7 @@ function Media({props}) {
         <div className={cx('media-right')}>
             <div className={cx('level')}>
                 <div className={cx('level-item')}>
-                        <Button setIcon={Icon.Heart} title={"Thêm vào thư viện"}/>
+                        <Button setIcon={Icon.Heart} customIcon={"is16"} title={"Thêm vào thư viện"}/>
                 </div>
                 <div className={cx('level-item')}>
                         <Button setIcon={Icon.ThreeDots} title={"Xem thêm"}/>

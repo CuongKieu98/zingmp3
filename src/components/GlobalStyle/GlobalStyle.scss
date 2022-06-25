@@ -32,19 +32,19 @@
   --alpha-layout-bg: rgba(12, 3, 3, 0.8);
   --tab-active-bg: #fff;
   --queue-player-popup-bg: #fff;
-  --progressbar-active-bg: var(--purple-primary);
-  --progressbar-player-bg: rgba(0, 0, 0, 0.1);
+  --progressbar-active-bg: #fff;
+  --progressbar-player-bg: hsla(0,0%,100%,0.3);
   --kara-lyrics-bg: #9882bd;
   --kara-btn-bg: hsla(0, 0%, 100%, 0.1);
   --theme-setting-active: rgba(0, 0, 0, 0.15);
-  --player-bg: #fff;
+  --player-bg: rgba(0,0,0,0.2);
   --select-bg: rgba(0, 0, 0, 0.15);
   --text-primary: #fff;
   --text-secondary: hsla(0,0%,100%,0.5);
   --purple-primary: #ed2b91;
   --text-item-hover: #fff;
   --link-text-hover: #fe63da;;
-  --player-text: #32323d;
+  --player-text: #fff;
   --search-text: #eee;
   --text-placeholder: #757575;
   --text-placeholder-sidebar: #dadada;
@@ -59,7 +59,7 @@
   --border-box: rgba(0, 0, 0, 0.2);
   --spotlight-item: #f1f1f1;
   --queue-border: rgba(0, 0, 0, 0.1);
-  --border-player: rgba(0, 0, 0, 0.05);
+  --border-player: hsla(0,0%,100%,0.1);
   --thumbnail-player: hsla(0, 0%, 100%, 0.8);
   --main-box-shadow: hsla(0, 0%, 81.2%, 0.4);
   --new-release-box-shadow: hsla(0, 0%, 81.2%, 0.4);
@@ -125,6 +125,7 @@ input {
   background-color: transparent;
   word-break: normal;
 }
+
 a[href] {
   color: var(--text-color);
   text-decoration: none;

@@ -90,10 +90,12 @@
     overflow: hidden;
     max-width: 100%;
     line-height: normal;
+    
 }
 .is-ghost{
     display: inline-block;
-    color: var(--text-secondary);
+    color: var(--text-secondary) !important;
+    font-size: 12px;
 }
 //
 .media-right{
