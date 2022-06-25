@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./NowPlaying.module.scss";
 import classNames from "classnames/bind";
-import Media from "../../../Card/Media/Media";
+import InfoAudio from "../../../Card/InfoAudio/InfoAudio";
 import Button from "../../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
 import ITEM_TRACKS from "../../../../const/ITEM_TRACKS";
+import PlayingList from "../PlayingList/PlayingList";
 
 const cx = classNames.bind(styles);
 function NowPlaying({ tracks }) {
@@ -69,7 +70,6 @@ function NowPlaying({ tracks }) {
       audioPlayer.current.play();
     }
   }, [audioIdx]);
-  console.log(audioPlayer.current?.volume);
   useEffect(() => {
     if (seekValue === 100 && isPlay) {
       //when audio max time and play = true => auto next
@@ -121,16 +121,19 @@ function NowPlaying({ tracks }) {
   const handleProgress = (value) => {
     let compute = (value * audioPlayer.current.duration) / 100;
     audioPlayer.current.currentTime = compute;
-    console.log(audioPlayer.current.currentTime);
   };
 
   return (
     <div className={cx("now-playing-bar")}>
+       <div className={cx("cnk-list-playing")}>
+        <PlayingList listTrack={ITEM_TRACKS} />
+       </div>
+      
       <div className={cx("player-controls") + " " + cx("clickable")}>
         <div className={cx("level") + " " + cx("player-controls-container")}>
           <div className={cx("player-controls-left")}>
             <div className={cx("level-item-left") + " " + cx("is-narrow")}>
-              <Media
+              <InfoAudio
                 song={ITEM_TRACKS[audioIdx].title}
                 img={ITEM_TRACKS[audioIdx].img}
               />
@@ -143,6 +146,7 @@ function NowPlaying({ tracks }) {
                   setIcon={Icon.Shuffle}
                   className={"is36"}
                   title={"Tắt phát ngẫu nhiên"}
+                  customIcon={"is16"}
                 />
                 <Button
                   disabled={audioIdx === 0 ? true : false}
@@ -239,7 +243,7 @@ function NowPlaying({ tracks }) {
               />
             </div>
             {/* <ControlAudio /> */}
-            <div className={cx("level-item-right") + " " + cx("is-narrow")}>
+            <div className={cx("level-item-right") + " " + cx("is-narrow")} >
               <Button
                 setIcon={volumeAudio > 0 ? Icon.VolumeUp : Icon.VolumeMute}
                 className={"is36"}
@@ -272,7 +276,7 @@ function NowPlaying({ tracks }) {
               <span className={cx("divide")}></span>
             </div>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
-              <Button setIcon={Icon.MusicNoteList} className={"is36"} />
+              <Button setIcon={Icon.MusicNoteList} title={"Danh sách phát"} className={"is36"} />
             </div>
           </div>
         </div>

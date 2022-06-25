@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./Media.module.scss";
+import styles from "./InfoAudio.module.scss";
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
 import Button from '../../Button/Button';
@@ -8,7 +8,7 @@ import * as Icon from 'react-bootstrap-icons'
 
 const cx = classNames.bind(styles);
 
-function Media({song,img}) {
+function InfoAudio({song,img}) {
   return (
     <div className={cx('media')}>
         <div className={cx('media-left')}>
@@ -58,4 +58,4 @@ function Media({song,img}) {
   )
 }
 
-export default Media
+export default InfoAudio
