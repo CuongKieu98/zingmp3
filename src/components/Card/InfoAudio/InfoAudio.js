@@ -8,12 +8,12 @@ import * as Icon from 'react-bootstrap-icons'
 
 const cx = classNames.bind(styles);
 
-function InfoAudio({song,img}) {
+function InfoAudio({song,img,isPlaying=""}) {
   return (
     <div className={cx('media')}>
         <div className={cx('media-left')}>
-            <Link to={"/media"} >
-                <div className={cx('thumbnail-wrapper')}>
+            <Link to={"/"} >
+                <div className={cx('thumbnail-wrapper') +" " +cx(isPlaying)}>
                     <div className={cx('thumbnail')}>
                         <figure className={cx('image')}>
                                 <img src={img} alt=''/>

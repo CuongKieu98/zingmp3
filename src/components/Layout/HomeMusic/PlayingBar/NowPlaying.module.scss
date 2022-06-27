@@ -15,9 +15,7 @@
   user-select: none;
   background-color: var(--layout-bg);
 }
-.clickable {
-  cursor: pointer;
-}
+
 .level {
   display: flex;
   align-items: center;
@@ -30,7 +28,6 @@
   background-size: cover;
   //
   height: 90px;
-  min-width: 768px;
   padding: 0 20px;
   background-color: var(--player-bg);
   border-top: 1px solid var(--border-player);
@@ -68,7 +65,7 @@
 }
 .player-controls-center {
   flex-grow: 1;
-  max-width: 40vw;
+
 }
 
 .action {
@@ -221,6 +218,20 @@ input[type=range]::-moz-range-thumb {
     display: none !important;
   }
 }
+@media screen and (max-width: 767px){
+  .player-controls-right{
+    display: none ;
+    
+  }
+  .player-controls-center{
+    .level-item{
+      justify-content: right;
+    }
+  }
+  .time-bar{
+    display: none;
+  }
+}
 .divide {
   display: block;
   height: 33px;
@@ -240,6 +251,14 @@ input[type=range]::-moz-range-thumb {
   visibility: hidden;
 
 }
+
+
+
+
+
+//
+
+
 .show.cnk-list-playing {
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;

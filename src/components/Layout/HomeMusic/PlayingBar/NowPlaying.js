@@ -6,6 +6,7 @@ import Button from "../../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
 import ITEM_TRACKS from "../../../../const/ITEM_TRACKS";
 import PlayingList from "../PlayingList/PlayingList";
+import MenuIcon from "../../../MenuIcon/MenuIcon";
 
 const cx = classNames.bind(styles);
 function NowPlaying({ tracks }) {
@@ -17,6 +18,8 @@ function NowPlaying({ tracks }) {
   const [volumeAudio, setVolumeAudio] = useState(1);
   const [volumeVal, setVolumeVal] = useState(1);
   const [sibarRight, setSibarRight] = useState(false);
+
+
   const widthRef = useRef();
   let classBar = sibarRight ? "show" : ""
   //handleBtn
@@ -144,15 +147,16 @@ function NowPlaying({ tracks }) {
             isPlay={isPlay}
           />
         </div>
-    
-
+      <MenuIcon />
       <div className={cx("player-controls") + " " + cx("clickable")}>
+  
         <div className={cx("level") + " " + cx("player-controls-container")}>
           <div className={cx("player-controls-left")}>
             <div className={cx("level-item-left") + " " + cx("is-narrow")}>
               <InfoAudio
                 song={ITEM_TRACKS[audioIdx].title}
                 img={ITEM_TRACKS[audioIdx].img}
+                isPlaying={isPlay && "border"}
               />
             </div>
           </div>
@@ -161,7 +165,7 @@ function NowPlaying({ tracks }) {
               <div className={cx("action")}>
                 <Button
                   setIcon={Icon.Shuffle}
-                  className={"is36"}
+                  className={"is36min"}
                   title={"Tắt phát ngẫu nhiên"}
                   customIcon={"is16"}
                 />
@@ -184,7 +188,7 @@ function NowPlaying({ tracks }) {
                 />
                 <Button
                   setIcon={Icon.ArrowRepeat}
-                  className={"is36"}
+                  className={"is36min"}
                   title={"Phát lại tất cả"}
                 />
               </div>
@@ -302,7 +306,9 @@ function NowPlaying({ tracks }) {
             </div>
           </div>
         </div>
+
       </div>
+      
     </div>
   );
 }

@@ -42,6 +42,19 @@ button[disabled]{
     width: 36px;
     height: 36px;
 }
+.is45{
+    width: 45px;
+    height: 45px;
+}
+.is36min{
+    width: 36px;
+    height: 36px;
+}
+@media screen and (max-width:640px) {
+    .cnk-btn.is36min{
+      display: none !important;
+    }
+}
 .is40{
     width: 40px;
     height: 40px;

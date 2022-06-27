@@ -69,7 +69,7 @@ function LevelLeft() {
           )}
         >
           <div className={cx("search-container") + " " + cx(isColapse)}>
-            <button className={cx("cnk-btn")}>
+            <button className={cx("cnk-btn-search")}>
               <Search className={cx("icon-search")} />
             
             </button>

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef ,useEffect} from "react";
 import styles from "./MainPage.module.scss";
 import classNames from "classnames/bind";
 
@@ -19,7 +19,16 @@ import images from "../../../../assets/images";
 
 const cx = classNames.bind(styles);
 
+
 function MainPage() {
+  useEffect(() => {
+    const changeBackground = () => {
+  
+      console.log('test',window.scrollY)
+    };
+    window.addEventListener('scroll', changeBackground, true);
+    return () => window.removeEventListener('scroll', changeBackground,true);
+  }, []);
   return (
     <div className={cx("cnk-mainpage")}>
       <div className={cx("body-mainpage")}>
@@ -48,7 +57,7 @@ function MainPage() {
             <Random playLists={LIST_SINGER} isSinger={true} />
             <Random playLists={LIST_EVENT} isEvent={true} title={"Sự kiện"} />
             {/* partner */}
-            <div className={cx('cnk-partner')}>
+            <footer className={cx('cnk-partner')}>
               <h3 className={cx('title-partner')}>
                 <span>Đối tác âm nhạc</span>
               </h3>
@@ -110,7 +119,7 @@ function MainPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </footer>
           </div>
         </main>
       </div>

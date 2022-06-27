@@ -57,31 +57,6 @@ const Random = ({
       },
     ],
   };
-  const settingCard = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 2,
-    autoplay: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-
-          infinite: true,
-        },
-      },
-    ],
-  };
   const RenderTitle = () => {
     if (isMedia) {
       return (
@@ -124,16 +99,43 @@ const Random = ({
       );
     }
   };
-  console.log(refPrev)
   const RenderCard = () => {
     if (isRadio) {
       return (
-        <Slider ref={refSlider} {...settings}>
+        <Swiper
+        slidesPerView={3}
+        spaceBetween={10}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        onInit={(swiper) => {
+          swiper.params.navigation.prevEl = refPrev.current;
+          swiper.params.navigation.nextEl = refNext.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 7,
+            spaceBetween: 25,
+          },
+        }}
+        className="mySwiper"
+      >
           {playLists.map((list) => (
             <div
               key={list.id}
               className={cx("cnk-playlist-item") + " " + cx("is14")}
             >
+                   <SwiperSlide key={list.id}>
+
               <div className={cx("cnk-playlist-normal")}>
                 <Radio
                   author={list.Author}
@@ -144,19 +146,20 @@ const Random = ({
                   imgHost={list.imgHost}
                 />
               </div>
+                   </SwiperSlide>
             </div>
           ))}
-        </Slider>
+        </Swiper>
       );
     } else if (isCardNm || isMedia) {
       return (
         <>
           <Swiper
-            slidesPerView={2}
+            slidesPerView={3}
             spaceBetween={10}
             breakpoints={{
               640: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 10,
               },
               768: {

@@ -16,7 +16,6 @@ function Header() {
   useEffect(() => {
     const changeBackground = () => {
 
-        console.log('test',window.scrollY)
     };
     window.addEventListener('scroll', changeBackground, true);
     return () => window.removeEventListener('scroll', changeBackground,true);

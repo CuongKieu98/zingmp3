@@ -54,6 +54,11 @@
     height: 40px;
     background: var(--img-logo-mini-mp3) 50% / contain no-repeat;
   }
+@media screen and (max-width:768px){
+  .cnk-sidebar{
+    display: none;
+  }
+}
   .cnk-navbar-brand {
     width: 80px;
     height: 70px;
@@ -196,5 +201,14 @@
 @media screen and (max-width: 970px) {
   .cnk-sidebar {
     width: 80px;
+  }
+  .cnk-addplaylist-sidebar {
+    display: none;
+  }
+  .cnk-navbar-my-music{
+    display: none;
+  }
+  .vip-banner-sidebar{
+    display: none;
   }
 }

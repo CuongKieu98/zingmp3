@@ -42,8 +42,8 @@ function Media({ index,title, img, audio, onClick, isActive = false ,isPlay}) {
             </div>
           </div>
           <h3 className={cx("subtitle")}>
-            <Link to={"/dasd"}>Châu Khai Phong</Link>,
-            <Link to={"/dasd"}>ACV</Link>
+            <Link to={"/"}>Châu Khai Phong</Link>,
+            <Link to={"/"}>ACV</Link>
           </h3>
         </div>
       </div>

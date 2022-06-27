@@ -41,7 +41,6 @@ function SliderShow() {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -50,27 +49,23 @@ function SliderShow() {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true,
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
           initialSlide: 1,
           infinite: true,
-          dots: true,
-
 
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 640,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,  
-          dots: true,
           infinite: true,
 
         },
