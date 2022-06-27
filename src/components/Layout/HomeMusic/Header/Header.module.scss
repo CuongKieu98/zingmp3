@@ -46,6 +46,16 @@
     background-repeat: no-repeat;
   }
 }
+@media screen and (max-width: 970px) {
+  .cnk-header {
+    left: 50px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .level-right  {
+    display: none !important;
+  }
+}
 .level-left {
   align-items: center;
   justify-content: flex-start;

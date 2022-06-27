@@ -9,6 +9,14 @@ import { Link } from "react-router-dom";
 import CardSinger from "../../../../Card/Singer/Singer";
 import Event from "../../../../Card/Event/Event";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination,Navigation } from "swiper";
+
 const cx = classNames.bind(styles);
 const Random = ({
   playLists,
@@ -21,6 +29,9 @@ const Random = ({
   isEvent,
 }) => {
   const refSlider = useRef();
+  const refPrev = useRef();
+  const refNext = useRef();
+
   const settings = {
     infinite: true,
     slidesToShow: 7,
@@ -46,8 +57,33 @@ const Random = ({
       },
     ],
   };
+  const settingCard = {
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 2,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+
+          infinite: true,
+        },
+      },
+    ],
+  };
   const RenderTitle = () => {
-    if (isMedia ) {
+    if (isMedia) {
       return (
         <div className={cx("media-header")}>
           <div className={cx("media-left")}>
@@ -75,11 +111,12 @@ const Random = ({
             <div className={cx("cnk-discovery-btn")}>
               <Icon.ChevronLeft
                 className={cx("cnk-btn-arrow")}
-                onClick={() => refSlider?.current?.slickPrev()}
+                ref={refPrev}
               />
               <Icon.ChevronRight
                 className={cx("cnk-btn-arrow")}
-                onClick={() => refSlider?.current?.slickNext()}
+                ref={refNext}
+
               />
             </div>
           )}
@@ -87,6 +124,7 @@ const Random = ({
       );
     }
   };
+  console.log(refPrev)
   const RenderCard = () => {
     if (isRadio) {
       return (
@@ -111,25 +149,54 @@ const Random = ({
         </Slider>
       );
     } else if (isCardNm || isMedia) {
-      return playLists.map((list) => (
-        <div
-          key={list.id}
-          className={cx("cnk-playlist-item") + " " + cx("is33")}
-        >
-          <div className={cx("cnk-playlist-normal")}>
-            <Card
-              author={list.Author}
-              content={list.content}
-              href={list.href}
-              img={list.img}
-              subTiltle={list.subTiltle}
-            />
-          </div>
-        </div>
-      ));
+      return (
+        <>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={10}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 25,
+              },
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            {playLists.map((list) => (
+              <div className={cx("cnk-playlist-item") + " " + cx("is33")} key={list.id}>
+                <SwiperSlide key={list.id}>
+                  <div className={cx("cnk-playlist-normal")}>
+                    <Card
+                      author={list.Author}
+                      content={list.content}
+                      href={list.href}
+                      img={list.img}
+                      subTiltle={list.subTiltle}
+                    />
+                  </div>
+                </SwiperSlide>
+              </div>
+            ))}
+          </Swiper>
+        </>
+      );
     } else if (isSinger) {
       return (
-        <Slider ref={refSlider} {...settings} autoplay={true} autoplaySpeed={5000}>
+        <Slider
+          ref={refSlider}
+          {...settings}
+          autoplay={true}
+          autoplaySpeed={5000}
+        >
           {playLists.map((list) => (
             <div
               key={list.id}
@@ -142,22 +209,55 @@ const Random = ({
           ))}
         </Slider>
       );
-    }
-    else if(isEvent){
+    } else if (isEvent) {
       return (
-        <Slider ref={refSlider} slidesToShow={3} slidesToScroll={3} autoplay={false} >
-        {playLists.map((list) => (
-          <div
-            key={list.id}
-            className={cx("cnk-playlist-item") + " " + cx("is33")}
-          >
-            <div className={cx("cnk-playlist-normal")}>
-              <Event href={list.href} img={list.img} content={list.content} title={list.title}/>
+        <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        onInit={(swiper) => {
+          swiper.params.navigation.prevEl = refPrev.current;
+          swiper.params.navigation.nextEl = refNext.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 25,
+          },
+        }}
+        className="mySwiper"
+      >
+          {playLists.map((list) => (
+            <div
+              key={list.id}
+              className={cx("cnk-playlist-item") + " " + cx("is33")}
+            >
+              <SwiperSlide key={list.id}>
+
+              <div className={cx("cnk-playlist-normal")}>
+                <Event
+                  href={list.href}
+                  img={list.img}
+                  content={list.content}
+                  title={list.title}
+                />
+              </div>
+              </SwiperSlide>
             </div>
-          </div>
-        ))}
-     </Slider>
-      )
+          ))}
+        </Swiper>
+      );
     }
   };
 
