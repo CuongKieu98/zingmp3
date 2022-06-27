@@ -44,6 +44,12 @@
   flex-grow: 0;
   flex-shrink: 0;
 }
+@media screen and (max-width:640px) {
+  .player-controls-left{
+    width: 50% ;
+  }
+  
+}
 .level-item-left {
   width: 100%;
   align-items: center;
@@ -249,6 +255,7 @@ input[type=range]::-moz-range-thumb {
   position: absolute;
   width: 330px;
   visibility: hidden;
+
 
 }
 

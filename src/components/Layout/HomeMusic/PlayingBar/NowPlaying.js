@@ -183,7 +183,6 @@ function NowPlaying({ tracks }) {
                 <Button
                   setIcon={Icon.SkipEndFill}
                   className={"is36"}
-                  title={"Bài tiếp theo"}
                   onClick={handleNext}
                 />
                 <Button
