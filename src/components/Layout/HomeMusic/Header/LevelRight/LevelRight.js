@@ -17,6 +17,7 @@ import {
   ITEM_LOGIN_USER,
   FOOTER_ITEM,
 } from "../../../../../const/ITEM_LOGIN_USER";
+import * as Icon from "react-bootstrap-icons";
 const cx = classNames.bind(styles);
 function LevelRight() {
   const [isShowSetting, setIsShowSetting] = useState(false);
@@ -37,12 +38,12 @@ function LevelRight() {
         rel="noreferrer"
       >
         <Tippy content="Nâng cấp VIP">
-          <ButtonHeader icon={faVuejs} />
+          <ButtonHeader iconBS={Icon.Badge8k} />
         </Tippy>
       </a>
       <div className={cx("setting-item")}>
         <Tippy content="Tải lên">
-          <ButtonHeader icon={faCircleUp} />
+          <ButtonHeader iconBS={Icon.Upload} />
         </Tippy>
       </div>
 
@@ -58,7 +59,7 @@ function LevelRight() {
                 <ul className={cx("menu-list")}>
                   {ITEM_SETTING_HEADER.map((item) => (
                     <li key={item.id} className={cx("li-header")}>
-                      <LabelItem icon={item.icon} title={item.title} />
+                      <LabelItem icon={item.icon} title={item.title} children={item.children}/>
                     </li>
                   ))}
                 </ul>
@@ -75,7 +76,7 @@ function LevelRight() {
             )}
           >
             <ButtonHeader
-              icon={faChrome}
+              iconBS={Icon.Gear}
               onClick={() => setIsShowSetting(!isShowSetting)}
             />
           </HeadlessTippy>

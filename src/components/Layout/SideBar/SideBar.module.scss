@@ -170,3 +170,15 @@
   background-color: var(--scroll-thumb-bg);
   border-radius: 2px;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1637px) {
+  .cnk-playlist-item {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 970px) {
+  .cnk-sidebar {
+    
+    width: 80px;
+  }
+}

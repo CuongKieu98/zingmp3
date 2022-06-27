@@ -15,8 +15,10 @@ function NowPlaying({ tracks }) {
   const [seekValue, setSeekValue] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
   const [volumeAudio, setVolumeAudio] = useState(1);
-  const [volumeVal,setVolumeVal] = useState(1)
+  const [volumeVal, setVolumeVal] = useState(1);
+  const [sibarRight, setSibarRight] = useState(false);
   const widthRef = useRef();
+  let classBar = sibarRight ? "show" : ""
   //handleBtn
   const handlePlay = (e) => {
     if (isPlay === false && seekValue === 100) {
@@ -44,7 +46,6 @@ function NowPlaying({ tracks }) {
     }
     handlePlay();
   };
-
   const handlePrev = (e) => {
     if (audioIdx - 1 < 0) {
       setAudioIdx(ITEM_TRACKS.length - 1);
@@ -55,7 +56,7 @@ function NowPlaying({ tracks }) {
   };
   const handleMuteOn = (e) => {
     if (volumeAudio > 0) {
-      setVolumeVal(audioPlayer.current?.volume)
+      setVolumeVal(audioPlayer.current?.volume);
       setVolumeAudio(0);
       audioPlayer.current.volume = 0;
     } else {
@@ -122,13 +123,29 @@ function NowPlaying({ tracks }) {
     let compute = (value * audioPlayer.current.duration) / 100;
     audioPlayer.current.currentTime = compute;
   };
+  const handleChooseTrack =(idx,isPause= false) =>{
+    if(isPause){
+      handlePause()
+    }else{
+      setAudioIdx(idx)
+      handlePlay();
+    }
+
+  }
 
   return (
     <div className={cx("now-playing-bar")}>
-       <div className={cx("cnk-list-playing")}>
-        <PlayingList listTrack={ITEM_TRACKS} />
-       </div>
-      
+
+        <div className={cx("cnk-list-playing")+" " +cx(classBar)}>
+          <PlayingList
+            listTrack={ITEM_TRACKS}
+            onPlaying={audioIdx}
+            onPlay={handleChooseTrack}
+            isPlay={isPlay}
+          />
+        </div>
+    
+
       <div className={cx("player-controls") + " " + cx("clickable")}>
         <div className={cx("level") + " " + cx("player-controls-container")}>
           <div className={cx("player-controls-left")}>
@@ -243,7 +260,7 @@ function NowPlaying({ tracks }) {
               />
             </div>
             {/* <ControlAudio /> */}
-            <div className={cx("level-item-right") + " " + cx("is-narrow")} >
+            <div className={cx("level-item-right") + " " + cx("is-narrow")}>
               <Button
                 setIcon={volumeAudio > 0 ? Icon.VolumeUp : Icon.VolumeMute}
                 className={"is36"}
@@ -275,8 +292,13 @@ function NowPlaying({ tracks }) {
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
               <span className={cx("divide")}></span>
             </div>
-            <div className={cx("level-item-right") + " " + cx("is-narrow")}>
-              <Button setIcon={Icon.MusicNoteList} title={"Danh sách phát"} className={"is36"} />
+            <div className={cx("level-item-right") + " " + cx("is-narrow")} onClick={() => setSibarRight(!sibarRight)}>
+              <Button
+                setIcon={Icon.MusicNoteList}
+                title={"Danh sách phát"}
+                className={"is36"}
+
+              />
             </div>
           </div>
         </div>

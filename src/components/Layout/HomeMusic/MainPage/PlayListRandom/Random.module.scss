@@ -6,6 +6,10 @@
   user-select: none;
   overflow: hidden;
   position: relative;
+
+  // scroll-behavior: smooth;
+  // flex-wrap: nowrap !important;
+  // will-change: scroll-position;
 }
 .cnk-playlist-wp-container {
   transform: translate3d(0px, 0px, 0px);
@@ -36,7 +40,8 @@
   width: 20%;
 }
 .is33{
-  width: calc(100%/3);
+  // flex: 0 0 33.33333%;
+  max-width: 33.33333%;
 }
 .cnk-playlist-normal {
   line-height: normal;
@@ -163,3 +168,9 @@
   max-width: 100%;
   line-height: normal;
 }
+// @media screen and (max-width: 970px) {
+//   .cnk-playlist-wp-container {    
+//     display: flex;
+//   }
+
+// }

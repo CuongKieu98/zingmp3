@@ -1,17 +1,16 @@
 
-import { faAngellist} from "@fortawesome/free-brands-svg-icons";
-import {  faCircleDot, faCirclePlay, faComment, faContactCard } from "@fortawesome/free-regular-svg-icons";
+import { Broadcast, Eyeglasses, PersonCircle, PieChart, Soundwave } from 'react-bootstrap-icons'
 
 const ITEM_SIDEBAR_MAIN = [
     {
         id:1,
-        icon: faContactCard,
+        icon: PersonCircle,
         text:'Cá Nhân',
         to:'/mymusic',
     },
     {
         id:2,
-        icon: faCircleDot,
+        icon: Soundwave,
         text:'Khám Phá',
         to:'/',
         active:'active'
@@ -19,21 +18,21 @@ const ITEM_SIDEBAR_MAIN = [
     {
 
         id:3,
-        icon: faComment,
+        icon: PieChart,
         text:'#zingchart',
         to:'/zing-chart',
         
     },
     {
         id:4,
-        icon: faCirclePlay,
+        icon: Broadcast,
         text:'Radio',
         live:'https://zjs.zmdcdn.me/zmp3-desktop/dev/147506/static/media/live-tag.e25dd240.svg',
         to:'/radio',
     },
     {
         id:5,
-        icon: faAngellist,
+        icon: Eyeglasses,
         text:'Theo Dõi',
         to:'the-loai-nghe-si',
         iconRight:'none'

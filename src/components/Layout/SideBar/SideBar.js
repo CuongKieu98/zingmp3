@@ -12,6 +12,7 @@ const cx = classNames.bind(styles);
 
 function SideBar() {
   return (
+    <>
     <aside className={cx("cnk-sidebar")}>
       <div className={cx("cnk-sidebar-wrap")}>
         <nav className={cx("cnk-navbar")}>
@@ -29,6 +30,7 @@ function SideBar() {
         <SideBarMiddle />
       </div>
     </aside>
+    </>
   );
 }
 

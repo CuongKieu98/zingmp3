@@ -114,7 +114,7 @@ const Random = ({
       return playLists.map((list) => (
         <div
           key={list.id}
-          className={cx("cnk-playlist-item") + " " + cx("is20")}
+          className={cx("cnk-playlist-item") + " " + cx("is33")}
         >
           <div className={cx("cnk-playlist-normal")}>
             <Card

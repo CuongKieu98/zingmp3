@@ -16,10 +16,12 @@ function Label({ to, href, title, icon, live,iconRight }) {
   } else if (href) {
     Component = "a";
   }
+  let CompIcon = icon
   return (
     <Component className={cx("label")} to={to} href={href}>
-      <FontAwesomeIcon className={cx("label-icon")} icon={icon} />
-      <span>{title}</span>
+      <CompIcon className={cx("label-icon")} />
+      {/* <FontAwesomeIcon className={cx('label-icon')} icon={icon} /> */}
+      <span className={cx('hide-when-mobile')}>{title}</span>
       {live && (
         <figure className={cx("label-tag")}>
           <img src={live} alt="" />

@@ -1,3 +1,5 @@
+import PlayingList from '../../components/Layout/HomeMusic/PlayingList/PlayingList';
+
 const images = {
     library : require('~/assets/images/library.svg').default,
     mysong : require('~/assets/images/mysong.svg').default,
@@ -21,6 +23,8 @@ const images = {
     pn6 : require('~/assets/images/pn6.png'),
     pn7 : require('~/assets/images/pn7.png'),
     pn8 : require('~/assets/images/pn8.png'),
+    iconplaying : require('~/assets/images/icon-playing.gif'),
+
     
 };
 export default images;

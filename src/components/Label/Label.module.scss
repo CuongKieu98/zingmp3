@@ -46,3 +46,11 @@
 .label-lib-text{
     font-weight: 400;
 }
+@media screen and (max-width: 970px) {
+    .label-tag {    
+      display: none;
+    }
+    .hide-when-mobile{
+        display: none;
+    }
+  }

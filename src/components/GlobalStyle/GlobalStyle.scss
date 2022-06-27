@@ -323,3 +323,11 @@ h3 {
     flex-grow: 0;
     flex-shrink: 0;
 }
+@media (max-width:767px){
+  .hidden-xs{
+    display: none ;
+  }
+  .visible-xs{
+    display: block !important;
+  }
+}

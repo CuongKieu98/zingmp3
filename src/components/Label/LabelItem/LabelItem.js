@@ -4,16 +4,18 @@ import styles from "./LabelItem.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleRight } from "@fortawesome/free-regular-svg-icons";
+import { ChevronRight, Icon123 } from "react-bootstrap-icons";
 
 const cx = classNames.bind(styles);
 
-function LabelItem({ href, icon, title }) {
+function LabelItem({ href, icon, title,children }) {
   let Comp = "a";
   if (href) {
     Comp = "a";
   } else {
     Comp = "div";
   }
+  let CompIcon = icon
   return (
     <Comp
       href={href}
@@ -21,13 +23,10 @@ function LabelItem({ href, icon, title }) {
       {...(!!href ? { target: "_blank" } : {})}
     >
       <span className={cx("btn-label")}>
-        <FontAwesomeIcon className={cx("icon-setting")} icon={icon} />
+        <CompIcon className={cx("icon-setting")} />
         <span>{title}</span>
-        {Comp !== "a" && (
-          <FontAwesomeIcon
-            icon={faCircleRight}
-            className={cx("icon-setting")}
-          />
+        {(Comp !== "a" && children) && (
+          <ChevronRight  className={cx("icon-setting")}/>
         )}
       </span>
     </Comp>

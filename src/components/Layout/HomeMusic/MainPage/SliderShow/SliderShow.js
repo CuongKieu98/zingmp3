@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import styles from "./SliderShow.module.scss";
 import classNames from "classnames/bind";
+
 import ITEM_SLIDER from "../../../../../const/ITEM_SLIDER";
 
 import * as Icon from "react-bootstrap-icons";
@@ -35,7 +36,7 @@ function SliderShow() {
     autoplaySpeed: 2000,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1100,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -44,18 +45,34 @@ function SliderShow() {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
+          infinite: true,
+          dots: true,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 800,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1,
+          infinite: true,
+          dots: true,
+
+
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,  
+          dots: true,
+          infinite: true,
+
         },
       },
     ],

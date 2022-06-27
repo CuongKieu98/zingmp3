@@ -1,36 +1,37 @@
 import { faChrome, faVuejs } from "@fortawesome/free-brands-svg-icons";
 import { faCircleUp, faUser } from "@fortawesome/free-regular-svg-icons";
+import { BadgeAd, CardText, Flag, InfoCircle, ShieldCheck, Telephone } from "react-bootstrap-icons";
 
 
 const ITEM_SETTING_FOOTER = [
   {
     id: 4,
-    icon: faChrome,
+    icon: InfoCircle,
     title: "Giới thiệu",
   },
   {
     id: 5,
-    icon: faChrome,
+    icon: Flag,
     title: "Góp ý",
   },
   {
     id: 6,
-    icon: faChrome,
+    icon: Telephone,
     title: "Liên hệ",
   },
   {
     id: 7,
-    icon: faChrome,
+    icon: BadgeAd,
     title: "Quảng cáo",
   },
   {
     id: 8,
-    icon: faChrome,
+    icon: CardText,
     title: "Thoả thuận sử dụng",
   },
   {
     id: 9,
-    icon: faUser,
+    icon: ShieldCheck,
     title: "Chính sách bảo mật",
   },
 ];
