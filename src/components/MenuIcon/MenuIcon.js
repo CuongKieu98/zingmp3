@@ -14,22 +14,22 @@ function MenuIcon({}) {
     <div className={cx("cnk-list-playing-hover")+ " " + cx(active)}>
       <div className={cx("toggle")}>
         
-        <Button className={"is45"} setIcon={Icon.MusicNoteList} onClick={() => setIsActive(!isActive)}/>
+        <Button className={"is50"} setIcon={Icon.MusicNoteList} onClick={() => setIsActive(!isActive)}/>
       </div>
 
         <span>
           <Link to={"/"}>
-          <Button className={"is45"} setIcon={Icon.BarChart} />
+          <Button className={"is50"} setIcon={Icon.BarChart} />
           </Link>
         </span>
         <span>
           <Link to={"/"}>
-          <Button className={"is45"} setIcon={Icon.Soundwave} />
+          <Button className={"is50"} setIcon={Icon.Soundwave} />
           </Link>
         </span>
         <span>
           <Link to={"/"}>
-          <Button className={"is45"} setIcon={Icon.Person} />
+          <Button className={"is50"} setIcon={Icon.Person} />
           </Link>
         </span>
         <span>
