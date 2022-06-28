@@ -26,7 +26,7 @@ const ITEM_TRACKS = [
   },
   {
     id: 4,
-    title: "Chim sẽ dâu tây",
+    title: "Chim sẻ dâu tây",
     audioSrc: tracks.chimsedautay,
     img:playlistImg.chimse
   },
