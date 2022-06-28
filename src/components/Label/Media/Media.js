@@ -8,7 +8,15 @@ import images from "../../../assets/images";
 
 const cx = classNames.bind(styles);
 
-function Media({ index,title, img, audio, onClick, isActive = false ,isPlay}) {
+function Media({
+  index,
+  title,
+  img,
+  audio,
+  onClick,
+  isActive = false,
+  isPlay,
+}) {
   let active = isActive ? "is-active" : "";
 
   return (
@@ -19,18 +27,21 @@ function Media({ index,title, img, audio, onClick, isActive = false ,isPlay}) {
             <img src={img} alt="" />
           </figure>
           <div className={cx("opacity")}></div>
-          <div className={cx("cnk-action-container")}  >
-            {(isPlay && isActive) ? (
-              <div className={cx("cnk-playing")} onClick={() => {
-                onClick(index,true)
-              }}>  
-              <figure>
-              <img src={images.iconplaying} alt="" />
-                </figure>          
+          <div className={cx("cnk-action-container")}>
+            {isPlay && isActive ? (
+              <div
+                className={cx("cnk-playing")}
+                onClick={() => {
+                  onClick(index, true);
+                }}
+              >
+                <figure>
+                  <img src={images.iconplaying} alt="" />
+                </figure>
               </div>
             ) : (
               <div className={cx("cnk-action")}>
-                 <Button setIcon={PlayFill} onClick={() => onClick(index)} />
+                <Button setIcon={PlayFill} onClick={() => onClick(index)} />
               </div>
             )}
           </div>
@@ -42,8 +53,7 @@ function Media({ index,title, img, audio, onClick, isActive = false ,isPlay}) {
             </div>
           </div>
           <h3 className={cx("subtitle")}>
-            <Link to={"/"}>Châu Khai Phong</Link>,
-            <Link to={"/"}>ACV</Link>
+            <Link to={"/"}>Châu Khai Phong</Link>,<Link to={"/"}>ACV</Link>
           </h3>
         </div>
       </div>

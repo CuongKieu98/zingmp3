@@ -36,5 +36,11 @@ const images = {
     newkpop : require('~/assets/playlistImg/newkpop.jpg'),
     newcpopp : require('~/assets/playlistImg/newcpopp.jpg'),
     newvindie : require('~/assets/playlistImg/newvindie.jpg'),
+    chimse : require('~/assets/playlistImg/chimse.png'),
+    chongaycuoiem : require('~/assets/playlistImg/chongaycuoiem.png'),
+    iilison : require('~/assets/playlistImg/iilison.png'),
+    itnhungdai : require('~/assets/playlistImg/itnhungdai.png'),
+    khacbiet : require('~/assets/playlistImg/khacbiet.png'),
+    nhinmay : require('~/assets/playlistImg/nhinmay.png'),
 };
 export default images;

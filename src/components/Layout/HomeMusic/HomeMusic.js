@@ -11,7 +11,7 @@ function HomeMusic() {
   return (
     <>
     <Header />
-    <MainPage />
+
     <NowPlaying />
 
     </>

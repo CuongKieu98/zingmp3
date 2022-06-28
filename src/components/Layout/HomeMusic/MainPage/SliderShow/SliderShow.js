@@ -10,22 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const cx = classNames.bind(styles);
 
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div className={cx("cnk-gallery-next")} onClick={onClick}>
-      <Icon.ChevronRight className={cx("icon-slide-next")} />
-    </div>
-  );
-}
-function SamplePrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div className={cx("cnk-gallery-prev")} onClick={onClick}>
-      <Icon.ChevronLeft className={cx("icon-slide-prev")} />
-    </div>
-  );
-}
+
 
 function SliderShow() {
   const settings = {
@@ -71,8 +56,7 @@ function SliderShow() {
         },
       },
     ],
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+
   };
 
   return (

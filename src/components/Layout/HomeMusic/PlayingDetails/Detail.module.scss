@@ -1,0 +1,233 @@
+.cnk-detail-playing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+}
+.cnk-detail-playing.is-open {
+  transform: translateY(0);
+  transition: transform 0.6s ease-out;
+}
+.detail-background {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.video-blur-image {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.react-blur-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: var(--alpha-layout-bg);
+  position: absolute;
+}
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 90px);
+  position: relative;
+  top: 0;
+  z-index: 1;
+}
+.detail-header {
+  padding: 20px;
+  position: relative;
+  display: flex;
+}
+.left {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.logo-small {
+  width: 45px;
+  height: 45px;
+  background-image: url(https://zjs.zmdcdn.me/zmp3-desktop/dev/119956/static/media/icon_zing_mp3_60.f6b51045.svg);
+  flex: 1 1;
+}
+.info {
+  margin-left: 8px;
+  overflow: hidden;
+  color: var(--white);
+}
+.tabs {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 3px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: auto;
+  position: relative;
+}
+.tab-item {
+  font-size: 16px;
+  color: hsla(0, 0%, 100%, 0.5);
+  padding: 7px 15px;
+  font-weight: 700;
+}
+.tab-item.is-active {
+  background-color: hsla(0, 0%, 100%, 0.1);
+  border-radius: 999px;
+  color: var(--white);
+}
+.action-group {
+  // opacity: 0;
+  // transition: opacity 1s ease;
+  position: absolute;
+  right: 10px;
+  top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.level-item {
+  margin-right: 15px;
+  flex-grow: 1;
+  margin-bottom: 0;
+  align-items: center;
+  display: flex;
+  flex-basis: auto;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 8px;
+  background-color: var(--kara-btn-bg);
+  line-height: 0;
+  color: var(--white);
+  border-radius: 50%;
+  flex: 1 1;
+}
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  overflow: hidden;
+}
+.detail-media-list {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  color: var(--white);
+}
+.list-wrapper {
+  overflow-x: hidden;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 12px;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  padding: 15px;
+  max-width: 100%;
+}
+.img-content {
+  margin-bottom: 10px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  -webkit-animation-name: spin;
+  animation-name: spin;
+  -webkit-animation-duration: 12s;
+  animation-duration: 12s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+.img-48.border {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+  border-radius: 999px;
+  transition: 0.5s;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.tabs{
+    cursor: pointer;
+}
+.img-48 {
+  width: 60%;
+  height: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+.img-info {
+  text-align: center;
+  height: 100px;
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 5px;
+  color: var(--white);
+}
+.sub-title {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: hsla(0, 0%, 100%, 0.8);
+}
+.detail-bottom {
+}
+.is-close {
+  transform: translateY(100%);
+  transition: transform 0.6s ease-out;
+}
+.action-play {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+
+  width: 60%;
+  height: 100%;
+  border-radius: 999px;
+  overflow: hidden;
+  line-height: 0;
+}
+.action-play:hover {
+  background-color: var(--alpha-layout-bg);
+}

@@ -5,7 +5,7 @@ import {
   faCircleRight,
   faXmarkCircle,
 } from "@fortawesome/free-regular-svg-icons";
-import { ArrowLeft, ArrowRight, Search } from 'react-bootstrap-icons'
+import { ArrowLeft, ArrowRight, Search, X, XLg } from "react-bootstrap-icons";
 import { faSearchengin } from "@fortawesome/free-brands-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 import SUCCESS_LIST from "../../../../../const/SUCESS_LIST";
@@ -37,11 +37,11 @@ function LevelLeft() {
   return (
     <div className={cx("level-left")}>
       <button className={cx("cnk-btn")}>
-        <ArrowLeft  className={cx("icon") + " " + cx("is-back")} />
+        <ArrowLeft className={cx("icon") + " " + cx("is-back")} />
       </button>
 
       <button className={cx("cnk-btn")}>
-      <ArrowRight  className={cx("icon") + " " + cx("is-next")} />
+        <ArrowRight className={cx("icon") + " " + cx("is-next")} />
       </button>
       <form className={cx("search")}>
         <Tippy
@@ -71,7 +71,6 @@ function LevelLeft() {
           <div className={cx("search-container") + " " + cx(isColapse)}>
             <button className={cx("cnk-btn-search")}>
               <Search className={cx("icon-search")} />
-            
             </button>
             <div className={cx("input-wrapper")}>
               <input
@@ -85,9 +84,8 @@ function LevelLeft() {
               />
             </div>
             {searchValue.length > 0 && (
-              <FontAwesomeIcon
+              <XLg
                 className={cx("icon") + " " + cx("icon-close")}
-                icon={faXmarkCircle}
                 onClick={handleClear}
               />
             )}

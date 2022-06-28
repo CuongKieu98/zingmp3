@@ -7,6 +7,7 @@ import * as Icon from "react-bootstrap-icons";
 import ITEM_TRACKS from "../../../../const/ITEM_TRACKS";
 import PlayingList from "../PlayingList/PlayingList";
 import MenuIcon from "../../../MenuIcon/MenuIcon";
+import Detail from "../PlayingDetails/Detail";
 
 const cx = classNames.bind(styles);
 function NowPlaying({ tracks }) {
@@ -18,10 +19,10 @@ function NowPlaying({ tracks }) {
   const [volumeAudio, setVolumeAudio] = useState(1);
   const [volumeVal, setVolumeVal] = useState(1);
   const [sibarRight, setSibarRight] = useState(false);
-
+  const [openClass, setOpenClass] = useState(false);
 
   const widthRef = useRef();
-  let classBar = sibarRight ? "show" : ""
+  let classBar = sibarRight ? "show" : "";
   //handleBtn
   const handlePlay = (e) => {
     if (isPlay === false && seekValue === 100) {
@@ -126,37 +127,44 @@ function NowPlaying({ tracks }) {
     let compute = (value * audioPlayer.current.duration) / 100;
     audioPlayer.current.currentTime = compute;
   };
-  const handleChooseTrack =(idx,isPause= false) =>{
-    if(isPause){
-      handlePause()
-    }else{
-      setAudioIdx(idx)
+  const handleChooseTrack = (idx, isPause = false) => {
+    if (isPause) {
+      handlePause();
+    } else {
+      setAudioIdx(idx);
       handlePlay();
     }
-
-  }
+  };
 
   return (
     <div className={cx("now-playing-bar")}>
-
-        <div className={cx("cnk-list-playing")+" " +cx(classBar)}>
-          <PlayingList
-            listTrack={ITEM_TRACKS}
-            onPlaying={audioIdx}
-            onPlay={handleChooseTrack}
-            isPlay={isPlay}
-          />
-        </div>
+      <div className={cx("cnk-list-playing") + " " + cx(classBar)}>
+        <PlayingList
+          listTrack={ITEM_TRACKS}
+          onPlaying={audioIdx}
+          onPlay={handleChooseTrack}
+          isPlay={isPlay}
+        />
+      </div>
       <MenuIcon />
+      <Detail
+        onPlay={handleChooseTrack}
+        isPlay={isPlay}
+        song={ITEM_TRACKS[audioIdx].title}
+        img={ITEM_TRACKS[audioIdx].img}
+        isOpen={openClass}
+        onClick={() => setOpenClass(false)}
+        isPlaying={isPlay && "border"}
+      />
       <div className={cx("player-controls") + " " + cx("clickable")}>
-  
         <div className={cx("level") + " " + cx("player-controls-container")}>
           <div className={cx("player-controls-left")}>
             <div className={cx("level-item-left") + " " + cx("is-narrow")}>
               <InfoAudio
+                isPlay={isPlay}
                 song={ITEM_TRACKS[audioIdx].title}
                 img={ITEM_TRACKS[audioIdx].img}
-                isPlaying={isPlay && "border"}
+                onClick={() => setOpenClass(!openClass)}
               />
             </div>
           </div>
@@ -295,19 +303,19 @@ function NowPlaying({ tracks }) {
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
               <span className={cx("divide")}></span>
             </div>
-            <div className={cx("level-item-right") + " " + cx("is-narrow")} onClick={() => setSibarRight(!sibarRight)}>
+            <div
+              className={cx("level-item-right") + " " + cx("is-narrow")}
+              onClick={() => setSibarRight(!sibarRight)}
+            >
               <Button
                 setIcon={Icon.MusicNoteList}
                 title={"Danh sách phát"}
                 className={"is36"}
-
               />
             </div>
           </div>
         </div>
-
       </div>
-      
     </div>
   );
 }

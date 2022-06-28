@@ -4,23 +4,25 @@ import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
 import Button from '../../Button/Button';
 import * as Icon from 'react-bootstrap-icons'
+import images from "../../../assets/images";
 
 
 const cx = classNames.bind(styles);
 
-function InfoAudio({song,img,isPlaying=""}) {
+function InfoAudio({song,img,onClick,isPlay=false}) {
   return (
     <div className={cx('media')}>
-        <div className={cx('media-left')}>
-            <Link to={"/"} >
-                <div className={cx('thumbnail-wrapper') +" " +cx(isPlaying)}>
-                    <div className={cx('thumbnail')}>
-                        <figure className={cx('image')}>
+        <div className={cx('media-left')}  style={{cursor:"pointer"}}> 
+                <div className={cx('thumbnail-wrapper')}>
+                    <div className={cx('thumbnail')} onClick={onClick}>
+                        <figure className={cx('image')} >
                                 <img src={img} alt=''/>
                         </figure>
+                        {isPlay && (<div className={cx("action-play")}>
+                            <img src={images.iconplaying} style={{width:"50%"}} alt=""/>
+                        </div>)}
                     </div>
                 </div>
-            </Link>
         </div>
         <div className={cx('media-content')}>
             <div className={cx('is-mark')}>

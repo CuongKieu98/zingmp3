@@ -44,11 +44,10 @@
   flex-grow: 0;
   flex-shrink: 0;
 }
-@media screen and (max-width:640px) {
-  .player-controls-left{
-    width: 50% ;
+@media screen and (max-width: 640px) {
+  .player-controls-left {
+    width: 50%;
   }
-  
 }
 .level-item-left {
   width: 100%;
@@ -71,7 +70,6 @@
 }
 .player-controls-center {
   flex-grow: 1;
-
 }
 
 .action {
@@ -141,42 +139,42 @@
   height: 3px;
 }
 
-input[type=range]{
+input[type="range"] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
   cursor: pointer;
 }
-input[type=range]:focus {
+input[type="range"]:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
-input[type=range]:hover{
-  visibility:visible;
+input[type="range"]:hover {
+  visibility: visible;
 }
-input[type=range]::-ms-track {
+input[type="range"]::-ms-track {
   width: 100%;
 
   /* Hides the slider so custom styles can be added */
-  background: transparent; 
+  background: transparent;
   border-color: transparent;
   color: transparent;
 }
 
 /* Special styling for WebKit/Blink */
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border-radius: 50%;
   background-color: var(--progressbar-active-bg);
   width: 10px;
   height: 10px;
 
-  &:hover{
+  &:hover {
     visibility: visible;
   }
   cursor: pointer; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-/* Add cool effects to your sliders! */
+  /* Add cool effects to your sliders! */
 }
-input[type=range]::-ms-thumb {
+input[type="range"]::-ms-thumb {
   -webkit-appearance: none;
   border-radius: 50%;
   background-color: var(--progressbar-active-bg);
@@ -185,14 +183,14 @@ input[type=range]::-ms-thumb {
   cursor: pointer; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
 }
-input[type=range]::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
   border-radius: 50%;
   background-color: var(--progressbar-active-bg);
   width: 10px;
   height: 10px;
   visibility: hidden;
-  &:hover{
+  &:hover {
     visibility: visible;
   }
   cursor: pointer; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
@@ -207,7 +205,6 @@ input[type=range]::-moz-range-thumb {
   &:hover {
     .cnk-slider-audio {
       height: 5px;
-
     }
   }
 }
@@ -217,24 +214,14 @@ input[type=range]::-moz-range-thumb {
   height: 3px;
   background: var(--progressbar-active-bg);
   //
-  
 }
-@media screen and (max-width: 1000px){
-  .divide{
+@media screen and (max-width: 1000px) {
+  .divide {
     display: none !important;
   }
 }
-@media screen and (max-width: 767px){
-  .player-controls-right{
-    display: none ;
-    
-  }
-  .player-controls-center{
-    .level-item{
-      justify-content: right;
-    }
-  }
-  .time-bar{
+@media screen and (max-width: 767px) {
+  .player-controls-right {
     display: none;
   }
 }
@@ -243,9 +230,9 @@ input[type=range]::-moz-range-thumb {
   height: 33px;
   width: 1px;
   background-color: var(--border-player);
-  margin: 0 20px
+  margin: 0 20px;
 }
-.cnk-list-playing{
+.cnk-list-playing {
   z-index: 2;
   border: none;
   box-shadow: var(--box-shadow-queue);
@@ -255,19 +242,14 @@ input[type=range]::-moz-range-thumb {
   position: absolute;
   width: 330px;
   visibility: hidden;
-
-
 }
 
-
-
-
-
 //
-
 
 .show.cnk-list-playing {
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;
-  visibility: visible ;
+  transform: translateX(0);
+  transition: transform 0.6s ease-out;
+  visibility: visible;
 }
