@@ -114,9 +114,9 @@
 }
 .detail-body {
   display: flex;
-  flex-direction: column;
-  flex: 1 1;
-  overflow: hidden;
+  // flex-direction: column;
+  // flex: 1 1;
+  // overflow: hidden;
 }
 .detail-media-list {
   display: flex;
@@ -182,8 +182,8 @@
     transform: rotate(360deg);
   }
 }
-.tabs{
-    cursor: pointer;
+.tabs {
+  cursor: pointer;
 }
 .img-48 {
   width: 60%;
@@ -195,7 +195,6 @@
 }
 .img-info {
   text-align: center;
-  height: 100px;
 }
 .title {
   font-size: 24px;
@@ -211,6 +210,13 @@
   color: hsla(0, 0%, 100%, 0.8);
 }
 .detail-bottom {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.test1{
+  overflow-y: scroll;
 }
 .is-close {
   transform: translateY(100%);
@@ -230,4 +236,11 @@
 }
 .action-play:hover {
   background-color: var(--alpha-layout-bg);
+}
+.media-list{
+  margin: 5px;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }

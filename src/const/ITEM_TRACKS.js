@@ -48,7 +48,24 @@ const ITEM_TRACKS = [
     audioSrc: tracks.itnhungdailau,
     img:playlistImg.itnhungdai
   },
-
+  {
+    id: 8,
+    title: "ILLusion",
+    audioSrc: tracks.Illusion,
+    img:playlistImg.iilison
+  },
+  {
+    id: 9,
+    title: "Khác biệt to lớn",
+    audioSrc: tracks.Khacbiettolon,
+    img:playlistImg.khacbiet
+  },
+  {
+    id: 10,
+    title: "Ít nhưng dài lâu",
+    audioSrc: tracks.itnhungdailau,
+    img:playlistImg.itnhungdai
+  },
 ];
 
 export default ITEM_TRACKS;

@@ -74,6 +74,7 @@ function NowPlaying({ tracks }) {
     } else {
       audioPlayer.current.play();
     }
+
   }, [audioIdx]);
   useEffect(() => {
     if (seekValue === 100 && isPlay) {
@@ -148,13 +149,17 @@ function NowPlaying({ tracks }) {
       </div>
       <MenuIcon />
       <Detail
+        listTrack={ITEM_TRACKS}
         onPlay={handleChooseTrack}
         isPlay={isPlay}
         song={ITEM_TRACKS[audioIdx].title}
         img={ITEM_TRACKS[audioIdx].img}
         isOpen={openClass}
         onClick={() => setOpenClass(false)}
+      
         isPlaying={isPlay && "border"}
+        onPlaying={audioIdx}
+
       />
       <div className={cx("player-controls") + " " + cx("clickable")}>
         <div className={cx("level") + " " + cx("player-controls-container")}>

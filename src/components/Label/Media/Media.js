@@ -1,4 +1,4 @@
-import React from "react";
+import {createRef,useEffect} from "react";
 import styles from "./Media.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../Button/Button";
@@ -17,10 +17,10 @@ function Media({
   isActive = false,
   isPlay,
 }) {
+  
   let active = isActive ? "is-active" : "";
-
   return (
-    <div className={cx("list-item-is-pre") + " " + cx(active)}>
+    <div className={cx("list-item-is-pre") + " " + cx(active)} >
       <div className={cx("left")}>
         <div className={cx("song-thumb")}>
           <figure className="image-is40" title={title}>
@@ -34,14 +34,17 @@ function Media({
                 onClick={() => {
                   onClick(index, true);
                 }}
+                id={index}
               >
                 <figure>
                   <img src={images.iconplaying} alt="" />
                 </figure>
               </div>
             ) : (
-              <div className={cx("cnk-action")}>
-                <Button setIcon={PlayFill} onClick={() => onClick(index)} />
+              <div className={cx("cnk-action")} id={index}>
+                <Button  setIcon={PlayFill} onClick={() => {
+                  onClick(index)
+                }} />
               </div>
             )}
           </div>

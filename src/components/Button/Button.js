@@ -6,7 +6,7 @@ import * as Icon from "react-bootstrap-icons";
 import Tippy from "@tippyjs/react";
 const cx = classNames.bind(styles);
 
-function Button({ title, setIcon, className, placement = "top", onClick ,customIcon,disabled=false}) {
+function Button({id, title, setIcon, className, placement = "top", onClick ,customIcon,disabled=false}) {
   let CompIcon = setIcon;
   const titleTooltip = <span className={cx("cnk-content")}>{title}</span>;
   return (
@@ -19,6 +19,7 @@ function Button({ title, setIcon, className, placement = "top", onClick ,customI
           flip
         >
           <button
+            id={id}
             className={cx("cnk-btn") + " " + cx(className)}
             onClick={onClick}
             disabled={disabled}
@@ -28,6 +29,7 @@ function Button({ title, setIcon, className, placement = "top", onClick ,customI
         </Tippy>
       ) : (
         <button
+        id={id}
           className={cx("cnk-btn") + " " + cx(className)}
           onClick={onClick}
           disabled={disabled}
