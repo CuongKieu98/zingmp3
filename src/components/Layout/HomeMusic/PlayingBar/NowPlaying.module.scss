@@ -240,8 +240,11 @@ input[type="range"]::-moz-range-thumb {
 .playback-completed{
   padding: 6px 0 !important;
   color: var(--progressbar-active-bg) !important;
+  transition: 0.5s;
+
   
 }
+
 .divide {
   display: block;
   height: 33px;

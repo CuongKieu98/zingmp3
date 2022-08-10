@@ -6,7 +6,7 @@ import Button from "../../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
 import ITEM_TRACKS from "../../../../const/ITEM_TRACKS";
 import PlayingList from "../PlayingList/PlayingList";
-import MenuIcon from "../../../MenuIcon/MenuIcon";
+
 import Detail from "../PlayingDetails/Detail";
 import NavigationBottom from "../../../NavigationBottom/NavigationBottom";
 import { Slider } from "@mui/material";
@@ -18,7 +18,7 @@ function NowPlaying({ tracks }) {
   const [audioIdx, setAudioIdx] = useState(0);
   const [seekValue, setSeekValue] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
-  const [volumeAudio, setVolumeAudio] = useState(1);
+  const [volumeAudio, setVolumeAudio] = useState(0.5);
   const [volumeVal, setVolumeVal] = useState(1);
   const [sibarRight, setSibarRight] = useState(false);
   const [openClass, setOpenClass] = useState(false);
@@ -130,9 +130,9 @@ function NowPlaying({ tracks }) {
   //   audioPlayer.current.currentTime = compute;
   // };
   const handleProgress = (event, value) => {
-     let compute = (value * audioPlayer.current.duration) / 100;
-   audioPlayer.current.currentTime = compute;
-    
+    let compute = (value * audioPlayer.current.duration) / 100;
+    audioPlayer.current.currentTime = compute;
+
     //setSeekTime(newValue);
   };
   const handleChooseTrack = (idx, isPause = false) => {
@@ -154,7 +154,6 @@ function NowPlaying({ tracks }) {
           isPlay={isPlay}
         />
       </div>
-      <MenuIcon />
       <Detail
         listTrack={ITEM_TRACKS}
         onPlay={handleChooseTrack}
@@ -224,7 +223,6 @@ function NowPlaying({ tracks }) {
                 {currentTime === 0 ? "00:00" : currentTime}
               </span>
               <div className={cx("cnk-duration-bar")} ref={widthRef}>
-            
                 <Slider
                   className={cx("playback-completed")}
                   value={seekValue || 0}
@@ -268,25 +266,13 @@ function NowPlaying({ tracks }) {
               />
             </div>
             <div className={cx("cnk-duration-audio")}>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                step="1"
-                className={cx("cnk-slider-audio")}
+              <Slider
+                className={cx("playback-completed")}
                 value={Math.floor(volumeAudio * 100)}
                 onChange={(e) => {
                   handleChangeVolume(e.target.value / 100);
                 }}
-                style={{
-                  background: `linear-gradient(
-                        to right,
-                        var(--progressbar-active-bg) 0%,
-                        var(--progressbar-active-bg) ${volumeAudio * 100}%,
-                        var(--progressbar-player-bg) ${volumeAudio * 100}%,
-                        var(--progressbar-player-bg) 100%
-                      )`,
-                }}
+                size={"small"}
               />
             </div>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>

@@ -4,8 +4,6 @@ import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import Button from "../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
-import images from "../../../assets/images";
-
 const cx = classNames.bind(styles);
 
 function InfoAudio({ song, img, onClick, isPlay = false }) {
