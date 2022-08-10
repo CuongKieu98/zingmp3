@@ -78,32 +78,7 @@ function Detail({
               </div>
             </div>
           </div>
-          <div className={cx("detail-bottom")}>
-            <div className={cx("test1")}>
-              <div className={cx("test2")}>
-                {listTrack.map((list, index) => {
-                  return (
-                    <div
-                      className={cx("media-list")}
-                      key={list.id}
-                      id={index}
-                      ref={refs[index+1]}
-                    >
-                      <Media
-                        key={index}
-                        index={index}
-                        title={list.title}
-                        img={list.img}
-                        onClick={onPlay}
-                        isPlay={isPlay}
-                        isActive={onPlaying === index}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+       
         </div>
       </div>
     </div>
