@@ -4,6 +4,7 @@
   width: 100%;
   max-height: 70px;
   z-index: 100;
+
 }
 .player-controls {
   position: fixed;
@@ -215,15 +216,31 @@ input[type="range"]::-moz-range-thumb {
   background: var(--progressbar-active-bg);
   //
 }
+.nav-bottom{
+  display: none;
+  background-image: url("../../../../assets/bgs/zma.png");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 @media screen and (max-width: 1000px) {
   .divide {
     display: none !important;
+    
   }
 }
 @media screen and (max-width: 767px) {
   .player-controls-right {
     display: none;
   }
+  .nav-bottom{
+    display: block !important;
+  }
+}
+.playback-completed{
+  padding: 6px 0 !important;
+  color: var(--progressbar-active-bg) !important;
+  
 }
 .divide {
   display: block;

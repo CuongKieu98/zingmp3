@@ -9,8 +9,8 @@ function DefaultLayout({children}) {
   return (
     <div className={cx('container')}>
       <SideBar />
-      <HomeMusic />
-      {children}
+      <HomeMusic  children={children}/>
+     
       </div>
   )
 }

@@ -21,7 +21,9 @@ function Media({
   let active = isActive ? "is-active" : "";
   return (
     <div className={cx("list-item-is-pre") + " " + cx(active)} >
-      <div className={cx("left")}>
+      <div className={cx("left")}      onClick={() => {
+                  onClick(index, true);
+                }}>
         <div className={cx("song-thumb")}>
           <figure className="image-is40" title={title}>
             <img src={img} alt="" />

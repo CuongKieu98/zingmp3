@@ -15,7 +15,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination,Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper";
 
 const cx = classNames.bind(styles);
 const Random = ({
@@ -84,14 +84,10 @@ const Random = ({
           {title}
           {(isRadio || isEvent) && (
             <div className={cx("cnk-discovery-btn")}>
-              <Icon.ChevronLeft
-                className={cx("cnk-btn-arrow")}
-                ref={refPrev}
-              />
+              <Icon.ChevronLeft className={cx("cnk-btn-arrow")} ref={refPrev} />
               <Icon.ChevronRight
                 className={cx("cnk-btn-arrow")}
                 ref={refNext}
-
               />
             </div>
           )}
@@ -103,50 +99,49 @@ const Random = ({
     if (isRadio) {
       return (
         <Swiper
-        slidesPerView={3}
-        spaceBetween={10}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = refPrev.current;
-          swiper.params.navigation.nextEl = refNext.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          768: {
-            slidesPerView: 5,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 7,
-            spaceBetween: 25,
-          },
-        }}
-        className="mySwiper"
-      >
+          slidesPerView={3}
+          spaceBetween={10}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = refPrev.current;
+            swiper.params.navigation.nextEl = refNext.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 5,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 7,
+              spaceBetween: 25,
+            },
+          }}
+          className="mySwiper"
+        >
           {playLists.map((list) => (
             <div
               key={list.id}
               className={cx("cnk-playlist-item") + " " + cx("is14")}
             >
-                   <SwiperSlide key={list.id}>
-
-              <div className={cx("cnk-playlist-normal")}>
-                <Radio
-                  author={list.Author}
-                  content={list.content}
-                  href={list.href}
-                  img={list.img}
-                  subTiltle={list.subTiltle}
-                  imgHost={list.imgHost}
-                />
-              </div>
-                   </SwiperSlide>
+              <SwiperSlide key={list.id}>
+                <div className={cx("cnk-playlist-normal")}>
+                  <Radio
+                    author={list.Author}
+                    content={list.content}
+                    href={list.href}
+                    img={list.img}
+                    subTiltle={list.subTiltle}
+                    imgHost={list.imgHost}
+                  />
+                </div>
+              </SwiperSlide>
             </div>
           ))}
         </Swiper>
@@ -175,7 +170,10 @@ const Random = ({
             className="mySwiper"
           >
             {playLists.map((list) => (
-              <div className={cx("cnk-playlist-item") + " " + cx("is33")} key={list.id}>
+              <div
+                className={cx("cnk-playlist-item") + " " + cx("is33")}
+                key={list.id}
+              >
                 <SwiperSlide key={list.id}>
                   <div className={cx("cnk-playlist-normal")}>
                     <Card
@@ -215,47 +213,46 @@ const Random = ({
     } else if (isEvent) {
       return (
         <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = refPrev.current;
-          swiper.params.navigation.nextEl = refNext.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 25,
-          },
-        }}
-        className="mySwiper"
-      >
+          slidesPerView={1}
+          spaceBetween={10}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = refPrev.current;
+            swiper.params.navigation.nextEl = refNext.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 25,
+            },
+          }}
+          className="mySwiper"
+        >
           {playLists.map((list) => (
             <div
               key={list.id}
               className={cx("cnk-playlist-item") + " " + cx("is33")}
             >
               <SwiperSlide key={list.id}>
-
-              <div className={cx("cnk-playlist-normal")}>
-                <Event
-                  href={list.href}
-                  img={list.img}
-                  content={list.content}
-                  title={list.title}
-                />
-              </div>
+                <div className={cx("cnk-playlist-normal")}>
+                  <Event
+                    href={list.href}
+                    img={list.img}
+                    content={list.content}
+                    title={list.title}
+                  />
+                </div>
               </SwiperSlide>
             </div>
           ))}

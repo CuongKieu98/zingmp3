@@ -3,7 +3,7 @@ import DefaultLayout from '../../components/Layout/DefautLayout/DefaultLayout'
 
 function ProfilePage() {
   return (
-    <div>
+    <div>Profile
     </div>
   )
 }

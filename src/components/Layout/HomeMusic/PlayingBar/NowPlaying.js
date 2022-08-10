@@ -8,6 +8,8 @@ import ITEM_TRACKS from "../../../../const/ITEM_TRACKS";
 import PlayingList from "../PlayingList/PlayingList";
 import MenuIcon from "../../../MenuIcon/MenuIcon";
 import Detail from "../PlayingDetails/Detail";
+import NavigationBottom from "../../../NavigationBottom/NavigationBottom";
+import { Slider } from "@mui/material";
 
 const cx = classNames.bind(styles);
 function NowPlaying({ tracks }) {
@@ -74,7 +76,6 @@ function NowPlaying({ tracks }) {
     } else {
       audioPlayer.current.play();
     }
-
   }, [audioIdx]);
   useEffect(() => {
     if (seekValue === 100 && isPlay) {
@@ -124,9 +125,15 @@ function NowPlaying({ tracks }) {
     setVolumeAudio(val);
     audioPlayer.current.volume = val;
   };
-  const handleProgress = (value) => {
-    let compute = (value * audioPlayer.current.duration) / 100;
-    audioPlayer.current.currentTime = compute;
+  // const handleProgress = (value) => {
+  //   let compute = (value * audioPlayer.current.duration) / 100;
+  //   audioPlayer.current.currentTime = compute;
+  // };
+  const handleProgress = (event, value) => {
+     let compute = (value * audioPlayer.current.duration) / 100;
+   audioPlayer.current.currentTime = compute;
+    
+    //setSeekTime(newValue);
   };
   const handleChooseTrack = (idx, isPause = false) => {
     if (isPause) {
@@ -156,10 +163,8 @@ function NowPlaying({ tracks }) {
         img={ITEM_TRACKS[audioIdx].img}
         isOpen={openClass}
         onClick={() => setOpenClass(false)}
-      
         isPlaying={isPlay && "border"}
         onPlaying={audioIdx}
-
       />
       <div className={cx("player-controls") + " " + cx("clickable")}>
         <div className={cx("level") + " " + cx("player-controls-container")}>
@@ -219,34 +224,13 @@ function NowPlaying({ tracks }) {
                 {currentTime === 0 ? "00:00" : currentTime}
               </span>
               <div className={cx("cnk-duration-bar")} ref={widthRef}>
-                <input
-                  id="prgBar"
-                  type="range"
-                  className={cx("cnk-slider-bar")}
+            
+                <Slider
+                  className={cx("playback-completed")}
                   value={seekValue || 0}
-                  max="100"
-                  onChange={(e) => {}}
-                  onClick={(e) => {
-                    handleProgress(
-                      ((e.clientX - e.target.offsetLeft) /
-                        e.target.offsetWidth) *
-                        100
-                    );
-                  }}
-                  style={{
-                    background: `linear-gradient(
-                      to right,
-                      var(--progressbar-active-bg) 0%,
-                      var(--progressbar-active-bg) ${
-                        Math.floor(checkNaN(seekValue)) + 0.5
-                      }%,
-                      var(--progressbar-player-bg) ${
-                        Math.floor(checkNaN(seekValue)) + 0.5
-                      }%,
-                      var(--progressbar-player-bg) 100%
-                    )`,
-                  }}
-                ></input>
+                  onChange={handleProgress}
+                  size={"small"}
+                />
               </div>
               <span className={cx("time-right")}>
                 {convertSeconds(audioPlayer.current?.duration)}
@@ -319,6 +303,9 @@ function NowPlaying({ tracks }) {
               />
             </div>
           </div>
+        </div>
+        <div className={cx("nav-bottom")}>
+          <NavigationBottom />
         </div>
       </div>
     </div>
