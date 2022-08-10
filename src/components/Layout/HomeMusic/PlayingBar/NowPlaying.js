@@ -25,6 +25,7 @@ function NowPlaying({ tracks }) {
 
   const widthRef = useRef();
   let classBar = sibarRight ? "show" : "";
+  let responeNav = openClass ? "isShow" : "";
   //handleBtn
   const handlePlay = (e) => {
     if (isPlay === false && seekValue === 100) {
@@ -166,17 +167,20 @@ function NowPlaying({ tracks }) {
         onPlaying={audioIdx}
       />
       <div className={cx("player-controls") + " " + cx("clickable")}>
-        <div className={cx("level") + " " + cx("player-controls-container")}>
-          <div className={cx("player-controls-left")}>
-            <div className={cx("level-item-left") + " " + cx("is-narrow")}>
-              <InfoAudio
-                isPlay={isPlay}
-                song={ITEM_TRACKS[audioIdx].title}
-                img={ITEM_TRACKS[audioIdx].img}
-                onClick={() => setOpenClass(!openClass)}
-              />
+        <div className={cx("level") + " " + cx("player-controls-container") + " " + cx(responeNav)} >
+          {!openClass && (
+            <div className={cx("player-controls-left")}>
+              <div className={cx("level-item-left") + " " + cx("is-narrow")}>
+                <InfoAudio
+                  isPlay={isPlay}
+                  song={ITEM_TRACKS[audioIdx].title}
+                  img={ITEM_TRACKS[audioIdx].img}
+                  onClick={() => setOpenClass(!openClass)}
+                />
+              </div>
             </div>
-          </div>
+          )}
+
           <div className={cx("player-controls-center")}>
             <div className={cx("level-item")}>
               <div className={cx("action")}>
@@ -289,7 +293,7 @@ function NowPlaying({ tracks }) {
               />
             </div>
           </div>
-        </div>
+        </div>       
         <div className={cx("nav-bottom")}>
           <NavigationBottom />
         </div>

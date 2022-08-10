@@ -15,6 +15,7 @@
   -ms-user-select: none;
   user-select: none;
   background-color: var(--layout-bg);
+  height: 90px;
 }
 
 .level {
@@ -235,6 +236,13 @@ input[type="range"]::-moz-range-thumb {
   }
   .nav-bottom{
     display: block !important;
+    height: 50%;
+  }
+  .player-controls-container.isShow{
+    height: 100%;
+  }
+  .player-controls-container{
+    height: 50%;
   }
 }
 .playback-completed{
