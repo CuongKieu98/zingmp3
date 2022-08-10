@@ -222,7 +222,7 @@ function NowPlaying({ tracks }) {
                 <code>audio</code> element.
               </audio>
             </div>
-            <div className={cx("level-item") + " " + cx("time-bar")}>
+            <div className={cx("level-item") + " " + cx("time-bar") + " " + cx(responeNav)} >
               <span className={cx("time-left")}>
                 {currentTime === 0 ? "00:00" : currentTime}
               </span>

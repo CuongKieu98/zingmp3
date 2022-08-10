@@ -234,6 +234,17 @@ input[type="range"]::-moz-range-thumb {
   .player-controls-right {
     display: none;
   }
+  .time-bar{
+    display: none;
+  }
+
+
+
+  .time-bar.isShow{
+    display: flex;
+  }
+
+
   .nav-bottom{
     display: block !important;
     height: 50%;
