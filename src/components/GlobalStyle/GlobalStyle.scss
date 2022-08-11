@@ -30,7 +30,7 @@
   --box-item-bg: #fff;
   --artist-layout-bg: hsla(0, 0%, 100%, 0.8);
   --alpha-layout-bg: rgba(12, 3, 3, 0.8);
-  --tab-active-bg: hsla(0,0%,100%,0.3);
+  --tab-active-bg: hsla(0, 0%, 100%, 0.3);
   --queue-player-popup-bg: #5d218c;
   --progressbar-active-bg: #fff;
   --progressbar-player-bg: hsla(0, 0%, 100%, 0.3);
@@ -278,7 +278,7 @@ h3 {
   font-weight: 700;
   text-transform: capitalize;
 }
-.cnk-playlist-wapper{
+.cnk-playlist-wapper {
   padding: 0 15px;
 }
 .opacity {
@@ -294,10 +294,10 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .level-left{
+  .level-left {
     display: flex;
   }
-  .level-right{
+  .level-right {
     display: flex;
   }
 }
@@ -309,41 +309,38 @@ h3 {
   flex-shrink: 0;
   justify-content: center;
 }
-.level-left{
+.level-left {
   align-items: center;
-    justify-content: flex-start;
-    //
-   
-    flex-basis: auto;
-    flex-grow: 0;
-    flex-shrink: 0;
+  justify-content: flex-start;
+  //
 
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
-.level-right{
+.level-right {
   margin-top: 0;
   align-items: center;
-    justify-content: flex-end;
-    flex-basis: auto;
-    flex-grow: 0;
-    flex-shrink: 0;
+  justify-content: flex-end;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
-@media (max-width:767px){
-  .hidden-xs{
-    display: none ;
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none;
   }
-  .visible-xs{
+  .visible-xs {
     display: block !important;
   }
 }
-span.MuiSlider-root.MuiSlider-colorPrimary.MuiSlider-sizeSmall.NowPlaying_playback-completed__47rHJ.css-53tbrc-MuiSlider-root{
-  &:hover{
-    span.MuiSlider-thumb.MuiSlider-thumbColorPrimary.MuiSlider-thumbSizeSmall.css-14gf62f-MuiSlider-thumb{
-        visibility: visible;
-        
-      }
+span.MuiSlider-root.MuiSlider-colorPrimary.MuiSlider-sizeSmall.NowPlaying_playback-completed__47rHJ.css-53tbrc-MuiSlider-root {
+  &:hover {
+    span.MuiSlider-thumb.MuiSlider-thumbColorPrimary.MuiSlider-thumbSizeSmall.css-14gf62f-MuiSlider-thumb {
+      visibility: visible;
     }
-  
+  }
 }
-span.MuiSlider-thumb.MuiSlider-thumbColorPrimary.MuiSlider-thumbSizeSmall.css-14gf62f-MuiSlider-thumb{
+span.MuiSlider-thumb.MuiSlider-thumbColorPrimary.MuiSlider-thumbSizeSmall.css-14gf62f-MuiSlider-thumb {
   visibility: hidden;
 }

@@ -219,7 +219,7 @@ input[type="range"]::-moz-range-thumb {
 }
 .nav-bottom{
   display: none;
-  background-image: url("../../../../assets/bgs/zma.png");
+  background-color: var(--layout-bg);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -235,6 +235,9 @@ input[type="range"]::-moz-range-thumb {
     display: none;
   }
   .time-bar{
+    display: none;
+  }
+  .player-controls-left.isShow{
     display: none;
   }
 

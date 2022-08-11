@@ -5,6 +5,8 @@
   z-index: 1;
   bottom: 0;
   right: 0;
+
+ background-color: var(--layout-bg);
 }
 .cnk-detail-playing.is-open {
   transform: translateY(0);
@@ -17,6 +19,7 @@
   bottom: 0;
   position: absolute;
   overflow: hidden;
+
 }
 .video-blur-image {
   top: 0;
@@ -32,7 +35,6 @@
 .overlay {
   height: 100%;
   width: 100%;
-  background-color: var(--alpha-layout-bg);
   position: absolute;
 }
 .detail-content {

@@ -168,8 +168,8 @@ function NowPlaying({ tracks }) {
       />
       <div className={cx("player-controls") + " " + cx("clickable")}>
         <div className={cx("level") + " " + cx("player-controls-container") + " " + cx(responeNav)} >
-          {!openClass && (
-            <div className={cx("player-controls-left")}>
+       
+            <div className={cx("player-controls-left") + " " + cx(responeNav)}>
               <div className={cx("level-item-left") + " " + cx("is-narrow")}>
                 <InfoAudio
                   isPlay={isPlay}
@@ -179,7 +179,7 @@ function NowPlaying({ tracks }) {
                 />
               </div>
             </div>
-          )}
+    
 
           <div className={cx("player-controls-center")}>
             <div className={cx("level-item")}>
