@@ -18,6 +18,8 @@ import {
   FOOTER_ITEM,
 } from "../../../../../const/ITEM_LOGIN_USER";
 import * as Icon from "react-bootstrap-icons";
+import { Avatar } from "@mui/material";
+import stringUtils from "../../../../../utils/stringUtils";
 const cx = classNames.bind(styles);
 function LevelRight() {
   const [isShowSetting, setIsShowSetting] = useState(false);
@@ -59,7 +61,11 @@ function LevelRight() {
                 <ul className={cx("menu-list")}>
                   {ITEM_SETTING_HEADER.map((item) => (
                     <li key={item.id} className={cx("li-header")}>
-                      <LabelItem icon={item.icon} title={item.title} children={item.children}/>
+                      <LabelItem
+                        icon={item.icon}
+                        title={item.title}
+                        children={item.children}
+                      />
                     </li>
                   ))}
                 </ul>
@@ -115,10 +121,7 @@ function LevelRight() {
               </div>
             )}
           >
-            <ButtonHeader
-              icon={faUser}
-              onClick={() => setShowInfoUser(!isShowInfoUser)}
-            />
+            <Avatar {...stringUtils.stringAvatar("Cường Kiều")} />
           </HeadlessTippy>
         </Tippy>
       </div>
