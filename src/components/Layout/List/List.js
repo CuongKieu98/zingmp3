@@ -22,9 +22,9 @@ function List({}) {
                     <div className={cx("header-thumbnail")}>
                       <div className={cx("card-img")}>
                         <div className={cx("c-thumb")}>
-                          <figure className={cx("img-is48")}>
-                            <img src={images.miule2} alt="" />
-                          </figure>
+                       
+                            <img src={images.miule2} alt="" className={cx("img-is48")}/>
+                     
                           <div className={cx("opacity")}></div>
                         </div>
                         {/* <div className={cx("action-container")}>
