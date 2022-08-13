@@ -2,6 +2,7 @@
   "name": "zingmp3",
   "version": "0.1.0",
   "proxy": "http://mp3.zing.vn",
+  "homepage": "http://zingappmusic.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -57,6 +58,7 @@
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.1.0",
     "customize-cra": "^1.0.0",
+    "http-proxy-middleware": "^2.0.6",
     "react-app-rewired": "^2.2.1",
     "sass": "^1.52.3"
   }

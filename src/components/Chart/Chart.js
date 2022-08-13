@@ -1,7 +1,7 @@
 import { Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-
+import axios from "axios";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import styles from "./Chart.module.scss";
@@ -15,8 +15,8 @@ function Chart({ className }) {
   const ListMusic = 3;
 
   useEffect(() => {
-    request
-      .get("xhr/chart-realtime?songId=0&videoId=0&albumId=0&chart=song&time=-1")
+    axios
+      .get("/xhr/chart-realtime?songId=0&videoId=0&albumId=0&chart=song&time=-1")
       .then((res) => {
         let item = res.data.data.song.slice(0, ListMusic);
         setChart(item);
