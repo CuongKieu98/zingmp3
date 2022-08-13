@@ -10,16 +10,13 @@ const cx = classNames.bind(styles);
 const Card = ({ content, href, img, author = [], subTiltle }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    alert("clicked");
   };
-  const ath = author.map(auth => {
-    return (
-      <Link>{auth.name}</Link>
-    )
-  })
+  const ath = author.map((auth) => {
+    return <Link>{auth.name}</Link>;
+  });
   const RenderAuthor = () => {
     //get max 3 author
-    return author.slice(0,3).map((auth, index) => {
+    return author.slice(0, 3).map((auth, index) => {
       return (
         <Link key={index} className={cx("cnk-card-author")} to={auth.profile}>
           {auth.name}
@@ -30,7 +27,7 @@ const Card = ({ content, href, img, author = [], subTiltle }) => {
   return (
     <div className={cx("cnk-card")}>
       <div>
-        <a title={content} href={href}>
+    
           <div className={cx("cnk-card-img")}>
             <figure className={cx("image")}>
               <img className={cx("img-card")} src={img} alt="" />
@@ -42,23 +39,22 @@ const Card = ({ content, href, img, author = [], subTiltle }) => {
                   onClick={(e) => handleClick(e)}
                   title={"Thêm vào thư viện"}
                   setIcon={Icon.Heart}
-                  className={'padding-heart'}
+                  className={"padding-heart"}
                 />
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  setIcon={Icon.PlayFill}
-                  className={'is40'}
-                />
+                <Link to="/playlist">
+                  <Button setIcon={Icon.PlayFill} className={"is40"} />
+                </Link>
 
                 <Button
                   onClick={(e) => handleClick(e)}
                   title={"Khác"}
                   setIcon={Icon.ThreeDots}
+                  className={"padding-more"}
                 />
               </div>
             </div>
           </div>
-        </a>
+       
       </div>
       <div className={cx("cnk-card-content")}>
         <h4 className={cx("cnk-card-title")}>
@@ -67,10 +63,10 @@ const Card = ({ content, href, img, author = [], subTiltle }) => {
           </a>
         </h4>
         <h3 className={cx("subtitle-author")}>
-
           {author.length > 0 && (
             <React.Fragment>
-              <RenderAuthor />{author.length >3 && "..."}
+              <RenderAuthor />
+              {author.length > 3 && "..."}
             </React.Fragment>
           )}
           {subTiltle && (

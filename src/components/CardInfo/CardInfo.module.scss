@@ -1,0 +1,21 @@
+.card-info{
+    justify-content: center;
+    color: var(--white);
+    overflow: hidden;
+    display: -moz-flex;
+    display: flex;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+}
+.subtitle{
+    color: hsla(0,0%,100%,.5);
+    line-height: 1.33;
+    display: block;
+    font-size: 12px;
+    margin-top: 3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+}

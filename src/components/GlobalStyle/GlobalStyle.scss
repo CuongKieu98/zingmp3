@@ -334,6 +334,13 @@ h3 {
     display: block !important;
   }
 }
+@media (max-width: 970px) {
+  .cnk-navbar-item:hover {
+    .shuffer-icon {
+      display: none;
+    }
+  }
+}
 span.MuiSlider-root.MuiSlider-colorPrimary.MuiSlider-sizeSmall.NowPlaying_playback-completed__47rHJ.css-53tbrc-MuiSlider-root {
   &:hover {
     span.MuiSlider-thumb.MuiSlider-thumbColorPrimary.MuiSlider-thumbSizeSmall.css-14gf62f-MuiSlider-thumb {

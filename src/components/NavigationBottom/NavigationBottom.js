@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import SearchIcon from "@mui/icons-material/Search";
-import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
-import { Button, IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import styles from "./NavigationBottom.module.scss";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AlbumOutlinedIcon from '@mui/icons-material/AlbumOutlined';
@@ -32,7 +24,7 @@ function NavigationBottom() {
     {
       id: 1,
       icon: <BarChartOutlinedIcon fontSize="large"/>,
-      href: "/home/search",
+      href: "/zing-chart",
       label: "#zingchart",
     },
     {

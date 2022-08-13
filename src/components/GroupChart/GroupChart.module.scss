@@ -1,0 +1,13 @@
+.list {
+  .chart-song-item {
+    border-radius: 4px!important;
+    margin-bottom: 10px;
+    background-color: hsla(0,0%,100%,.07);
+    .list-item-chart {
+        cursor: auto;
+        &:hover{
+            background-color: var(--alpha-bg);
+        }
+    }
+  }
+}

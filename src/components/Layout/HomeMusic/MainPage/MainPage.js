@@ -16,6 +16,7 @@ import {
 } from "../../../../const/PLAYLIST";
 import playlistImg from "../../../../assets/playlistImg";
 import images from "../../../../assets/images";
+import Chart from "../../../Chart/Chart";
 
 const cx = classNames.bind(styles);
 
@@ -54,6 +55,7 @@ function MainPage() {
               }}
             />
             <Random playLists={LIST_NEW_EVERYDAY} title={"Nhạc mới mỗi ngày"} isCardNm={true} />
+            <Chart className={"mgt-30"}/>
             <Random playLists={LIST_SINGER} isSinger={true} />
             <Random playLists={LIST_EVENT} isEvent={true} title={"Sự kiện"} />
             {/* partner */}
