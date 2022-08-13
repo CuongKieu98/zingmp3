@@ -9,19 +9,19 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CardInfo from "../CardInfo/CardInfo";
 const cx = classNames.bind(styles);
 
-function Media() {
+function Media({ author, name, img }) {
   return (
     <div className={cx("media")}>
-            <div className={cx("media-left")}>
+      <div className={cx("media-left")}>
         <div className={cx("song-prefix")}>
-          <span className={cx("number") +" " + cx("is-top1")}>1</span>
+          <span className={cx("number") + " " + cx("is-top1")}>1</span>
           <div className={cx("sort")}>
             <HorizontalRuleIcon />
           </div>
         </div>
         <div className={cx("song-thumb")}>
           <figure className={cx("image-is40")} title="aaa">
-            <img src={images.chimse} alt="" />
+            <img src={img} alt={name} />
           </figure>
           <div className="opacity"></div>
           <div className={cx("action-container")}>
@@ -32,7 +32,7 @@ function Media() {
             </div>
           </div>
         </div>
-        <CardInfo />
+        <CardInfo author={author} name={name} />
       </div>
       <div className={cx("media-right")}>
         <div className={cx("hover-item")}>

@@ -5,12 +5,12 @@ import styles from "./CardInfo.module.scss";
 import TextDisplay from '../Common/TextDisplay';
 
 const cx = classNames.bind(styles);
-function CardInfo() {
+function CardInfo({ author, name, img }) {
   return (
     <div className={cx("card-info")}>
-        <TextDisplay className="title-wrapper" text={"Nhìn vè phía em"} />
+        <TextDisplay className="title-wrapper" text={name} />
         <h3 className={cx("subtitle")}>
-            <a href="/">Đình dũng</a>
+            <a href="/">{author}</a>
         </h3>
     </div>
   )
