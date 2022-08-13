@@ -9,12 +9,12 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CardInfo from "../CardInfo/CardInfo";
 const cx = classNames.bind(styles);
 
-function Media({ author, name, img }) {
+function Media({ author, name, img,rank }) {
   return (
     <div className={cx("media")}>
       <div className={cx("media-left")}>
         <div className={cx("song-prefix")}>
-          <span className={cx("number") + " " + cx("is-top1")}>1</span>
+          <span className={cx("number") + " " + cx("is-top1")}>{rank}</span>
           <div className={cx("sort")}>
             <HorizontalRuleIcon />
           </div>

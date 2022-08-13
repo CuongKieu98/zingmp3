@@ -33,9 +33,10 @@ function Chart({ className }) {
       <TextDisplay className={"section-header"} text={"#zingchart"} />
       <div className={cx("columns-is-multiline")}>
         <div className={cx("list-chart-column")}>
-          {chart.map((item) => (
+          {chart.map((item,index) => (
             <GroupChart
               key={item.id}
+              rank={index+1}             
               author={item.artists_names}
               name={item.name}
               img={item.thumbnail}
