@@ -189,6 +189,7 @@ function NowPlaying({ tracks }) {
                   className={"is36min"}
                   title={"Tắt phát ngẫu nhiên"}
                   customIcon={"is16"}
+                  show={openClass ? "" : "isShow"}
                 />
                 <Button
                   disabled={audioIdx === 0 ? true : false}
@@ -210,6 +211,8 @@ function NowPlaying({ tracks }) {
                   setIcon={Icon.ArrowRepeat}
                   className={"is36min"}
                   title={"Phát lại tất cả"}
+                  show={openClass ? "" : "isShow"}
+
                 />
               </div>
               <audio
