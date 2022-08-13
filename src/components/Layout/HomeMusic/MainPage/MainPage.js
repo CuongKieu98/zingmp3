@@ -39,6 +39,7 @@ function MainPage() {
             <Random playLists={LIST_RANDOM} title={"Có thể bạn muốn nghe"} isCardNm={true} />
             <Random playLists={LIST_TODAY} title={"Lựa chọn hôm nay"} isCardNm={true}  />
             <Random playLists={LIST_CORNER} title={"XONE's CORNER"} isCardNm={true} />
+            <Chart className={"mgt-30"}/>
             <Random
               playLists={LIST_RADIO}
               title={"Radio nổi bật"}
@@ -55,7 +56,6 @@ function MainPage() {
               }}
             />
             <Random playLists={LIST_NEW_EVERYDAY} title={"Nhạc mới mỗi ngày"} isCardNm={true} />
-            <Chart className={"mgt-30"}/>
             <Random playLists={LIST_SINGER} isSinger={true} />
             <Random playLists={LIST_EVENT} isEvent={true} title={"Sự kiện"} />
             {/* partner */}

@@ -36,7 +36,7 @@ function Chart({ className }) {
           {chart.map((item,index) => (
             <GroupChart
               key={item.id}
-              rank={index+1}             
+              rank={item.position}             
               author={item.artists_names}
               name={item.name}
               img={item.thumbnail}

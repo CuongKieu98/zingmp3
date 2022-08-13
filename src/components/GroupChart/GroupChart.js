@@ -1,8 +1,6 @@
 import React from "react";
 import classNames from "classnames/bind";
 
-import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
 import styles from "./GroupChart.module.scss";
 import Media from "../Media/Media";
 const cx = classNames.bind(styles);

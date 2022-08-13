@@ -1,6 +1,7 @@
 {
   "name": "zingmp3",
   "version": "0.1.0",
+  "proxy": "http://mp3.zing.vn",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
