@@ -60,10 +60,17 @@ function ChartPage() {
           ) : (
             <Skeleton height={100} />
           )}
-          {(chart.length <20 && chart.length !== 0) && (
+          {chart.length < 20 && chart.length !== 0 && (
             <div className={cx("is-center")}>
               <Button className={cx("button-more")} onClick={handleClick}>
-                {loading ? <CircularProgress size={24} /> : "Xem thêm"}
+                {loading ? (
+                  <span>
+                    Đang tải
+                    <CircularProgress color="inherit" size={14} />
+                  </span>
+                ) : (
+                  "Xem thêm"
+                )}
               </Button>
             </div>
           )}
