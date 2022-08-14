@@ -9,6 +9,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { Button } from "@mui/material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CircularProgress from "@mui/material/CircularProgress";
+import BoxChart from "../../components/BoxChart/BoxChart";
 const cx = classNames.bind(styles);
 
 function ChartPage() {
@@ -49,7 +50,7 @@ function ChartPage() {
           <div className={cx("selection-header")}>
               <div className={cx("chart-title")}>
                 <h3 className={cx("title")}>#zingchart</h3>
-                <PlayArrowIcon fontSize="small" className={cx("btn-play")} />
+                <PlayArrowIcon fontSize="large" className={cx("btn-play")} />
               </div>
           </div>
           {chart.length !== 0 ? (
@@ -81,6 +82,14 @@ function ChartPage() {
               </Button>
             </div>
           )}
+          <div className={cx("week-chart-selection")}>
+          <div className={cx("selection-header")}>
+              <div className={cx("chart-title")}>
+                <h3 className={cx("title")}>Bảng Xếp Hạng Tuần</h3>
+              </div>
+              <BoxChart />
+          </div>
+          </div>
         </main>
       </div>
     </div>

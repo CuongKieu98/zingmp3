@@ -57,8 +57,8 @@
   margin: 0;
 }
 .btn-play {
-  width: 40px;
-  height: 40px;
+  width: 40px !important;
+  height: 40px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,3 +66,9 @@
   background-color: var(--purple-primary);
   margin-left: 5px;
 }
+.week-chart-selection{
+  border-radius: 16px;
+    background-color: var(--chart-box-bg-alpha);
+    padding: 20px 10px;
+}
+
