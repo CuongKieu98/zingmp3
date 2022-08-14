@@ -2,7 +2,7 @@
   "name": "zingmp3",
   "version": "0.1.0",
   "proxy": "http://mp3.zing.vn",
-  "homepage": "http://zingappmusic.herokuapp.com/",
+  "homepage": "http://zingappmusic.herokuapp.com",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
