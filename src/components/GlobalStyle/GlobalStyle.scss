@@ -254,7 +254,9 @@ h3 {
   width: 100%;
   height: 90px;
 }
-
+.App{
+  height: calc(100vh - 90px);
+}
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--scroll-thumb-bg);

@@ -6,6 +6,7 @@ import getTopChart from "../../utils/apiMusic";
 import GroupChart from "../../components/GroupChart/GroupChart";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
 import Skeleton from "@mui/material/Skeleton";
+import { Button } from "@mui/material";
 const cx = classNames.bind(styles);
 
 function ChartPage() {
@@ -40,6 +41,9 @@ function ChartPage() {
             ))
      
           }
+          <div className={cx("is-center")}>
+            <Button className={cx("button-more")} >Xem top 100</Button>
+          </div>
         </main>
       </div>
     </div>
