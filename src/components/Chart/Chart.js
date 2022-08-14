@@ -47,7 +47,7 @@ function Chart({ className }) {
           ))}
           <div className={cx("is-center")}>
             <Link to={"/zing-chart"} className={cx("show-more")}>
-              Xem thêm
+              {chart.length === 0 ? "Đang tải..." : "Xem thêm"}
             </Link>
           </div>
         </div>

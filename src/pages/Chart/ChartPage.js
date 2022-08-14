@@ -7,6 +7,7 @@ import GroupChart from "../../components/GroupChart/GroupChart";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
 import Skeleton from "@mui/material/Skeleton";
 import { Button } from "@mui/material";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CircularProgress from "@mui/material/CircularProgress";
 const cx = classNames.bind(styles);
 
@@ -45,6 +46,12 @@ function ChartPage() {
     <div className={cx("cnk-mainpage")}>
       <div className={cx("body-mainpage")}>
         <main className={cx("cnk-selection")}>
+          <div className={cx("selection-header")}>
+              <div className={cx("chart-title")}>
+                <h3 className={cx("title")}>#zingchart</h3>
+                <PlayArrowIcon fontSize="small" className={cx("btn-play")} />
+              </div>
+          </div>
           {chart.length !== 0 ? (
             chart.map((item, index) => (
               <GroupChart
