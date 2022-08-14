@@ -10,6 +10,7 @@ import TextDisplay from "../Common/TextDisplay";
 import GroupChart from "../GroupChart/GroupChart";
 import request from "../../utils/request";
 import  getTopChart  from "../../utils/apiMusic";
+import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
 const cx = classNames.bind(styles);
 function Chart({ className }) {
   const [chart, setChart] = useState([]);
@@ -19,11 +20,11 @@ function Chart({ className }) {
     axios.request(getTopChart).then(function (response) {
       let data = response.data.slice(0,datasize)
       setChart(data)
-      console.log(data);
     }).catch(function (error) {
       console.error(error);
     });
   }, []);
+  
   return (
     <div className={cx("chart-home") + " " + cx(className)}>
       <div className={cx("bg-blur")}></div>
@@ -35,9 +36,10 @@ function Chart({ className }) {
             <GroupChart
               key={item.trackMetadata.trackUri}
               rank={item.chartEntryData.currentRank}             
-              author={item.trackMetadata.artists.map(a => a.name)}
+              author={item.trackMetadata.artists.map(a => a.name).join(', ')}
               name={item.trackMetadata.trackName}
               img={item.trackMetadata.displayImageUri}
+              right={RIGHT_ACTIONS.percent}
             />
           ))}
           <div className={cx("is-center")}>
