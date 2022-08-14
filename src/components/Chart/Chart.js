@@ -18,7 +18,9 @@ function Chart({ className }) {
 
   useEffect(() => { 
     axios.request(getTopChart).then(function (response) {
-      let data = response.data.slice(0,datasize)
+      let data = response.data.tracks.slice(0,datasize)
+      console.log(data);
+
       setChart(data)
     }).catch(function (error) {
       console.error(error);
@@ -32,13 +34,13 @@ function Chart({ className }) {
       <TextDisplay className={"section-header"} text={"#zingchart"} />
       <div className={cx("columns-is-multiline")}>
         <div className={cx("list-chart-column")}>
-          {chart.map((item) => (
+          {chart.map((item,index) => (
             <GroupChart
-              key={item.trackMetadata.trackUri}
-              rank={item.chartEntryData.currentRank}             
-              author={item.trackMetadata.artists.map(a => a.name).join(', ')}
-              name={item.trackMetadata.trackName}
-              img={item.trackMetadata.displayImageUri}
+              key={item.key}
+              rank={index+1}             
+              author={item.artists.map(a => a.alias).join(', ')}
+              name={item.title}
+              img={item.images.background}
               right={RIGHT_ACTIONS.percent}
             />
           ))}

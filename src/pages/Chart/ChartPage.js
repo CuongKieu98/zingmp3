@@ -5,6 +5,7 @@ import axios from "axios";
 import getTopChart from "../../utils/apiMusic";
 import GroupChart from "../../components/GroupChart/GroupChart";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
+import Skeleton from "@mui/material/Skeleton";
 const cx = classNames.bind(styles);
 
 function ChartPage() {
@@ -15,7 +16,7 @@ function ChartPage() {
     axios
       .request(getTopChart)
       .then(function (response) {
-        let data = response.data.slice(0, datasize);
+        let data = response.data.tracks.slice(0, datasize);
         console.log(data);
         setChart(data);
       })
@@ -27,16 +28,18 @@ function ChartPage() {
     <div className={cx("cnk-mainpage")}>
       <div className={cx("body-mainpage")}>
         <main className={cx("cnk-selection")}>
-          {chart.map((item) => (
-            <GroupChart
-              key={item.trackMetadata.trackUri}
-              rank={item.chartEntryData.currentRank}
-              author={item.trackMetadata.artists.map((a) => a.name).join(", ")}
-              name={item.trackMetadata.trackName}
-              img={item.trackMetadata.displayImageUri}
-              right={RIGHT_ACTIONS.timeAction}
-            />
-          ))}
+           { chart.map((item, index) => (
+              <GroupChart
+                key={item.key}
+                rank={index + 1}
+                author={item.artists.map((a) => a.alias).join(", ")}
+                name={item.title}
+                img={item.images.background}
+                right={RIGHT_ACTIONS.timeAction}
+              />
+            ))
+     
+          }
         </main>
       </div>
     </div>
