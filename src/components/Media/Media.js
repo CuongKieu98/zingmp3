@@ -8,9 +8,11 @@ import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CardInfo from "../CardInfo/CardInfo";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import { green } from '@mui/material/colors';
 const cx = classNames.bind(styles);
 
-function Media({ author, name, img, rank, right }) {
+function Media({ author, name, img, rank, right ,className}) {
   let classRank = "";
 
   switch (rank) {
@@ -33,11 +35,11 @@ function Media({ author, name, img, rank, right }) {
         <div className={cx("song-prefix")}>
           <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
           <div className={cx("sort")}>
-            <HorizontalRuleIcon />
+            {rank === 1 ? <ArrowDropUpIcon fontSize="large"sx={{ color: "#6cff72" }} /> :<HorizontalRuleIcon />}
           </div>
         </div>
         <div className={cx("song-thumb")}>
-          <figure className={cx("image-is40")} title="aaa">
+          <figure className={cx(className)} title="aaa">
             <img src={img} alt={name} />
           </figure>
           <div className="opacity"></div>

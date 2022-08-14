@@ -42,6 +42,7 @@ function Chart({ className }) {
               name={item.title}
               img={item.images.background}
               right={RIGHT_ACTIONS.percent}
+              className={"image-is60"}
             />
           ))}
           <div className={cx("is-center")}>

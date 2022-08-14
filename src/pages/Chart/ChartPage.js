@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./ChartPage.module.scss";
 import classNames from "classnames/bind";
 import axios from "axios";
@@ -7,12 +7,19 @@ import GroupChart from "../../components/GroupChart/GroupChart";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
 import Skeleton from "@mui/material/Skeleton";
 import { Button } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 const cx = classNames.bind(styles);
 
 function ChartPage() {
   const [chart, setChart] = useState([]);
-  const datasize = 11;
-
+  const [datasize, setDatasize] = useState(10);
+  const [loading, setLoading] = useState(false);
+  const timer = useRef();
+  useEffect(() => {
+    return () => {
+      clearTimeout(timer.current);
+    };
+  }, []);
   useEffect(() => {
     axios
       .request(getTopChart)
@@ -24,12 +31,22 @@ function ChartPage() {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);
+  }, [datasize]);
+  const handleClick = () => {
+    if (!loading) {
+      setDatasize(20);
+      setLoading(true);
+      timer.current = window.setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }
+  };
   return (
     <div className={cx("cnk-mainpage")}>
       <div className={cx("body-mainpage")}>
         <main className={cx("cnk-selection")}>
-           { chart.map((item, index) => (
+          {chart.length !== 0 ? (
+            chart.map((item, index) => (
               <GroupChart
                 key={item.key}
                 rank={index + 1}
@@ -37,13 +54,19 @@ function ChartPage() {
                 name={item.title}
                 img={item.images.background}
                 right={RIGHT_ACTIONS.timeAction}
+                className={"image-is40"}
               />
             ))
-     
-          }
-          <div className={cx("is-center")}>
-            <Button className={cx("button-more")} >Xem top 100</Button>
-          </div>
+          ) : (
+            <Skeleton height={100} />
+          )}
+          {(chart.length <20 && chart.length !== 0) && (
+            <div className={cx("is-center")}>
+              <Button className={cx("button-more")} onClick={handleClick}>
+                {loading ? <CircularProgress size={24} /> : "Xem thêm"}
+              </Button>
+            </div>
+          )}
         </main>
       </div>
     </div>
