@@ -1,8 +1,8 @@
-import axios from "axios"
+import axios from "axios";
+
 
 const request = axios.create({
-    baseURL: "http://mp3.zing.vn/"
-}
-)
+  baseURL: "https://spotify81.p.rapidapi.com/",
+});
 
-export default request
+export default request;

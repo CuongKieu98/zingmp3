@@ -9,22 +9,20 @@ import Media from "../Media/Media";
 import TextDisplay from "../Common/TextDisplay";
 import GroupChart from "../GroupChart/GroupChart";
 import request from "../../utils/request";
+import  getTopChart  from "../../utils/apiMusic";
 const cx = classNames.bind(styles);
 function Chart({ className }) {
   const [chart, setChart] = useState([]);
-  const ListMusic = 3;
+  const datasize = 3;
 
-  useEffect(() => {
-    axios
-      .get("/xhr/chart-realtime?songId=0&videoId=0&albumId=0&chart=song&time=-1")
-      .then((res) => {
-        let item = res.data.data.song.slice(0, ListMusic);
-        setChart(item);
-        console.log(item);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  useEffect(() => { 
+    axios.request(getTopChart).then(function (response) {
+      let data = response.data.slice(0,datasize)
+      setChart(data)
+      console.log(data);
+    }).catch(function (error) {
+      console.error(error);
+    });
   }, []);
   return (
     <div className={cx("chart-home") + " " + cx(className)}>
@@ -33,13 +31,13 @@ function Chart({ className }) {
       <TextDisplay className={"section-header"} text={"#zingchart"} />
       <div className={cx("columns-is-multiline")}>
         <div className={cx("list-chart-column")}>
-          {chart.map((item,index) => (
+          {chart.map((item) => (
             <GroupChart
-              key={item.id}
-              rank={item.position}             
-              author={item.artists_names}
-              name={item.name}
-              img={item.thumbnail}
+              key={item.trackMetadata.trackUri}
+              rank={item.chartEntryData.currentRank}             
+              author={item.trackMetadata.artists.map(a => a.name)}
+              name={item.trackMetadata.trackName}
+              img={item.trackMetadata.displayImageUri}
             />
           ))}
           <div className={cx("is-center")}>
