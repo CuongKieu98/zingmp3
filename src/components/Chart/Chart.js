@@ -18,9 +18,7 @@ function Chart({ className }) {
 
   useEffect(() => { 
     axios.request(getTopChart).then(function (response) {
-      let data = response.data.tracks.slice(0,datasize)
-      console.log(data);
-
+      let data = response.data.data.song.slice(0, datasize);
       setChart(data)
     }).catch(function (error) {
       console.error(error);
@@ -36,11 +34,11 @@ function Chart({ className }) {
         <div className={cx("list-chart-column")}>
           {chart.map((item,index) => (
             <GroupChart
-              key={item.key}
-              rank={index+1}             
-              author={item.artists.map(a => a.alias).join(', ')}
-              name={item.title}
-              img={item.images.background}
+            key={item.id}
+            rank={item.position}
+            author={item.artists_names}
+            name={item.title}
+            img={item.thumbnail}
               right={RIGHT_ACTIONS.percent}
               className={"image-is40"}
             />
