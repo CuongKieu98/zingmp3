@@ -8,11 +8,14 @@ import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CardInfo from "../CardInfo/CardInfo";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import { green } from '@mui/material/colors';
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
+import { green } from "@mui/material/colors";
+import stringUtils from "../../utils/stringUtils";
 const cx = classNames.bind(styles);
 
-function Media({ author, name, img, rank, right ,className}) {
+function Media({ author, name, img, rank, right,duration,rankStatus, className }) {
   let classRank = "";
 
   switch (rank) {
@@ -34,9 +37,17 @@ function Media({ author, name, img, rank, right ,className}) {
       <div className={cx("media-left")}>
         <div className={cx("song-prefix")}>
           <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
-          <div className={cx("sort")}>
-            {rank === 1 ? <ArrowDropUpIcon fontSize="large"sx={{ color: "#6cff72" }} /> :<HorizontalRuleIcon />}
-          </div>
+          {right === RIGHT_ACTIONS.timeAction && (
+            <div className={cx("sort")}>
+              {rankStatus?.toLowerCase() === "up" ? (
+                <ArrowDropUpIcon fontSize="large" sx={{ color: "#6cff72" }} />
+              ) : rankStatus?.toLowerCase() === "down" ?(
+                <ArrowDropDownIcon fontSize="large" sx={{ color: "#e35050" }} />
+              ) : (
+                <HorizontalRuleIcon />
+              )}
+            </div>
+          )}
         </div>
         <div className={cx("song-thumb")}>
           <figure className={cx(className)} title="aaa">
@@ -60,7 +71,7 @@ function Media({ author, name, img, rank, right ,className}) {
           </div>
         ) : (
           <div className={cx("action-item")}>
-            <div className={cx("duration")}>3:20</div>
+            <div className={cx("duration")}>{stringUtils.convertSeconds(duration)}</div>
           </div>
         )}
       </div>

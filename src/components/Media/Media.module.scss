@@ -141,3 +141,24 @@ figure.image-is60{
 .hover-item {
   display: block;
 }
+.duration{
+  font-size: 12px;
+    width: 46px;
+    font-weight: 400;
+    color: var(--song-item-action);
+}
+.media-content{
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: left;
+  align-self: center;
+  width: 0;
+}
+.media-item .album-info {
+  color: var(--song-item-action);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}

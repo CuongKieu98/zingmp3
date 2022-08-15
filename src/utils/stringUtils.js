@@ -26,4 +26,13 @@ export default class stringUtils {
       children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
     };
   }
+  static convertSeconds(sec) {
+    var m = Math.floor(sec / 60);
+    var s = Math.floor(sec % 60);
+    if (isNaN(m) || isNaN(s)) {
+      m = 0;
+      s = 0;
+    }
+    return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+  }
 }

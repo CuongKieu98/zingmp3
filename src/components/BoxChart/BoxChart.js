@@ -26,6 +26,7 @@ function BoxChart() {
           rank={1}
           right={RIGHT_ACTIONS.timeAction}
           className={"image-is40"}
+          customClass={"no-background"}
         />
         <GroupChart
           author={"hahah"}
@@ -34,6 +35,8 @@ function BoxChart() {
           rank={1}
           right={RIGHT_ACTIONS.timeAction}
           className={"image-is40"}
+          customClass={"no-background"}
+
 
         />
         <GroupChart
@@ -43,6 +46,8 @@ function BoxChart() {
           rank={1}
           right={RIGHT_ACTIONS.timeAction}
           className={"image-is40"}
+          customClass={"no-background"}
+
 
         />
         <GroupChart
@@ -52,6 +57,8 @@ function BoxChart() {
           rank={1}
           right={RIGHT_ACTIONS.timeAction}
           className={"image-is40"}
+          customClass={"no-background"}
+
 
         />
         <GroupChart
@@ -61,6 +68,8 @@ function BoxChart() {
           rank={1}
           right={RIGHT_ACTIONS.timeAction}
           className={"image-is40"}
+          customClass={"no-background"}
+
 
         />
         <GroupChart
@@ -70,6 +79,7 @@ function BoxChart() {
           rank={1}
           right={RIGHT_ACTIONS.timeAction}
           className={"image-is40"}
+          customClass={"no-background"}
 
         />
       </div>

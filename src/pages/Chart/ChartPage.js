@@ -59,11 +59,14 @@ function ChartPage() {
               <GroupChart
                 key={item.id}
                 rank={item.position}
+                rankStatus={item.rank_status}
                 author={item.artists_names}
                 name={item.title}
                 img={item.thumbnail}
                 right={RIGHT_ACTIONS.timeAction}
+                duration={item.duration}
                 className={"image-is40"}
+                customClass={"no-background"}
               />
             ))
           ) : (
@@ -87,7 +90,7 @@ function ChartPage() {
           <div className={cx("selection-header")}>
               <div className={cx("chart-title")}>
                 <h3 className={cx("title")}>Bảng Xếp Hạng Tuần</h3>
-              </div>
+              </div>            
               <BoxChart />
           </div>
           </div>
