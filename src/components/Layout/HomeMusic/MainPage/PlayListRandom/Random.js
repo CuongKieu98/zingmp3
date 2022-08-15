@@ -27,6 +27,7 @@ const Random = ({
   isCardNm,
   isSinger,
   isEvent,
+  onClick,
 }) => {
   const refSlider = useRef();
   const refPrev = useRef();
@@ -182,6 +183,7 @@ const Random = ({
                       href={list.href}
                       img={list.img}
                       subTiltle={list.subTiltle}
+                      onClick={onClick}
                     />
                   </div>
                 </SwiperSlide>

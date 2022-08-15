@@ -10,14 +10,18 @@ import CardInfo from "../CardInfo/CardInfo";
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-
+import { useDispatch } from "react-redux/es/exports";
 import { green } from "@mui/material/colors";
+import axios from "axios";
+
 import stringUtils from "../../utils/stringUtils";
+import { addPlaylist } from "../../redux/actions/actions";
 const cx = classNames.bind(styles);
 
-function Media({ author, name, img, rank, right,duration,rankStatus, className }) {
+function Media({ author, name, img, rank, right,duration,rankStatus, className,code }) {
+  const dispatch = useDispatch();
   let classRank = "";
-
+  const quatity =128
   switch (rank) {
     case 1:
       classRank = "is-top1";
@@ -32,9 +36,38 @@ function Media({ author, name, img, rank, right,duration,rankStatus, className }
       classRank = "is-top100";
       break;
   }
+  const handleAddPlaylist = () =>{
+    let data = {};
+    let source = "";
+    axios.get(`https://mp3.zing.vn/xhr/media/get-source`,{
+      params:{
+        type:"audio",
+        key:code,
+      }
+    }).then((res) =>{
+      data = res.data.data;
+      source = data.source['128']
+      console.log(source)
+      dispatch(addPlaylist([{
+        id: data.id,
+        title: data.title,
+        name:data.name,
+        artists_names:data.artists_names,
+        code:data.code,
+        audioSrc:source,
+        duration:data.duration,
+        img:data.thumbnail,
+        rank_status:"stand",
+        position:2,   
+    }]))
+    }).catch((err) =>{
+      console.log(err)
+    })
+
+  }
   return (
     <div className={cx("media")}>
-      <div className={cx("media-left")}>
+      <div className={cx("media-left")} onClick={handleAddPlaylist}>
         <div className={cx("song-prefix")}>
           <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
           {right === RIGHT_ACTIONS.timeAction && (

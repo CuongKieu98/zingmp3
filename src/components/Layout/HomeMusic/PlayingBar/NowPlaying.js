@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import InfoAudio from "../../../Card/InfoAudio/InfoAudio";
 import Button from "../../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
-import ITEM_TRACKS from "../../../../const/ITEM_TRACKS";
+
 import PlayingList from "../PlayingList/PlayingList";
 
 import Detail from "../PlayingDetails/Detail";
@@ -30,7 +30,7 @@ function NowPlaying({ tracks }) {
   const handlePlay = (e) => {
     if (isPlay === false && seekValue === 100) {
       //when pause at max time => next audio
-      if (audioIdx < ITEM_TRACKS.length - 1) {
+      if (audioIdx < tracks.length - 1) {
         setAudioIdx(audioIdx + 1);
       } else {
         setAudioIdx(0);
@@ -46,7 +46,7 @@ function NowPlaying({ tracks }) {
     setIsPlay(false);
   };
   const handleNext = (e) => {
-    if (audioIdx < ITEM_TRACKS.length - 1) {
+    if (audioIdx < tracks.length - 1) {
       setAudioIdx(audioIdx + 1);
     } else {
       setAudioIdx(0);
@@ -55,7 +55,7 @@ function NowPlaying({ tracks }) {
   };
   const handlePrev = (e) => {
     if (audioIdx - 1 < 0) {
-      setAudioIdx(ITEM_TRACKS.length - 1);
+      setAudioIdx(tracks.length - 1);
     } else {
       setAudioIdx(audioIdx - 1);
     }
@@ -77,12 +77,12 @@ function NowPlaying({ tracks }) {
     } else {
       audioPlayer.current.play();
     }
-  }, [audioIdx]);
+  }, [audioIdx,tracks]);
   useEffect(() => {
     if (seekValue === 100 && isPlay) {
       //when audio max time and play = true => auto next
       setTimeout(() => {
-        if (audioIdx < ITEM_TRACKS.length - 1) {
+        if (audioIdx < tracks.length - 1) {
           setAudioIdx(audioIdx + 1);
         } else {
           setAudioIdx(0);
@@ -126,15 +126,9 @@ function NowPlaying({ tracks }) {
     setVolumeAudio(val);
     audioPlayer.current.volume = val;
   };
-  // const handleProgress = (value) => {
-  //   let compute = (value * audioPlayer.current.duration) / 100;
-  //   audioPlayer.current.currentTime = compute;
-  // };
   const handleProgress = (event, value) => {
     let compute = (value * audioPlayer.current.duration) / 100;
     audioPlayer.current.currentTime = compute;
-
-    //setSeekTime(newValue);
   };
   const handleChooseTrack = (idx, isPause = false) => {
     if (isPause) {
@@ -149,18 +143,18 @@ function NowPlaying({ tracks }) {
     <div className={cx("now-playing-bar")}>
       <div className={cx("cnk-list-playing") + " " + cx(classBar)}>
         <PlayingList
-          listTrack={ITEM_TRACKS}
+          listTrack={tracks}
           onPlaying={audioIdx}
           onPlay={handleChooseTrack}
           isPlay={isPlay}
         />
       </div>
       <Detail
-        listTrack={ITEM_TRACKS}
+        listTrack={tracks}
         onPlay={handleChooseTrack}
         isPlay={isPlay}
-        song={ITEM_TRACKS[audioIdx].title}
-        img={ITEM_TRACKS[audioIdx].img}
+        song={tracks[audioIdx].title}
+        img={tracks[audioIdx].img}
         isOpen={openClass}
         onClick={() => setOpenClass(false)}
         isPlaying={isPlay && "border"}
@@ -173,8 +167,8 @@ function NowPlaying({ tracks }) {
               <div className={cx("level-item-left") + " " + cx("is-narrow")}>
                 <InfoAudio
                   isPlay={isPlay}
-                  song={ITEM_TRACKS[audioIdx].title}
-                  img={ITEM_TRACKS[audioIdx].img}
+                  song={tracks[audioIdx].title}
+                  img={tracks[audioIdx].img}
                   onClick={() => setOpenClass(!openClass)}
                 />
               </div>
@@ -216,7 +210,7 @@ function NowPlaying({ tracks }) {
                 />
               </div>
               <audio
-                src={ITEM_TRACKS[audioIdx].audioSrc}
+                src={tracks[audioIdx].audioSrc}
                 ref={audioPlayer}
                 onTimeUpdate={onPlaying}
                 onLoadedMetadata={onLoad}

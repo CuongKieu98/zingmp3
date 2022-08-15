@@ -42,6 +42,7 @@ function Chart({ className }) {
               author={item.artists_names}
               name={item.title}
               img={item.thumbnail}
+              code={item.code}
               duration={item.duration}
               right={RIGHT_ACTIONS.percent}
               className={"image-is40"}

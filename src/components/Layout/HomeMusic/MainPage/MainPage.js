@@ -17,14 +17,31 @@ import {
 import playlistImg from "../../../../assets/playlistImg";
 import images from "../../../../assets/images";
 import Chart from "../../../Chart/Chart";
+import { useDispatch, useSelector } from "react-redux";
+import { addPlaylist } from "../../../../redux/actions/actions";
+import { addPlaylistSelector } from "../../../../redux/selectors/selectors";
 
 const cx = classNames.bind(styles);
 
 
 function MainPage() {
+  const dispatch = useDispatch();
+  const handleAddPlaylist = () =>{
+    dispatch(addPlaylist([{
+        id: "ZZDFBFD8",
+        title: "Em Nên Dừng Lại",
+        name:"Em Nên Dừng Lại",
+        artists_names:"Khang Việt",
+        code:"kmcmyZkVDJxdxmmymtbHkHykghmQQvzHX",
+        audioSrc: "https://vnso-zn-23-tf-mp3-s1-m-zmp3.zmdcdn.me/b20d982d446cad32f47d/6809065341606619327?authen=exp=1660723087~acl=/b20d982d446cad32f47d/*~hmac=5ae7d94ee8cba372f00f91c0b625d9bd&fs=MTY2MDU1MDI4NzMxN3x3ZWJWNHwxNC4xODUdUngMTI3Ljg5",
+        duration:"368",
+        img:"https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/b/0/c/8/b0c8399ab4bf53e7eb1285ee1e8aaa32.jpg?fs=MTY2MDU1MDI4NzMxNnx3ZWJWNHwxNC4xODUdUngMTI3Ljg5",
+        rank_status:"stand",
+        position:2,   
+    }]))
+  }
   useEffect(() => {
     const changeBackground = () => {
-  
       console.log('test',window.scrollY)
     };
     window.addEventListener('scroll', changeBackground, true);
@@ -36,7 +53,7 @@ function MainPage() {
         <main className={cx("cnk-selection")}>
           <div className={cx("cnk-container")}>
             <SliderShow />
-            <Random playLists={LIST_RANDOM} title={"Có thể bạn muốn nghe"} isCardNm={true} />
+            <Random playLists={LIST_RANDOM} title={"Có thể bạn muốn nghe"} isCardNm={true} onClick={handleAddPlaylist} />
             <Random playLists={LIST_TODAY} title={"Lựa chọn hôm nay"} isCardNm={true}  />
             <Random playLists={LIST_CORNER} title={"XONE's CORNER"} isCardNm={true} />
             <Chart className={"mgt-30"}/>

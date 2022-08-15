@@ -6,4 +6,5 @@ const URL = "https://spotify81.p.rapidapi.com/";
     method: 'GET',
     url: 'https://mp3.zing.vn/xhr/chart-realtime',
 }
+
 export default getTopChart

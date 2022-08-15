@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
-const Card = ({ content, href, img, author = [], subTiltle }) => {
+const Card = ({ content, href, img, author = [], subTiltle,onClick }) => {
   const handleClick = (e) => {
     e.preventDefault();
   };
@@ -41,9 +41,7 @@ const Card = ({ content, href, img, author = [], subTiltle }) => {
                   setIcon={Icon.Heart}
                   className={"padding-heart"}
                 />
-                <Link to="/playlist">
-                  <Button setIcon={Icon.PlayFill} className={"is40"} />
-                </Link>
+                  <Button setIcon={Icon.PlayFill} className={"is40"} onClick={onClick}/>
 
                 <Button
                   onClick={(e) => handleClick(e)}

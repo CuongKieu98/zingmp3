@@ -62,6 +62,7 @@ function ChartPage() {
                 rankStatus={item.rank_status}
                 author={item.artists_names}
                 name={item.title}
+                code={item.code}
                 img={item.thumbnail}
                 right={RIGHT_ACTIONS.timeAction}
                 duration={item.duration}
