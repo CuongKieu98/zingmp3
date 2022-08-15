@@ -27,13 +27,26 @@ function ChartPage() {
       .request(getTopChart)
       .then(function (response) {
         let data = response.data.tracks.slice(0, datasize);
-        console.log(data);
         setChart(data);
       })
       .catch(function (error) {
         console.error(error);
       });
   }, [datasize]);
+  const options ={
+
+    method: 'GET',
+    url: 'https://mp3.zing.vn/xhr/chart-realtime',
+
+}
+axios
+.request(options)
+.then(function (response) {
+  console.log(response);
+})
+.catch(function (error) {
+  console.error(error);
+});
   const handleClick = () => {
     if (!loading) {
       setDatasize(20);

@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icon from 'react-bootstrap-icons'
 const cx = classNames.bind(styles);
 const ButtonHeader = forwardRef((props, ref) => {
-  const { iconSvg, icon, onClick, classNames,iconBS} = props;
+  const { iconSvg, icon, onClick, classNames,iconBS} = props; 
   let CompIcon = iconBS
 
   return (
-    <button ref={ref} className={cx(classNames)} onClick={onClick}>
+    <button ref={ref} className={cx(classNames)} onClick={onClick} >
       {iconSvg && <img src={iconSvg} alt="" />}
       {icon && <FontAwesomeIcon className={cx("icon-btn")} icon={icon} />}
       {iconBS && <CompIcon className={cx("icon-btn")} />}

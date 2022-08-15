@@ -9,7 +9,7 @@ const ITEM_TRACKS = [
   {
     id: 1,
     title: "Chờ ngày cưới em",
-    audioSrc: tracks.chongaycuoiem,
+    audioSrc: "http://listen.vo.llnwd.net/g3/prvw/8/1/8/1/4/2599741818.mp3",
     img:playlistImg.chongaycuoiem
   },
   {

@@ -44,9 +44,7 @@ function LevelRight() {
         </Tippy>
       </a>
       <div className={cx("setting-item")}>
-        <Tippy content="Tải lên">
-          <ButtonHeader iconBS={Icon.Upload} />
-        </Tippy>
+          <ButtonHeader iconBS={Icon.Upload}/>
       </div>
 
       <div className={cx("setting-item")}>
