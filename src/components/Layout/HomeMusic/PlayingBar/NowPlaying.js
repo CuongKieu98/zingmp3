@@ -22,6 +22,7 @@ function NowPlaying({ tracks }) {
   const [volumeVal, setVolumeVal] = useState(1);
   const [sibarRight, setSibarRight] = useState(false);
   const [openClass, setOpenClass] = useState(false);
+  const [lyricSong, setLyricSong] = useState("");
 
   const widthRef = useRef();
   let classBar = sibarRight ? "show" : "";
@@ -77,7 +78,7 @@ function NowPlaying({ tracks }) {
     } else {
       audioPlayer.current.play();
     }
-  }, [audioIdx,tracks]);
+  }, [audioIdx, tracks]);
   useEffect(() => {
     if (seekValue === 100 && isPlay) {
       //when audio max time and play = true => auto next
@@ -139,6 +140,21 @@ function NowPlaying({ tracks }) {
     }
   };
 
+  const readText = (filePath, callBack) => {
+    fetch(filePath)
+      .then((response) => response.text())
+      .then((data) => {
+        let output = data.split("\n");
+        let dataLrc = output.map((text, index) => [
+          {
+            time: text.replace(/(^.*\[|\].*$)/g, ""),
+            lyric: text.replace(/ *\[[^\]]*]/, "").trim(),
+          },
+        ]);
+        setLyricSong(dataLrc);
+        console.log(dataLrc);
+      });
+  };
   return (
     <div className={cx("now-playing-bar")}>
       <div className={cx("cnk-list-playing") + " " + cx(classBar)}>
@@ -155,25 +171,34 @@ function NowPlaying({ tracks }) {
         isPlay={isPlay}
         song={tracks[audioIdx].title}
         img={tracks[audioIdx].img}
+        artist={tracks[audioIdx].artists_names}
         isOpen={openClass}
         onClick={() => setOpenClass(false)}
         isPlaying={isPlay && "border"}
         onPlaying={audioIdx}
+        lyrics={lyricSong}
       />
+
       <div className={cx("player-controls") + " " + cx("clickable")}>
-        <div className={cx("level") + " " + cx("player-controls-container") + " " + cx(responeNav)} >
-       
-            <div className={cx("player-controls-left") + " " + cx(responeNav)}>
-              <div className={cx("level-item-left") + " " + cx("is-narrow")}>
-                <InfoAudio
-                  isPlay={isPlay}
-                  song={tracks[audioIdx].title}
-                  img={tracks[audioIdx].img}
-                  onClick={() => setOpenClass(!openClass)}
-                />
-              </div>
+        <div
+          className={
+            cx("level") +
+            " " +
+            cx("player-controls-container") +
+            " " +
+            cx(responeNav)
+          }
+        >
+          <div className={cx("player-controls-left") + " " + cx(responeNav)}>
+            <div className={cx("level-item-left") + " " + cx("is-narrow")}>
+              <InfoAudio
+                isPlay={isPlay}
+                song={tracks[audioIdx].title}
+                img={tracks[audioIdx].img}
+                onClick={() => setOpenClass(!openClass)}
+              />
             </div>
-    
+          </div>
 
           <div className={cx("player-controls-center")}>
             <div className={cx("level-item")}>
@@ -206,7 +231,6 @@ function NowPlaying({ tracks }) {
                   className={"is36min"}
                   title={"Phát lại tất cả"}
                   show={openClass ? "" : "isShow"}
-
                 />
               </div>
               <audio
@@ -219,7 +243,11 @@ function NowPlaying({ tracks }) {
                 <code>audio</code> element.
               </audio>
             </div>
-            <div className={cx("level-item") + " " + cx("time-bar") + " " + cx(responeNav)} >
+            <div
+              className={
+                cx("level-item") + " " + cx("time-bar") + " " + cx(responeNav)
+              }
+            >
               <span className={cx("time-left")}>
                 {currentTime === 0 ? "00:00" : currentTime}
               </span>
@@ -249,6 +277,9 @@ function NowPlaying({ tracks }) {
                 setIcon={Icon.JustifyRight}
                 className={"is36"}
                 title={"Xem lời bài hát"}
+                onClick={(e) => {
+                  readText(tracks[audioIdx].lyric);
+                }}
               />
             </div>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
@@ -290,7 +321,7 @@ function NowPlaying({ tracks }) {
               />
             </div>
           </div>
-        </div>       
+        </div>
         <div className={cx("nav-bottom")}>
           <NavigationBottom />
         </div>

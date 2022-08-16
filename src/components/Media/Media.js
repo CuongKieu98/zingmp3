@@ -18,10 +18,20 @@ import stringUtils from "../../utils/stringUtils";
 import { addPlaylist } from "../../redux/actions/actions";
 const cx = classNames.bind(styles);
 
-function Media({ author, name, img, rank, right,duration,rankStatus, className,code }) {
+function Media({
+  author,
+  name,
+  img,
+  rank,
+  right,
+  duration,
+  rankStatus,
+  className,
+  code,
+}) {
   const dispatch = useDispatch();
   let classRank = "";
-  const quatity =128
+  const quatity = 128;
   switch (rank) {
     case 1:
       classRank = "is-top1";
@@ -36,35 +46,41 @@ function Media({ author, name, img, rank, right,duration,rankStatus, className,c
       classRank = "is-top100";
       break;
   }
-  const handleAddPlaylist = () =>{
+  const handleAddPlaylist = () => {
     let data = {};
     let source = "";
-    axios.get(`https://mp3.zing.vn/xhr/media/get-source`,{
-      params:{
-        type:"audio",
-        key:code,
-      }
-    }).then((res) =>{
-      data = res.data.data;
-      source = data.source['128']
-      console.log(source)
-      dispatch(addPlaylist([{
-        id: data.id,
-        title: data.title,
-        name:data.name,
-        artists_names:data.artists_names,
-        code:data.code,
-        audioSrc:source,
-        duration:data.duration,
-        img:data.thumbnail,
-        rank_status:"stand",
-        position:2,   
-    }]))
-    }).catch((err) =>{
-      console.log(err)
-    })
-
-  }
+    axios
+      .get(`https://mp3.zing.vn/xhr/media/get-source`, {
+        params: {
+          type: "audio",
+          key: code,
+        },
+      })
+      .then((res) => {
+        data = res.data.data;
+        source = data.source["128"];
+        dispatch(
+          addPlaylist([
+            {
+              id: data.id,
+              title: data.title,
+              name: data.name,
+              artists_names: data.artists_names,
+              code: data.code,
+              audioSrc: source,
+              duration: data.duration,
+              img: data.thumbnail,
+              rank_status: "stand",
+              lyric:data.lyric,
+              position: 2,
+            },
+          ])
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className={cx("media")}>
       <div className={cx("media-left")} onClick={handleAddPlaylist}>
@@ -74,7 +90,7 @@ function Media({ author, name, img, rank, right,duration,rankStatus, className,c
             <div className={cx("sort")}>
               {rankStatus?.toLowerCase() === "up" ? (
                 <ArrowDropUpIcon fontSize="large" sx={{ color: "#6cff72" }} />
-              ) : rankStatus?.toLowerCase() === "down" ?(
+              ) : rankStatus?.toLowerCase() === "down" ? (
                 <ArrowDropDownIcon fontSize="large" sx={{ color: "#e35050" }} />
               ) : (
                 <HorizontalRuleIcon />
@@ -104,7 +120,9 @@ function Media({ author, name, img, rank, right,duration,rankStatus, className,c
           </div>
         ) : (
           <div className={cx("action-item")}>
-            <div className={cx("duration")}>{stringUtils.convertSeconds(duration)}</div>
+            <div className={cx("duration")}>
+              {stringUtils.convertSeconds(duration)}
+            </div>
           </div>
         )}
       </div>

@@ -18,6 +18,8 @@ function Detail({
   isPlay = false,
   isPlaying = "",
   onPlaying,
+  artist,
+  lyrics,
 }) {
   const [isOpenBg, setIsOpenBg] = useState();
   let classN = isOpen ? "is-open" : "is-close";
@@ -26,9 +28,9 @@ function Detail({
     return acc;
   }, {});
 
-  // const ref2 = useRef() 
+  // const ref2 = useRef()
   useEffect(() => {
-    refs[onPlaying+1].current?.scrollIntoView({
+    refs[onPlaying + 1].current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -47,7 +49,9 @@ function Detail({
               <div className={cx("logo-small")}></div>
             </div>
             <div className={cx("tabs")}>
-              <span className={cx("tab-item") + " " + cx("is-active")}>
+              <span
+                className={cx("tab-item") + " " + cx("is-active")}
+              >
                 Danh sách đang phát
               </span>
             </div>
@@ -71,14 +75,29 @@ function Detail({
                     </div>
                     <div className={cx("img-info")}>
                       <div className={cx("title")}>{song}</div>
-                      {/* <div className={cx("sub-title")}>abc,cvb,cas</div> */}
+                      <div className={cx("sub-title")}>{artist}</div>
+                   
                     </div>
+                    
                   </div>
                 </div>
               </div>
             </div>
+            
+            <div className={cx("lyric-container")}>
+              <div className={cx("column-is-multiline")}>
+                <div className={cx("column-size")}>
+                  <ul className={cx("scroll-content")}>
+
+                    {lyrics && lyrics.map((item,index) =>(
+                        <li className={cx("item")} key={index}>{item[0].lyric}</li>
+                    ))}
+      
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-       
         </div>
       </div>
     </div>

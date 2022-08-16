@@ -16,6 +16,7 @@ const ITEM_TRACKS = [
     duration:"303",
     img:"https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_jpeg/cover/2/2/7/5/2275dda526935755fc51b587e08e1d7e.jpg?fs=MTY2MDU0MTYwNjEzNnx3ZWJWNHw",
     rank_status:"stand",
+    lyric:"",
     position:1,   
   },
   {
@@ -23,37 +24,43 @@ const ITEM_TRACKS = [
     title: "Nhìn Mây Vẽ Người",
     audioSrc: tracks.nhinmayvenguoi,
     img:playlistImg.nhinmay,
-    
+    lyric:"",
   },
   {
     id: 3,
     title: "Vì Mẹ Anh Bắt Chia Tay",
     audioSrc: tracks.vimeanhbatchiatay,
-    img:playlistImg.miule2
+    img:playlistImg.miule2,
+    lyric:"",
   },
   {
     id: 4,
     title: "Chim sẻ dâu tây",
     audioSrc: tracks.chimsedautay,
-    img:playlistImg.chimse
+    img:playlistImg.chimse,
+    lyric:"",
+
   },
   {
     id: 5,
     title: "ILLusion",
     audioSrc: tracks.Illusion,
-    img:playlistImg.iilison
+    img:playlistImg.iilison,
+    lyric:"",
   },
   {
     id: 6,
     title: "Khác biệt to lớn",
     audioSrc: tracks.Khacbiettolon,
-    img:playlistImg.khacbiet
+    img:playlistImg.khacbiet,
+    lyric:"",
   },
   {
     id: 7,
     title: "Ít nhưng dài lâu",
     audioSrc: tracks.itnhungdailau,
-    img:playlistImg.itnhungdai
+    img:playlistImg.itnhungdai,
+    lyric:"",
   },
 
 ];
