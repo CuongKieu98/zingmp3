@@ -177,6 +177,7 @@ function NowPlaying({ tracks }) {
         isPlaying={isPlay && "border"}
         onPlaying={audioIdx}
         lyrics={lyricSong}
+        currentTime={currentTime}
       />
 
       <div className={cx("player-controls") + " " + cx("clickable")}>

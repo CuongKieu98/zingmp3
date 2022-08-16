@@ -20,6 +20,7 @@ function Detail({
   onPlaying,
   artist,
   lyrics,
+  currentTime,
 }) {
   const [isOpenBg, setIsOpenBg] = useState();
   let classN = isOpen ? "is-open" : "is-close";
@@ -27,6 +28,7 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
+  console.log(currentTime);
 
   // const ref2 = useRef()
   useEffect(() => {
@@ -49,11 +51,10 @@ function Detail({
               <div className={cx("logo-small")}></div>
             </div>
             <div className={cx("tabs")}>
-              <span
-                className={cx("tab-item") + " " + cx("is-active")}
-              >
-                Danh sách đang phát
+              <span className={cx("tab-item") + " " + cx("is-active")}>
+                Đang phát
               </span>
+              <span className={cx("tab-item") + " "}>Lời bài hát</span>
             </div>
             <div className={cx("left")}>
               <Button
@@ -76,23 +77,24 @@ function Detail({
                     <div className={cx("img-info")}>
                       <div className={cx("title")}>{song}</div>
                       <div className={cx("sub-title")}>{artist}</div>
-                   
                     </div>
-                    
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className={cx("lyric-container")}>
               <div className={cx("column-is-multiline")}>
                 <div className={cx("column-size")}>
                   <ul className={cx("scroll-content")}>
-
-                    {lyrics && lyrics.map((item,index) =>(
-                        <li className={cx("item")} key={index}>{item[0].lyric}</li>
-                    ))}
-      
+                    {lyrics &&
+                      lyrics.map((item, index) => {
+                        return (
+                          <li className={cx("item") +" "+ cx(item[0].time.slice(0, -3) === currentTime ? "current" : "")} key={index}>
+                            {item[0].lyric}
+                          </li>
+                        );
+                      })}
                   </ul>
                 </div>
               </div>
