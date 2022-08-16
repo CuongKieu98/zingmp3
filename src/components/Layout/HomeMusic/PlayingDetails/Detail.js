@@ -21,14 +21,16 @@ function Detail({
   artist,
   lyrics,
   currentTime,
+  onOpenLyric
 }) {
   const [isOpenBg, setIsOpenBg] = useState();
+  const [tabActive, setTabActive] = useState(true);
+  let classActive = tabActive ? "active" : ""
   let classN = isOpen ? "is-open" : "is-close";
   const refs = listTrack.reduce((acc, value) => {
     acc[value.id] = createRef();
     return acc;
   }, {});
-  console.log(currentTime);
 
   // const ref2 = useRef()
   useEffect(() => {
@@ -37,6 +39,7 @@ function Detail({
       block: "start",
     });
   }, [onPlaying]);
+
 
   return (
     <div className={cx("cnk-detail-playing") + " " + cx(classN)}>
@@ -51,10 +54,22 @@ function Detail({
               <div className={cx("logo-small")}></div>
             </div>
             <div className={cx("tabs")}>
-              <span className={cx("tab-item") + " " + cx("is-active")}>
+              <span
+                className={cx("tab-item") + " " +cx(classActive)}
+                onClick={(e) => {
+                  setTabActive(true);
+                }}
+              >
                 Đang phát
               </span>
-              <span className={cx("tab-item") + " "}>Lời bài hát</span>
+              <span
+                className={cx("tab-item") + " " +cx(classActive)}
+                onClick={(e) => {
+                  setTabActive(false);
+                }}
+              >
+                Lời bài hát
+              </span>
             </div>
             <div className={cx("left")}>
               <Button
@@ -65,40 +80,53 @@ function Detail({
             </div>
           </div>
           <div className={cx("detail-body")}>
-            <div className={cx("detail-media-list")}>
-              <div className={cx("list-wrapper")}>
-                <div className={cx("list")}>
-                  <div className={cx("card")}>
-                    <div className={cx("img-content")}>
-                      <figure className={cx("img-48") + " " + cx(isPlaying)}>
-                        <img src={img} alt="" />
-                      </figure>
-                    </div>
-                    <div className={cx("img-info")}>
-                      <div className={cx("title")}>{song}</div>
-                      <div className={cx("sub-title")}>{artist}</div>
+            {tabActive ? (
+              <div className={cx("detail-media-list")}>
+                <div className={cx("list-wrapper")}>
+                  <div className={cx("list")}>
+                    <div className={cx("card")}>
+                      <div className={cx("img-content")}>
+                        <figure className={cx("img-48") + " " + cx(isPlaying)}>
+                          <img src={img} alt="" />
+                        </figure>
+                      </div>
+                      <div className={cx("img-info")}>
+                        <div className={cx("title")}>{song}</div>
+                        <div className={cx("sub-title")}>{artist}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className={cx("lyric-container")}>
-              <div className={cx("column-is-multiline")}>
-                <div className={cx("column-size")}>
-                  <ul className={cx("scroll-content")}>
-                    {lyrics &&
-                      lyrics.map((item, index) => {
-                        return (
-                          <li className={cx("item") +" "+ cx(item[0].time.slice(0, -3) === currentTime ? "current" : "")} key={index}>
-                            {item[0].lyric}
-                          </li>
-                        );
-                      })}
-                  </ul>
+            ) : (
+              <div className={cx("lyric-container")}>
+                <div className={cx("column-is-multiline")}>
+                  <div className={cx("column-size")}>
+                    <ul className={cx("scroll-content")}>
+                      {lyrics &&
+                        lyrics.map((item, index) => {
+                          return (
+                            <li
+                              className={
+                                cx("item") +
+                                " " +
+                                cx(
+                                  item[0].time.slice(0, -3) <= currentTime
+                                    ? "current"
+                                    : ""
+                                )
+                              }
+                              key={index}
+                            >
+                              {item[0].lyric}
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
