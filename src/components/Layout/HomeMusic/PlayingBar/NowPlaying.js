@@ -10,6 +10,7 @@ import PlayingList from "../PlayingList/PlayingList";
 import Detail from "../PlayingDetails/Detail";
 import NavigationBottom from "../../../NavigationBottom/NavigationBottom";
 import { Slider } from "@mui/material";
+import stringUtils from "../../../../utils/stringUtils";
 
 const cx = classNames.bind(styles);
 function NowPlaying({ tracks }) {
@@ -152,7 +153,6 @@ function NowPlaying({ tracks }) {
           },
         ]);
         setLyricSong(dataLrc);
-        console.log(dataLrc);
       });
   };
   return (
