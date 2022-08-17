@@ -34,12 +34,6 @@ function Detail({
     return acc;
   }, {});
   // const ref2 = useRef()
-  useEffect(() => {
-    refs[onPlaying + 1].current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, [onPlaying])
   return (
     <div className={cx("cnk-detail-playing") + " " + cx(classN)}>
       <div className={cx("detail-background")}>
@@ -106,7 +100,7 @@ function Detail({
                       {lyrics &&
                         lyrics.map((item, index) => {
                           if(liRef.current[index+1]?.className.includes("current")){
-                            liRef.current[index].scrollIntoView({behavior: "smooth"})
+                            liRef.current[index].scrollIntoView()
                           }
 
                           return (
