@@ -32,7 +32,7 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
-
+console.log(lyrics)
   // const ref2 = useRef()
   useEffect(() => {
     refs[onPlaying + 1].current?.scrollIntoView({

@@ -1,17 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, forwardRef } from "react";
 import styles from "./NowPlaying.module.scss";
 import classNames from "classnames/bind";
 import InfoAudio from "../../../Card/InfoAudio/InfoAudio";
 import Button from "../../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
+import MuiAlert from "@mui/material/Alert";
 
 import PlayingList from "../PlayingList/PlayingList";
 
 import Detail from "../PlayingDetails/Detail";
 import NavigationBottom from "../../../NavigationBottom/NavigationBottom";
-import { Slider } from "@mui/material";
+import { Slide, Slider, Snackbar } from "@mui/material";
 import stringUtils from "../../../../utils/stringUtils";
-
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 const cx = classNames.bind(styles);
 function NowPlaying({ tracks }) {
   const audioPlayer = useRef();
@@ -24,7 +27,7 @@ function NowPlaying({ tracks }) {
   const [sibarRight, setSibarRight] = useState(false);
   const [openClass, setOpenClass] = useState(false);
   const [lyricSong, setLyricSong] = useState("");
-
+  const [openMess, setOpenMess] = useState(false);
   const widthRef = useRef();
   let classBar = sibarRight ? "show" : "";
   let responeNav = openClass ? "isShow" : "";
@@ -55,6 +58,9 @@ function NowPlaying({ tracks }) {
     }
     handlePlay();
   };
+  const handleClickMess = () => {
+    setOpenMess(!openMess);
+  };
   const handlePrev = (e) => {
     if (audioIdx - 1 < 0) {
       setAudioIdx(tracks.length - 1);
@@ -73,6 +79,7 @@ function NowPlaying({ tracks }) {
       setVolumeAudio(audioPlayer.current.volume);
     }
   };
+
   useEffect(() => {
     if (!isPlay) {
       return;
@@ -142,21 +149,38 @@ function NowPlaying({ tracks }) {
   };
 
   const readText = (filePath, callBack) => {
-    fetch(filePath)
-      .then((response) => response.text())
-      .then((data) => {
-        let output = data.split("\n");
-        let dataLrc = output.map((text, index) => [
-          {
-            time: text.replace(/(^.*\[|\].*$)/g, ""),
-            lyric: text.replace(/ *\[[^\]]*]/, "").trim(),
-          },
-        ]);
-        setLyricSong(dataLrc);
-      });
+    if (filePath && filePath !== null) {
+      fetch(filePath)
+        .then((response) => response.text())
+        .then((data) => {
+          let output = data.split("\n");
+          let dataLrc = output.map((text, index) => [
+            {
+              time: text.replace(/(^.*\[|\].*$)/g, ""),
+              lyric: text.replace(/ *\[[^\]]*]/, "").trim(),
+            },
+          ]);
+          setLyricSong(dataLrc);
+        });
+    } else {
+      setLyricSong("");
+    }
   };
   return (
     <div className={cx("now-playing-bar")}>
+      <Snackbar
+        open={openMess}
+        autoHideDuration={4000}
+        onClose={handleClickMess}
+      >
+        <Alert
+          onClose={handleClickMess}
+          severity="warning"
+          sx={{ width: "100%" }}
+        >
+          Chưa cập nhật lời bài hát!
+        </Alert>
+      </Snackbar>
       <div className={cx("cnk-list-playing") + " " + cx(classBar)}>
         <PlayingList
           listTrack={tracks}
@@ -279,7 +303,15 @@ function NowPlaying({ tracks }) {
                 className={"is36"}
                 title={"Xem lời bài hát"}
                 onClick={(e) => {
-                  readText(tracks[audioIdx].lyric);
+                  if (
+                    tracks[audioIdx].lyric &&
+                    tracks[audioIdx].lyric != null
+                  ) {
+                    readText(tracks[audioIdx].lyric);
+                  } else {
+                    handleClickMess();
+                    setLyricSong("");
+                  }
                 }}
               />
             </div>
@@ -323,6 +355,7 @@ function NowPlaying({ tracks }) {
             </div>
           </div>
         </div>
+
         <div className={cx("nav-bottom")}>
           <NavigationBottom />
         </div>
