@@ -118,6 +118,10 @@
   // flex-direction: column;
   // flex: 1 1;
   // overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  overflow: hidden;
 }
 .detail-media-list {
   display: flex;
@@ -252,6 +256,7 @@
   font-size: inherit;
   line-height: inherit;
   padding: 15px 0;
+  transition: 0.5s;
 }
 .lyric-container{
   height: 100%;
@@ -271,17 +276,24 @@
   position: relative;
 }
 .column-size{
+  display: flex;
   flex: 1 1;
   height: 100%;
   position: relative;
   flex-direction: column;
   justify-content: center;
-  font-size: 24px;
+
 }
 .scroll-content{
+  font-size: 42px;
   max-height: 500px;
     overflow: hidden auto;
     text-align: center;
     position: relative;
     -webkit-mask-image: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.8) 10%,#fff 25%,#fff 75%,hsla(0,0%,100%,.8) 90%,hsla(0,0%,100%,0));
+}
+@media screen and (max-width:768px) {
+  .scroll-content{
+    font-size: 32px;
+  }
 }

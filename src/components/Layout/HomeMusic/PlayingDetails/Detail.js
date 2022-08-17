@@ -25,6 +25,7 @@ function Detail({
 }) {
   const [isOpenBg, setIsOpenBg] = useState();
   const [tabActive, setTabActive] = useState(true);
+  let liRef = useRef([]);
   let classActive = tabActive ? "active" : ""
   let classN = isOpen ? "is-open" : "is-close";
   const refs = listTrack.reduce((acc, value) => {
@@ -38,7 +39,16 @@ function Detail({
       behavior: "smooth",
       block: "start",
     });
-  }, [onPlaying]);
+  }, [onPlaying])
+
+
+    const scrollTo = () =>{
+      liRef[50]?.current?.scrollIntoView({behavior: 'smooth'});
+      if(liRef?.current[1]?.className.indexOf("current") ){
+        console.log("có")
+      }
+    }
+    // 👇️ scroll to bottom every time messages change
 
 
   return (
@@ -66,6 +76,7 @@ function Detail({
                 className={cx("tab-item") + " " +cx(classActive)}
                 onClick={(e) => {
                   setTabActive(false);
+                  scrollTo();
                 }}
               >
                 Lời bài hát
@@ -105,8 +116,13 @@ function Detail({
                     <ul className={cx("scroll-content")}>
                       {lyrics &&
                         lyrics.map((item, index) => {
+                          if(liRef.current[index+1]?.className.includes("current")){
+                            liRef.current[index].scrollIntoView({behavior: "smooth"})
+                          }
+
                           return (
                             <li
+                              ref={(ref) => (liRef.current[index] = ref)}
                               className={
                                 cx("item") +
                                 " " +
