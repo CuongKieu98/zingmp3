@@ -53,8 +53,10 @@ function NowPlaying({ tracks }) {
   const handleNext = (e) => {
     if (audioIdx < tracks.length - 1) {
       setAudioIdx(audioIdx + 1);
+      setLyricSong("");
     } else {
       setAudioIdx(0);
+      setLyricSong("");
     }
     handlePlay();
   };
@@ -64,8 +66,10 @@ function NowPlaying({ tracks }) {
   const handlePrev = (e) => {
     if (audioIdx - 1 < 0) {
       setAudioIdx(tracks.length - 1);
+      setLyricSong("");
     } else {
       setAudioIdx(audioIdx - 1);
+      setLyricSong("");
     }
     handlePlay();
   };
@@ -202,6 +206,14 @@ function NowPlaying({ tracks }) {
         onPlaying={audioIdx}
         lyrics={lyricSong}
         currentTime={currentTime}
+        onClickEvent={(e) => {
+          if (tracks[audioIdx].lyric && tracks[audioIdx].lyric != null) {
+            readText(tracks[audioIdx].lyric);
+          } else {
+            handleClickMess();
+            setLyricSong("");
+          }
+        }}
       />
 
       <div className={cx("player-controls") + " " + cx("clickable")}>

@@ -21,7 +21,8 @@ function Detail({
   artist,
   lyrics,
   currentTime,
-  onOpenLyric
+  onOpenLyric,
+  onClickEvent,
 }) {
   const [isOpenBg, setIsOpenBg] = useState();
   const [tabActive, setTabActive] = useState(true);
@@ -32,7 +33,6 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
-console.log(lyrics)
   // const ref2 = useRef()
   useEffect(() => {
     refs[onPlaying + 1].current?.scrollIntoView({
@@ -40,17 +40,6 @@ console.log(lyrics)
       block: "start",
     });
   }, [onPlaying])
-
-
-    const scrollTo = () =>{
-      liRef[50]?.current?.scrollIntoView({behavior: 'smooth'});
-      if(liRef?.current[1]?.className.indexOf("current") ){
-        console.log("có")
-      }
-    }
-    // 👇️ scroll to bottom every time messages change
-
-
   return (
     <div className={cx("cnk-detail-playing") + " " + cx(classN)}>
       <div className={cx("detail-background")}>
@@ -76,7 +65,7 @@ console.log(lyrics)
                 className={cx("tab-item") + " " +cx(classActive)}
                 onClick={(e) => {
                   setTabActive(false);
-                  scrollTo();
+                  onClickEvent()
                 }}
               >
                 Lời bài hát
