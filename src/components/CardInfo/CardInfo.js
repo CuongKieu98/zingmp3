@@ -10,7 +10,7 @@ function CardInfo({ author, name, img }) {
     <div className={cx("card-info")}>
         <TextDisplay className="title-wrapper" text={name} />
         <h3 className={cx("subtitle")}>
-            <a href="/">{author}</a>
+            <p>{author}</p>
         </h3>
     </div>
   )
