@@ -82,8 +82,8 @@ function Media({
       });
   };
   return (
-    <div className={cx("media")}>
-      <div className={cx("media-left")} onClick={handleAddPlaylist}>
+    <div className={cx("media")} onClick={handleAddPlaylist}>
+      <div className={cx("media-left")} >
         <div className={cx("song-prefix")}>
           <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
           {right === RIGHT_ACTIONS.timeAction && (

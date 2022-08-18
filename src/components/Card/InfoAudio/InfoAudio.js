@@ -6,7 +6,7 @@ import Button from "../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
 const cx = classNames.bind(styles);
 
-function InfoAudio({ song, img, onClick, isPlay = false }) {
+function InfoAudio({ song, img, onClick,artist, isPlay = false }) {
   return (
     <div className={cx("media")}>
       <div className={cx("media-left")} style={{ cursor: "pointer" }}>
@@ -22,24 +22,17 @@ function InfoAudio({ song, img, onClick, isPlay = false }) {
         <div className={cx("is-mark")}>
           <div className={cx("song-info-wrapper")}>
             <span className={cx("song-title-item")}>
-              <Link to={"/"}>
                 <div className={cx("title-wrapper")}>
                   <span className={cx("title-item")}>{song}</span>
                 </div>
-              </Link>
             </span>
           </div>
         </div>
         <h3 className={cx("subtitle-one-line")}>
-          <Link className={cx("is-ghost")} to={"/"}>
-            Miu Lê
-          </Link>
-          <Link className={cx("is-ghost")} to={"/"}>
-            Karik★
-          </Link>
-          <Link className={cx("is-ghost")} to={"/"}>
-            Châu Đăng Khoa
-          </Link>
+          <div className={cx("is-ghost")} to={"/"}>
+            {artist}
+          </div>
+
         </h3>
       </div>
       <div className={cx("media-right")}>

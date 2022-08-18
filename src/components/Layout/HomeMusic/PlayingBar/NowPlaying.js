@@ -226,13 +226,13 @@ function NowPlaying({ tracks }) {
             cx(responeNav)
           }
         >
-          <div className={cx("player-controls-left") + " " + cx(responeNav)}>
+          <div className={cx("player-controls-left") + " " + cx(responeNav)}  onClick={() => setOpenClass(!openClass)}>
             <div className={cx("level-item-left") + " " + cx("is-narrow")}>
               <InfoAudio
                 isPlay={isPlay}
                 song={tracks[audioIdx].title}
                 img={tracks[audioIdx].img}
-                onClick={() => setOpenClass(!openClass)}
+                artist={tracks[audioIdx].artists_names}
               />
             </div>
           </div>
