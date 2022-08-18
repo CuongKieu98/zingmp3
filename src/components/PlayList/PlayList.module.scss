@@ -1,63 +1,60 @@
-.container-play-list {
-  margin-top: 30px !important;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -4px;
-  margin-right: -4px;
-  backface-visibility: hidden;
+.container-play-list{
+    margin-top: 30px !important;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+    backface-visibility: hidden;
 }
-.list-card {
-  flex: 0 0 100%;
-  max-width: 100%;
-  display: block;
-}
-.media-left {
-  margin-right: 10px;
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 0;
-  .media-img {
+.list-card{
+    flex: 0 0 100%;
+    max-width: 100%;
     display: block;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
+
+}
+.media-left{
+    margin-right: 10px;
+    flex-basis: auto;
+    flex-grow: 0;
     flex-shrink: 0;
-    &:hover {
-      cursor: pointer;
+    .media-img{
+        display: block;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        flex-shrink: 0;
+        &:hover {
+          cursor: pointer;
+        }
     }
-  }
-  .img {
-    line-height: 0;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 5px;
-    overflow: hidden;
-    transition: transform 0.7s;
-    width: 50px;
-    &:hover {
-      transform: scale(1.1) translateZ(0);
-    }
-    touch-action: none;
-    -ms-touch-action: none;
-  }
+    .img {
+        line-height: 0;
+        height: 0;
+        padding-bottom: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: transform 0.7s;
+        width: 50px;
+        &:hover{
+          transform: scale(1.1) translateZ(0);
+        }
+      }
 }
-.wrapper {
-  display: flex;
-  scroll-behavior: smooth;
-  flex-wrap: nowrap !important;
-  will-change: scroll-position;
-  overflow: overlay hidden !important;
-  touch-action: none;
--ms-touch-action: none;
+.wrapper{
+    display: flex;
+    scroll-behavior: smooth;
+    flex-wrap: nowrap !important;
+    will-change: scroll-position;
+    overflow: overlay hidden !important;
 }
-.title {
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  color: var(--text-primary);
-  font-weight: 700;
-  text-transform: capitalize;
-  margin-left: 15px;
+.title{
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-left: 15px;
 }
