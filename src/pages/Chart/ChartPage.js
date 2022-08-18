@@ -37,7 +37,7 @@ function ChartPage() {
 
   const handleClick = () => {
     if (!loading) {
-      setDatasize(20);
+      setDatasize(50);
       setLoading(true);
       timer.current = window.setTimeout(() => {
         setLoading(false);

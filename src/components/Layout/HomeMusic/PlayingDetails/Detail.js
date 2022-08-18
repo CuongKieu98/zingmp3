@@ -14,14 +14,11 @@ function Detail({
   onClick,
   song,
   img,
-  onPlay,
   isPlay = false,
   isPlaying = "",
-  onPlaying,
   artist,
   lyrics,
   currentTime,
-  onOpenLyric,
   onClickEvent,
 }) {
   const [isOpenBg, setIsOpenBg] = useState();
@@ -33,6 +30,7 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
+
   // const ref2 = useRef()
   return (
     <div className={cx("cnk-detail-playing") + " " + cx(classN)}>
