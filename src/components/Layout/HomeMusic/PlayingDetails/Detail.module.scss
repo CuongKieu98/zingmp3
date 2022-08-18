@@ -245,10 +245,7 @@
 .media-list{
   margin: 5px;
 }
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}
+
 .item{
   white-space: pre-line;
   color: var(--white);
