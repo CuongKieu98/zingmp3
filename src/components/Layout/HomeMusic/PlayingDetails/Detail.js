@@ -3,9 +3,6 @@ import styles from "./Detail.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../Button/Button";
 import * as Icon from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
-import images from "../../../../assets/images";
-import Media from "../../../Label/Media/Media";
 
 const cx = classNames.bind(styles);
 function Detail({
@@ -14,29 +11,24 @@ function Detail({
   onClick,
   song,
   img,
-  isPlay = false,
   isPlaying = "",
   artist,
   lyrics,
   currentTime,
   onClickEvent,
 }) {
-  const [isOpenBg, setIsOpenBg] = useState();
   const [tabActive, setTabActive] = useState(true);
   let liRef = useRef([]);
   let classActive = tabActive ? "active" : ""
   let classN = isOpen ? "is-open" : "is-close";
+
   const refs = listTrack.reduce((acc, value) => {
     acc[value.id] = createRef();
     return acc;
   }, {});
-  const handleScroll = event => {
-    console.log('scrollTop: ', event.currentTarget.scrollTop);
-    console.log('offsetHeight: ', event.currentTarget.offsetHeight);
-  };
-  useEffect(() =>{
-    
-  })
+
+
+
 
   // const ref2 = useRef()
   return (
@@ -101,7 +93,7 @@ function Detail({
               <div className={cx("lyric-container")}>
                 <div className={cx("column-is-multiline")}>
                   <div className={cx("column-size")}>
-                    <ul className={cx("scroll-content")} onScroll={handleScroll} >
+                    <ul className={cx("scroll-content")}>
                       {lyrics &&
                         lyrics.map((item, index) => {
                           if(liRef.current[index+2]?.className.includes("current")){
