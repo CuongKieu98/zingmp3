@@ -26,8 +26,7 @@ const Card = ({ content, href, img, author = [], subTiltle,onClick }) => {
   };
   return (
     <div className={cx("cnk-card")}>
-      <div>
-    
+      <div>  
           <div className={cx("cnk-card-img")}>
             <figure className={cx("image")}>
               <img className={cx("img-card")} src={img} alt="" />
@@ -51,8 +50,7 @@ const Card = ({ content, href, img, author = [], subTiltle,onClick }) => {
                 />
               </div>
             </div>
-          </div>
-       
+          </div>    
       </div>
       <div className={cx("cnk-card-content")}>
         <h4 className={cx("cnk-card-title")}>

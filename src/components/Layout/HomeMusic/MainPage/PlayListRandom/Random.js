@@ -59,42 +59,17 @@ const Random = ({
     ],
   };
   const RenderTitle = () => {
-    if (isMedia) {
-      return (
-        <div className={cx("media-header")}>
-          <div className={cx("media-left")}>
-            <Link to={content.href}>
-              <div className={cx("media-img")}>
-                <figure className={cx("img")}>
-                  <img src={content.avatar} alt="" title={content.title} />
-                </figure>
-              </div>
-            </Link>
+    return (
+      <h3 className="cnk-playlist-title">
+        {title}
+        {(isRadio || isEvent) && (
+          <div className={cx("cnk-discovery-btn")}>
+            <Icon.ChevronLeft className={cx("cnk-btn-arrow")} ref={refPrev} />
+            <Icon.ChevronRight className={cx("cnk-btn-arrow")} ref={refNext} />
           </div>
-          <div className={cx("media-content")}>
-            <h3 className={cx("subtitle")}>{content.subTitle}</h3>
-            <h3 className={cx("title")}>
-              <Link to={content.href}>{content.title}</Link>
-            </h3>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <h3 className="cnk-playlist-title">
-          {title}
-          {(isRadio || isEvent) && (
-            <div className={cx("cnk-discovery-btn")}>
-              <Icon.ChevronLeft className={cx("cnk-btn-arrow")} ref={refPrev} />
-              <Icon.ChevronRight
-                className={cx("cnk-btn-arrow")}
-                ref={refNext}
-              />
-            </div>
-          )}
-        </h3>
-      );
-    }
+        )}
+      </h3>
+    );
   };
   const RenderCard = () => {
     if (isRadio) {
@@ -146,51 +121,6 @@ const Random = ({
             </div>
           ))}
         </Swiper>
-      );
-    } else if (isCardNm || isMedia) {
-      return (
-        <>
-          <Swiper
-            slidesPerView={3}
-            spaceBetween={10}
-            breakpoints={{
-              640: {
-                slidesPerView: 3,
-                spaceBetween: 10,
-              },
-              768: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 5,
-                spaceBetween: 25,
-              },
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-          >
-            {playLists.map((list) => (
-              <div
-                className={cx("cnk-playlist-item") + " " + cx("is33")}
-                key={list.id}
-              >
-                <SwiperSlide key={list.id}>
-                  <div className={cx("cnk-playlist-normal")}>
-                    <Card
-                      author={list.Author}
-                      content={list.content}
-                      href={list.href}
-                      img={list.img}
-                      subTiltle={list.subTiltle}
-                      onClick={onClick}
-                    />
-                  </div>
-                </SwiperSlide>
-              </div>
-            ))}
-          </Swiper>
-        </>
       );
     } else if (isSinger) {
       return (
