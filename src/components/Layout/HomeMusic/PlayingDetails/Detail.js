@@ -30,6 +30,13 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
+  const handleScroll = event => {
+    console.log('scrollTop: ', event.currentTarget.scrollTop);
+    console.log('offsetHeight: ', event.currentTarget.offsetHeight);
+  };
+  useEffect(() =>{
+    
+  })
 
   // const ref2 = useRef()
   return (
@@ -94,15 +101,16 @@ function Detail({
               <div className={cx("lyric-container")}>
                 <div className={cx("column-is-multiline")}>
                   <div className={cx("column-size")}>
-                    <ul className={cx("scroll-content")}>
+                    <ul className={cx("scroll-content")} onScroll={handleScroll} >
                       {lyrics &&
                         lyrics.map((item, index) => {
-                          if(liRef.current[index+1]?.className.includes("current")){
-                            liRef.current[index].scrollIntoView()
+                          if(liRef.current[index+2]?.className.includes("current")){
+                            liRef.current[index].scrollIntoView({behavior:"smooth"})
                           }
 
                           return (
                             <li
+                              
                               ref={(ref) => (liRef.current[index] = ref)}
                               className={
                                 cx("item") +
