@@ -53,7 +53,7 @@ function PlayingList({ listTrack, onPlay,onPlaying,isPlay}) {
                   {listTrack.map((track,index) => (
                     <div className={cx("item-full-left")} key={track.id}>
                       <Media
-                        index={track.id}
+                        index={index}
                         title={track.title}
                         img={track.img}
                         audio={track.audioSrc}
