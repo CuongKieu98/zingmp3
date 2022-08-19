@@ -5,7 +5,6 @@ import Media from "../../../Label/Media/Media";
 
 const cx = classNames.bind(styles);
 function PlayingList({ listTrack, onPlay,onPlaying,isPlay}) {
-  
   return (
     // move main page
 
@@ -54,7 +53,7 @@ function PlayingList({ listTrack, onPlay,onPlaying,isPlay}) {
                   {listTrack.map((track,index) => (
                     <div className={cx("item-full-left")} key={track.id}>
                       <Media
-                        index={index}
+                        index={track.id}
                         title={track.title}
                         img={track.img}
                         audio={track.audioSrc}

@@ -1,37 +1,39 @@
-import { faChrome, faVuejs } from "@fortawesome/free-brands-svg-icons";
-import { faCircleUp, faUser } from "@fortawesome/free-regular-svg-icons";
-import { BadgeAd, CardText, Flag, InfoCircle, ShieldCheck, Telephone } from "react-bootstrap-icons";
 
-
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
+import LayersClearIcon from '@mui/icons-material/LayersClear';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 const ITEM_SETTING_FOOTER = [
   {
     id: 4,
-    icon: InfoCircle,
+    icon: InfoOutlinedIcon,
     title: "Giới thiệu",
   },
   {
     id: 5,
-    icon: Flag,
+    icon: FlagOutlinedIcon,
     title: "Góp ý",
   },
   {
     id: 6,
-    icon: Telephone,
+    icon: CallOutlinedIcon,
     title: "Liên hệ",
   },
   {
     id: 7,
-    icon: BadgeAd,
+    icon: LayersClearIcon,
     title: "Quảng cáo",
   },
   {
     id: 8,
-    icon: CardText,
+    icon: DescriptionOutlinedIcon,
     title: "Thoả thuận sử dụng",
   },
   {
     id: 9,
-    icon: ShieldCheck,
+    icon: VerifiedUserOutlinedIcon,
     title: "Chính sách bảo mật",
   },
 ];

@@ -1,40 +1,42 @@
 
-import { Broadcast, Eyeglasses, PersonCircle, PieChart, Soundwave } from 'react-bootstrap-icons'
-
+import SpatialAudioOffIcon from '@mui/icons-material/SpatialAudioOff';
+import AlbumIcon from '@mui/icons-material/Album';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import RadioIcon from '@mui/icons-material/Radio';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 const ITEM_SIDEBAR_MAIN = [
     {
         id:1,
-        icon: PersonCircle,
+        icon: SpatialAudioOffIcon,
         text:'Cá Nhân',
-        to:'/mymusic',
+        to:'/',
     },
     {
         id:2,
-        icon: Soundwave,
+        icon: AlbumIcon,
         text:'Khám Phá',
         to:'/',
-        active:'active'
     },
     {
 
         id:3,
-        icon: PieChart,
+        icon: BarChartIcon,
         text:'#zingchart',
         to:'/zing-chart',
         
     },
     {
         id:4,
-        icon: Broadcast,
+        icon: RadioIcon,
         text:'Radio',
         live:'https://zjs.zmdcdn.me/zmp3-desktop/dev/147506/static/media/live-tag.e25dd240.svg',
-        to:'/radio',
+        to:'/',
     },
     {
         id:5,
-        icon: Eyeglasses,
+        icon: ListAltIcon,
         text:'Theo Dõi',
-        to:'the-loai-nghe-si',
+        to:'/',
         iconRight:'none'
     },
 ]

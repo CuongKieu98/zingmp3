@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
-
+import SpatialAudioOffIcon from '@mui/icons-material/SpatialAudioOff';
 
 const cx = classNames.bind(styles);
 

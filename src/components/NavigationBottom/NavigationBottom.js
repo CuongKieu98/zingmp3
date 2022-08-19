@@ -52,16 +52,6 @@ function NavigationBottom() {
   let currPath = window.location.pathname;
   console.log();
   return (
-    // <BottomNavigation
-    //     showLabels
-    //     value={value}
-    //     onChange={handleChange}
-    //   >
-    //     {menuItems.map(({ id, icon, href, label}) => (
-    //        <BottomNavigationAction key={id} label={label} icon={icon} value={href} />
-    //     ))}
-
-    //   </BottomNavigation>
     <div className={cx("bottom-navigation")}>
       {menuItems.map(({ id, icon, href, label }) => (
         <Link

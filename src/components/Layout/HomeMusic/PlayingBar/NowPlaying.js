@@ -3,19 +3,32 @@ import styles from "./NowPlaying.module.scss";
 import classNames from "classnames/bind";
 import InfoAudio from "../../../Card/InfoAudio/InfoAudio";
 import Button from "../../../Button/Button";
-import * as Icon from "react-bootstrap-icons";
 import MuiAlert from "@mui/material/Alert";
-
 import PlayingList from "../PlayingList/PlayingList";
-
 import Detail from "../PlayingDetails/Detail";
 import NavigationBottom from "../../../NavigationBottom/NavigationBottom";
-import { Slide, Slider, Snackbar } from "@mui/material";
-import stringUtils from "../../../../utils/stringUtils";
+import { Slider, Snackbar } from "@mui/material";
+
+import Buttonn from "../../../Buttonn/Button";
+//
+import ClosedCaptionOffOutlinedIcon from '@mui/icons-material/ClosedCaptionOffOutlined';
+import SlideshowOutlinedIcon from '@mui/icons-material/SlideshowOutlined';
+import AirplayOutlinedIcon from '@mui/icons-material/AirplayOutlined';
+import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined';
+import VolumeOffOutlinedIcon from '@mui/icons-material/VolumeOffOutlined';
+import QueueMusicOutlinedIcon from '@mui/icons-material/QueueMusicOutlined';
+import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import RepeatIcon from '@mui/icons-material/Repeat';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 const cx = classNames.bind(styles);
+
 function NowPlaying({ tracks }) {
   const audioPlayer = useRef();
   const [currentTime, setCurrentTime] = useState(0);
@@ -31,7 +44,7 @@ function NowPlaying({ tracks }) {
   const widthRef = useRef();
   let classBar = sibarRight ? "show" : "";
   let responeNav = openClass ? "isShow" : "";
-  //handleBtn
+  //handle play
   const handlePlay = (e) => {
     if (isPlay === false && seekValue === 100) {
       //when pause at max time => next audio
@@ -46,10 +59,12 @@ function NowPlaying({ tracks }) {
     audioPlayer.current.play();
     setIsPlay(true);
   };
+  //pause
   const handlePause = (e) => {
     audioPlayer.current.pause();
     setIsPlay(false);
   };
+  //next
   const handleNext = (e) => {
     if (audioIdx < tracks.length - 1) {
       setAudioIdx(audioIdx + 1);
@@ -60,9 +75,8 @@ function NowPlaying({ tracks }) {
     }
     handlePlay();
   };
-  const handleClickMess = () => {
-    setOpenMess(!openMess);
-  };
+
+  //prev
   const handlePrev = (e) => {
     if (audioIdx - 1 < 0) {
       setAudioIdx(tracks.length - 1);
@@ -73,6 +87,7 @@ function NowPlaying({ tracks }) {
     }
     handlePlay();
   };
+  //handle volume
   const handleMuteOn = (e) => {
     if (volumeAudio > 0) {
       setVolumeVal(audioPlayer.current?.volume);
@@ -83,6 +98,10 @@ function NowPlaying({ tracks }) {
       setVolumeAudio(audioPlayer.current.volume);
     }
   };
+  //alert
+  const handleClickMess = () => {
+    setOpenMess(!openMess);
+  };
 
   useEffect(() => {
     if (!isPlay) {
@@ -90,7 +109,9 @@ function NowPlaying({ tracks }) {
     } else {
       audioPlayer.current.play();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audioIdx, tracks]);
+
   useEffect(() => {
     if (seekValue === 100 && isPlay) {
       //when audio max time and play = true => auto next
@@ -116,12 +137,14 @@ function NowPlaying({ tracks }) {
     }
     return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
   }
+
   const checkNaN = (val) => {
     if (isNaN(val)) {
       return 0;
     }
     return val;
   };
+
   const onPlaying = () => {
     setCurrentTime(convertSeconds(audioPlayer.current.currentTime));
     setSeekValue(
@@ -130,19 +153,23 @@ function NowPlaying({ tracks }) {
         100
     );
   };
+
   const onLoad = () => {
     setTimeout(() => {
       setCurrentTime(convertSeconds(audioPlayer.current?.currentTime));
     }, 1000);
   };
+
   const handleChangeVolume = (val) => {
     setVolumeAudio(val);
     audioPlayer.current.volume = val;
   };
+
   const handleProgress = (event, value) => {
     let compute = (value * audioPlayer.current.duration) / 100;
     audioPlayer.current.currentTime = compute;
   };
+
   const handleChooseTrack = (idx, isPause = false) => {
     if (isPause) {
       handlePause();
@@ -170,6 +197,7 @@ function NowPlaying({ tracks }) {
       setLyricSong("");
     }
   };
+
   return (
     <div className={cx("now-playing-bar")}>
       <Snackbar
@@ -241,7 +269,7 @@ function NowPlaying({ tracks }) {
             <div className={cx("level-item")}>
               <div className={cx("action")}>
                 <Button
-                  setIcon={Icon.Shuffle}
+                  setIcon={ShuffleOutlinedIcon}
                   className={"is36min"}
                   title={"Tắt phát ngẫu nhiên"}
                   customIcon={"is16"}
@@ -249,22 +277,22 @@ function NowPlaying({ tracks }) {
                 />
                 <Button
                   disabled={audioIdx === 0 ? true : false}
-                  setIcon={Icon.SkipStartFill}
+                  setIcon={SkipPreviousIcon}
                   onClick={handlePrev}
                   className={"is36"}
                 />
                 <Button
-                  setIcon={!isPlay ? Icon.PlayFill : Icon.PauseFill}
+                  setIcon={!isPlay ? PlayArrowIcon : PauseIcon}
                   onClick={!isPlay ? handlePlay : handlePause}
                   className={"is40"}
                 />
                 <Button
-                  setIcon={Icon.SkipEndFill}
+                  setIcon={SkipNextIcon}
                   className={"is36"}
                   onClick={handleNext}
                 />
                 <Button
-                  setIcon={Icon.ArrowRepeat}
+                  setIcon={RepeatIcon}
                   className={"is36min"}
                   title={"Phát lại tất cả"}
                   show={openClass ? "" : "isShow"}
@@ -303,17 +331,17 @@ function NowPlaying({ tracks }) {
           </div>
           <div className={cx("player-controls-right")}>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
-              <Button
-                setIcon={Icon.Youtube}
-                className={"is36"}
-                title={"Xem MV"}
+              <Buttonn
+                icon={SlideshowOutlinedIcon}
+                tooltip={"Xem MV"}
+                className="is20"
               />
             </div>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
-              <Button
-                setIcon={Icon.JustifyRight}
-                className={"is36"}
-                title={"Xem lời bài hát"}
+              <Buttonn
+                icon={ClosedCaptionOffOutlinedIcon}
+                className="is20"
+                tooltip={"Xem lời bài hát"}
                 onClick={(e) => {
                   if (
                     tracks[audioIdx].lyric &&
@@ -328,17 +356,17 @@ function NowPlaying({ tracks }) {
               />
             </div>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
-              <Button
-                setIcon={Icon.Pip}
-                className={"is36"}
-                title={"Chế độ cửa sổ"}
+              <Buttonn
+                icon={AirplayOutlinedIcon}
+                className={"is20"}
+                tooltip={"Chế độ cửa sổ"}
               />
             </div>
             {/* <ControlAudio /> */}
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
-              <Button
-                setIcon={volumeAudio > 0 ? Icon.VolumeUp : Icon.VolumeMute}
-                className={"is36"}
+              <Buttonn
+                icon={volumeAudio > 0 ? VolumeUpOutlinedIcon : VolumeOffOutlinedIcon}
+                className={"is20"}
                 onClick={(e) => handleMuteOn(e)}
               />
             </div>
@@ -359,10 +387,10 @@ function NowPlaying({ tracks }) {
               className={cx("level-item-right") + " " + cx("is-narrow")}
               onClick={() => setSibarRight(!sibarRight)}
             >
-              <Button
-                setIcon={Icon.MusicNoteList}
-                title={"Danh sách phát"}
-                className={"is36"}
+              <Buttonn
+                icon={QueueMusicOutlinedIcon}
+                tooltip={"Danh sách phát"}
+                className={"is20"}
               />
             </div>
           </div>

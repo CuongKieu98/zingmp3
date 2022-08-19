@@ -14,6 +14,14 @@ const musicReducer = (state=initialState,action) => {
                 ...state,
                 playlists: action.payload
             }
+        case "ADD_NEW_PLAYLIST":
+            return {
+                ...state,
+                playlist:[
+                    ...state.playlists,
+                     action.payload
+                ]
+            }
         case "SET_CURR_PLAYING":
             return {
                 ...state,

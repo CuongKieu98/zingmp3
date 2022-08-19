@@ -31,7 +31,7 @@ function Media({
 }) {
   const dispatch = useDispatch();
   let classRank = "";
-  const quatity = 128;
+  
   switch (rank) {
     case 1:
       classRank = "is-top1";

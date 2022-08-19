@@ -5,7 +5,7 @@ import styles from "./CardInfo.module.scss";
 import TextDisplay from '../Common/TextDisplay';
 
 const cx = classNames.bind(styles);
-function CardInfo({ author, name, img }) {
+function CardInfo({ author, name }) {
   return (
     <div className={cx("card-info")}>
         <TextDisplay className="title-wrapper" text={name} />
