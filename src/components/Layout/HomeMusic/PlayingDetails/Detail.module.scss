@@ -165,9 +165,9 @@
   animation-timing-function: linear;
 }
 .img-48.border {
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
+  -webkit-animation: spin 10s linear infinite;
+  -moz-animation: spin 10s linear infinite;
+  animation: spin 10s linear infinite;
   border-radius: 999px;
   transition: 0.5s;
 }
@@ -283,14 +283,23 @@
 }
 .scroll-content{
   font-size: 42px;
-  max-height: 500px;
+
     overflow: hidden auto;
     text-align: center;
     position: relative;
     -webkit-mask-image: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.8) 10%,#fff 25%,#fff 75%,hsla(0,0%,100%,.8) 90%,hsla(0,0%,100%,0));
 }
+
 @media screen and (max-width:768px) {
   .scroll-content{
     font-size: 24px;
+  }
+}
+@media screen and (max-width:640px) {
+  .scroll-content{
+    list-style-type: none;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 35px;
   }
 }
