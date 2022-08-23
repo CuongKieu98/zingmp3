@@ -268,33 +268,33 @@ function NowPlaying({ tracks }) {
           <div className={cx("player-controls-center")}>
             <div className={cx("level-item")}>
               <div className={cx("action")}>
-                <Button
-                  setIcon={ShuffleOutlinedIcon}
-                  className={"is36min"}
-                  title={"Tắt phát ngẫu nhiên"}
-                  customIcon={"is16"}
+                <Buttonn
+                  icon={ShuffleOutlinedIcon}
+                  tooltip={"Tắt phát ngẫu nhiên"}
+                  customIcon={"is20"}
                   show={openClass ? "" : "isShow"}
                 />
-                <Button
+                <Buttonn
                   disabled={audioIdx === 0 ? true : false}
-                  setIcon={SkipPreviousIcon}
+                  icon={SkipPreviousIcon}
                   onClick={handlePrev}
-                  className={"is36"}
+                  customIcon={"is20"}
                 />
-                <Button
-                  setIcon={!isPlay ? PlayArrowIcon : PauseIcon}
+                <Buttonn
+                  icon={!isPlay ? PlayArrowIcon : PauseIcon}
                   onClick={!isPlay ? handlePlay : handlePause}
-                  className={"is40"}
+                  customIcon={"is25"}
+                  className={"border"}
                 />
-                <Button
-                  setIcon={SkipNextIcon}
-                  className={"is36"}
+                <Buttonn
+                  icon={SkipNextIcon}
+                  customIcon={"is20"}
                   onClick={handleNext}
                 />
-                <Button
-                  setIcon={RepeatIcon}
-                  className={"is36min"}
-                  title={"Phát lại tất cả"}
+                <Buttonn
+                  icon={RepeatIcon}
+                  customIcon={"is20"}
+                  tooltip={"Phát lại tất cả"}
                   show={openClass ? "" : "isShow"}
                 />
               </div>
@@ -334,13 +334,13 @@ function NowPlaying({ tracks }) {
               <Buttonn
                 icon={SlideshowOutlinedIcon}
                 tooltip={"Xem MV"}
-                className="is20"
+                customIcon="is20"
               />
             </div>
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
               <Buttonn
                 icon={ClosedCaptionOffOutlinedIcon}
-                className="is20"
+                customIcon="is20"
                 tooltip={"Xem lời bài hát"}
                 onClick={(e) => {
                   if (
@@ -358,7 +358,7 @@ function NowPlaying({ tracks }) {
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
               <Buttonn
                 icon={AirplayOutlinedIcon}
-                className={"is20"}
+                customIcon={"is20"}
                 tooltip={"Chế độ cửa sổ"}
               />
             </div>
@@ -366,7 +366,7 @@ function NowPlaying({ tracks }) {
             <div className={cx("level-item-right") + " " + cx("is-narrow")}>
               <Buttonn
                 icon={volumeAudio > 0 ? VolumeUpOutlinedIcon : VolumeOffOutlinedIcon}
-                className={"is20"}
+                customIcon={"is20"}
                 onClick={(e) => handleMuteOn(e)}
               />
             </div>
@@ -390,7 +390,7 @@ function NowPlaying({ tracks }) {
               <Buttonn
                 icon={QueueMusicOutlinedIcon}
                 tooltip={"Danh sách phát"}
-                className={"is20"}
+                customIcon={"is20"}
               />
             </div>
           </div>

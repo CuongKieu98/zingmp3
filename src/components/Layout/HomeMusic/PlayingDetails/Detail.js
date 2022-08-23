@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, createRef } from "react";
 import styles from "./Detail.module.scss";
 import classNames from "classnames/bind";
-import Button from "../../../Button/Button";
+import Button from "../../../Buttonn/Button";
 import * as Icon from "react-bootstrap-icons";
 
 const cx = classNames.bind(styles);
@@ -19,7 +19,8 @@ function Detail({
 }) {
   const [tabActive, setTabActive] = useState(true);
   let liRef = useRef([]);
-  let classActive = tabActive ? "active" : ""
+  let classActive1 = tabActive ? "is-active" : "";
+  let classActive2 = tabActive ? "" : "is-active"
   let classN = isOpen ? "is-open" : "is-close";
 
   const refs = listTrack.reduce((acc, value) => {
@@ -45,7 +46,7 @@ function Detail({
             </div>
             <div className={cx("tabs")}>
               <span
-                className={cx("tab-item") + " " +cx(classActive)}
+                className={cx("tab-item") + " " +cx(classActive1)}
                 onClick={(e) => {
                   setTabActive(true);
                 }}
@@ -53,7 +54,7 @@ function Detail({
                 Đang phát
               </span>
               <span
-                className={cx("tab-item") + " " +cx(classActive)}
+                className={cx("tab-item") + " " +cx(classActive2)}
                 onClick={(e) => {
                   setTabActive(false);
                   onClickEvent()
@@ -64,8 +65,8 @@ function Detail({
             </div>
             <div className={cx("left")}>
               <Button
-                setIcon={Icon.ChevronDown}
-                className={"is50"}
+                icon={Icon.ChevronDown}
+                customIcon={"is25"}
                 onClick={onClick}
               />
             </div>
@@ -85,6 +86,39 @@ function Detail({
                         <div className={cx("title")}>{song}</div>
                         <div className={cx("sub-title")}>{artist}</div>
                       </div>
+                      <div className={cx("lyric-container")}>
+                <div className={cx("column-is-multiline")}>
+                  <div className={cx("column-size")}>
+                    <ul className={cx("scroll-content")}>
+                      {lyrics &&
+                        lyrics.map((item, index) => {
+                          if(liRef.current[index]?.className.includes("current")){
+                            liRef.current[index].scrollIntoView({behavior:"smooth"})
+                          }
+
+                          return (
+                            <li
+                              
+                              ref={(ref) => (liRef.current[index] = ref)}
+                              className={
+                                cx("item") +
+                                " " +
+                                cx(
+                                  item[0].time.slice(0, -3) <= currentTime
+                                    ? "current"
+                                    : ""
+                                )
+                              }
+                              key={index}
+                            >
+                              {item[0].lyric}
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </div>
+                </div>
+              </div>
                     </div>
                   </div>
                 </div>

@@ -10,6 +10,7 @@ function Button({
   onClick,
   placement = "top",
   className,
+  customIcon,
   disabled=false,
 }) {
   let IconComp = icon;
@@ -17,13 +18,13 @@ function Button({
     <>
       {tooltip ? (
         <Tooltip title={tooltip} arrow placement={placement}>
-          <IconButton disabled={disabled} onClick={onClick} className={cx("button")}>
-            <IconComp className={cx("icon") + " " + cx(className)} />
+          <IconButton disabled={disabled} onClick={onClick} className={cx("button") + " " + cx(className)}>
+            <IconComp className={cx("icon") + " " + cx(customIcon)} />
           </IconButton>
         </Tooltip>
       ) : (
-        <IconButton disabled={disabled} onClick={onClick} className={cx("button")}>
-          <IconComp className={cx("icon") + " " + cx(className)} />
+        <IconButton disabled={disabled} onClick={onClick} className={cx("button") + " " + cx(className)}>
+          <IconComp className={cx("icon") + " " + cx(customIcon)} />
         </IconButton>
       )}
     </>
