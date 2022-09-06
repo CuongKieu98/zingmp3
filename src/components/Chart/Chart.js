@@ -1,31 +1,26 @@
-import { Container } from "@mui/system";
+
 import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-import axios from "axios";
+
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import styles from "./Chart.module.scss";
-import Media from "../Media/Media";
+
 import TextDisplay from "../Common/TextDisplay";
 import GroupChart from "../GroupChart/GroupChart";
-import request from "../../utils/request";
-import getTopChart from "../../utils/apiMusic";
+
 import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
+import { getCharthome } from "../../utils/apiMusics";
 const cx = classNames.bind(styles);
 function Chart({ className }) {
   const [chart, setChart] = useState([]);
   const datasize = 3;
 
   useEffect(() => {
-    axios
-      .request(getTopChart)
-      .then(function (response) {
-        let data = response.data.data.song.slice(0, datasize);
-        setChart(data);
+      getCharthome().then(res =>{
+        setChart(res.data.RTChart.items?.slice(0, datasize))
+        console.log(res.data);
       })
-      .catch(function (error) {
-        console.error(error);
-      });
   }, []);
 
   return (
@@ -37,12 +32,12 @@ function Chart({ className }) {
         <div className={cx("list-chart-column")}>
           {chart.map((item, index) => (
             <GroupChart
-              key={item.id}
-              rank={item.position}
-              author={item.artists_names}
+              key={item.encodeId}
+              rank={index +1}
+              author={item.artistsNames}
               name={item.title}
               img={item.thumbnail}
-              code={item.code}
+              code={item.encodeId}
               duration={item.duration}
               right={RIGHT_ACTIONS.percent}
               className={"image-is40"}

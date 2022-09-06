@@ -9,6 +9,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { Button } from "@mui/material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CircularProgress from "@mui/material/CircularProgress";
+import { getCharthome } from "../../utils/apiMusics";
 const cx = classNames.bind(styles);
 
 function ChartPage() {
@@ -22,21 +23,16 @@ function ChartPage() {
     };
   }, []);
   useEffect(() => {
-    axios
-      .request(getTopChart)
-      .then(function (response) {
-        let data = response.data.data.song.slice(0, datasize);
-        setChart(data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, [datasize]);
+    getCharthome().then(res =>{
+      setChart(res.data.RTChart.items)
+      console.log(res.data.RTChart.items)
+    })
+  }, []);
 
 
   const handleClick = () => {
     if (!loading) {
-      setDatasize(50);
+      setDatasize(100);
       setLoading(true);
       timer.current = window.setTimeout(() => {
         setLoading(false);
@@ -54,14 +50,14 @@ function ChartPage() {
               </div>
           </div>
           {chart.length !== 0 ? (
-            chart.map((item, index) => (
+            chart.slice(0,datasize).map((item, index) => (
               <GroupChart
-                key={item.id}
-                rank={item.position}
+                key={item.encodeId}
+                rank={index +1}
                 rankStatus={item.rank_status}
-                author={item.artists_names}
+                author={item.artistsNames}
                 name={item.title}
-                code={item.code}
+                code={item.encodeId}
                 img={item.thumbnail}
                 right={RIGHT_ACTIONS.timeAction}
                 duration={item.duration}
@@ -72,7 +68,7 @@ function ChartPage() {
           ) : (
             <Skeleton height={100} />
           )}
-          {chart.length < 20 && chart.length !== 0 && (
+          {chart.slice(0,datasize).length < 20 && chart.slice(0,datasize).length !== 0 && (
             <div className={cx("is-center")}>
               <Button className={cx("button-more")} onClick={handleClick}>
                 {loading ? (

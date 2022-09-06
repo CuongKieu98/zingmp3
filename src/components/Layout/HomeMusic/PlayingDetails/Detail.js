@@ -3,6 +3,7 @@ import styles from "./Detail.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../Buttonn/Button";
 import * as Icon from "react-bootstrap-icons";
+import { getTop100 } from "../../../../utils/apiMusics";
 
 const cx = classNames.bind(styles);
 function Detail({
@@ -27,8 +28,6 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
-
-
 
 
   // const ref2 = useRef()

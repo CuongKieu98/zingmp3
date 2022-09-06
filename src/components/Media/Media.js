@@ -16,6 +16,7 @@ import axios from "axios";
 
 import stringUtils from "../../utils/stringUtils";
 import { addPlaylist } from "../../redux/actions/actions";
+import { getInfoSong, getSong } from "../../utils/apiMusics";
 const cx = classNames.bind(styles);
 
 function Media({
@@ -46,40 +47,33 @@ function Media({
       classRank = "is-top100";
       break;
   }
-  const handleAddPlaylist = () => {
+  const handleAddPlaylist = async () => {
     let data = {};
     let source = "";
-    axios
-      .get(`https://mp3.zing.vn/xhr/media/get-source`, {
-        params: {
-          type: "audio",
-          key: code,
+    await getSong(code).then(res =>{
+      source = res.data[128]
+    })
+    await getInfoSong(code).then(res =>{
+      console.log(res.data);
+      data = res.data;
+    })
+    dispatch(
+      addPlaylist([
+        {
+          id: data.encodeId,
+          title: data.title,
+          name: data.title,
+          artists_names: data.artistsNames,
+          code: data.encodeId,
+          audioSrc: source,
+          duration: data.duration,
+          img: data.thumbnailM,
+          rank_status: "stand",
+          lyric:data.lyric,
+          position: 2,
         },
-      })
-      .then((res) => {
-        data = res.data.data;
-        source = data.source["128"];
-        dispatch(
-          addPlaylist([
-            {
-              id: data.id,
-              title: data.title,
-              name: data.name,
-              artists_names: data.artists_names,
-              code: data.code,
-              audioSrc: source,
-              duration: data.duration,
-              img: data.thumbnail,
-              rank_status: "stand",
-              lyric:data.lyric,
-              position: 2,
-            },
-          ])
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      ])
+    );
   };
   return (
     <div className={cx("media")} onClick={handleAddPlaylist}>
