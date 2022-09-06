@@ -10,12 +10,22 @@ import { Button } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getCharthome } from "../../utils/apiMusics";
+
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import TabListItem from "../../components/TabList/TabListItem";
 const cx = classNames.bind(styles);
 
 function ChartPage() {
   const [chart, setChart] = useState([]);
   const [datasize, setDatasize] = useState(10);
   const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("vn");
+  const [chartWeek, setChartWeek] = useState([]);
+  const [itemChartWeek, setItemChartWeek] = useState([]);
   const timer = useRef();
   useEffect(() => {
     return () => {
@@ -25,9 +35,15 @@ function ChartPage() {
   useEffect(() => {
     getCharthome().then((res) => {
       setChart(res.data.RTChart.items);
+      setChartWeek(res.data.weekChart);
+      setItemChartWeek(res.data.weekChart.vn);
     });
   }, []);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setItemChartWeek(chartWeek[newValue]);
+  };
   const handleClick = () => {
     if (!loading) {
       setDatasize(100);
@@ -66,13 +82,13 @@ function ChartPage() {
                 />
               ))
           ) : (
-            <>
+            <div className="loading-skeleton">
+              <Skeleton animation="wave" height={100} />
               <Skeleton height={100} />
+              <Skeleton animation="wave" height={100} />
               <Skeleton height={100} />
-              <Skeleton height={100} />
-              <Skeleton height={100} />
-              <Skeleton height={100} />
-            </>
+              <Skeleton animation="wave" height={100} />
+            </div>
           )}
           {chart.slice(0, datasize).length < 20 &&
             chart.slice(0, datasize).length !== 0 && (
@@ -89,6 +105,46 @@ function ChartPage() {
                 </Button>
               </div>
             )}
+
+          <div className={cx("selection-header")}>
+            <div className={cx("chart-title")}>
+              <h3 className={cx("title")}>Bảng Xếp Hạng Tuần</h3>
+              <PlayArrowIcon fontSize="large" className={cx("btn-play")} />
+            </div>
+          </div>
+          <TabContext value={value}>
+            <TabList
+              onChange={handleChange}
+              aria-label="lab API tabs example"
+              textColor="inherit"
+              indicatorColor="secondary"
+            >
+              <Tab
+                label="VIỆT NAM"
+                value="vn"
+                sx={{ fontSize: "1.875rem", color: "white" }}
+              />
+              <Tab
+                label="US-UK"
+                value="us"
+                sx={{ fontSize: "1.875rem", color: "white" }}
+              />
+              <Tab
+                label="K-POP"
+                value="korea"
+                sx={{ fontSize: "1.875rem", color: "white" }}
+              />
+            </TabList>
+            <TabPanel value="vn" sx={{ height: "80%", padding: "0px" }}>
+              <TabListItem data={itemChartWeek} />
+            </TabPanel>
+            <TabPanel value="us" sx={{ height: "80%", padding: "0px" }}>
+              <TabListItem data={itemChartWeek} />
+            </TabPanel>
+            <TabPanel value="korea" sx={{ height: "80%", padding: "0px" }}>
+              <TabListItem data={itemChartWeek} />
+            </TabPanel>
+          </TabContext>
         </main>
       </div>
     </div>
