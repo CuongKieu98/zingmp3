@@ -25,7 +25,6 @@ function ChartPage() {
   useEffect(() => {
     getCharthome().then((res) => {
       setChart(res.data.RTChart.items);
-      console.log(res.data.RTChart.items);
     });
   }, []);
 

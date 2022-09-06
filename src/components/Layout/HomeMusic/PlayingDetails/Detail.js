@@ -31,15 +31,12 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
-  const handleGetLyric = async (code) =>{
-    if(lyricSong !== ""){
-      return
-    }
-    await getLyric(code).then(res =>{
-      readText(res.data.file)
+  useEffect(() =>{
+    getLyric(code).then(res =>{
+      readText(res.data?.file)
     })
-    console.log(lyricSong)
-  }
+  },[code])
+ 
   const readText = (filePath, callBack) => {
     if (filePath && filePath !== null) {
       fetch(filePath)
@@ -86,7 +83,6 @@ function Detail({
                 onClick={(e) => {
                   setTabActive(false);
                   onClickEvent()
-                  handleGetLyric(code)
                 }}
               >
                 Lời bài hát
