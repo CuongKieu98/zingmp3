@@ -8,7 +8,6 @@ import { getLyric } from "../../../../utils/apiMusics";
 
 const cx = classNames.bind(styles);
 function Detail({
-  listTrack,
   isOpen,
   onClick,
   song,
@@ -27,10 +26,6 @@ function Detail({
   let classActive2 = tabActive ? "" : "is-active"
   let classN = isOpen ? "is-open" : "is-close";
 
-  const refs = listTrack.reduce((acc, value) => {
-    acc[value.id] = createRef();
-    return acc;
-  }, {});
   useEffect(() =>{
     getLyric(code).then(res =>{
       readText(res.data?.file)

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 
 import { IconButton } from "@mui/material";
-import images from "../../assets/playlistImg";
+import images from "../../assets/images";
+
 import styles from "./Media.module.scss";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -30,9 +31,11 @@ function Media({
   className,
   code,
 }) {
+  const isLoading = false;
+  const [loading, setLoading] = useState(isLoading);
   const dispatch = useDispatch();
   let classRank = "";
-  
+
   switch (rank) {
     case 1:
       classRank = "is-top1";
@@ -48,15 +51,17 @@ function Media({
       break;
   }
   const handleAddPlaylist = async () => {
+    setLoading(!isLoading);
     let data = {};
     let source = "";
-    await getSong(code).then(res =>{
-      source = res.data[128]
-    })
-    await getInfoSong(code).then(res =>{
+    await getSong(code).then((res) => {
+      source = res.data[128];
+    });
+    await getInfoSong(code).then((res) => {
       console.log(res.data);
       data = res.data;
-    })
+      setLoading(isLoading);
+    });
     dispatch(
       addPlaylist([
         {
@@ -69,7 +74,7 @@ function Media({
           duration: data.duration,
           img: data.thumbnailM,
           rank_status: "stand",
-          lyric:data.lyric,
+          lyric: data.lyric,
           position: 2,
         },
       ])
@@ -77,7 +82,7 @@ function Media({
   };
   return (
     <div className={cx("media")} onClick={handleAddPlaylist}>
-      <div className={cx("media-left")} >
+      <div className={cx("media-left")}>
         <div className={cx("song-prefix")}>
           <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
           {right === RIGHT_ACTIONS.timeAction && (
@@ -96,14 +101,16 @@ function Media({
           <figure className={cx(className)} title="aaa">
             <img src={img} alt={name} />
           </figure>
-          <div className="opacity"></div>
-          <div className={cx("action-container")}>
-            <div className={cx("action")}>
-              <IconButton>
-                <PlayArrowIcon />
-              </IconButton>
-            </div>
-          </div>
+          {loading && (
+            <>
+              <div className={cx("opacity")}></div>
+              <div className={cx("action-container")}>
+                <div className={cx("action")}>
+                  <img src={images.spiner} alt="" />
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <CardInfo author={author} name={name} />
       </div>
