@@ -227,6 +227,7 @@ function NowPlaying({ tracks }) {
         isPlay={isPlay}
         song={tracks[audioIdx].title}
         img={tracks[audioIdx].img}
+        code={tracks[audioIdx].code}
         artist={tracks[audioIdx].artists_names}
         isOpen={openClass}
         onClick={() => setOpenClass(false)}

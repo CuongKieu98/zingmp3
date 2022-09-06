@@ -3,7 +3,8 @@ import styles from "./Detail.module.scss";
 import classNames from "classnames/bind";
 import Button from "../../../Buttonn/Button";
 import * as Icon from "react-bootstrap-icons";
-import { getTop100 } from "../../../../utils/apiMusics";
+import { getLyric } from "../../../../utils/apiMusics";
+
 
 const cx = classNames.bind(styles);
 function Detail({
@@ -17,8 +18,10 @@ function Detail({
   lyrics,
   currentTime,
   onClickEvent,
+  code
 }) {
   const [tabActive, setTabActive] = useState(true);
+  const [lyricSong,setLyricSong] = useState("");
   let liRef = useRef([]);
   let classActive1 = tabActive ? "is-active" : "";
   let classActive2 = tabActive ? "" : "is-active"
@@ -28,7 +31,33 @@ function Detail({
     acc[value.id] = createRef();
     return acc;
   }, {});
-
+  const handleGetLyric = async (code) =>{
+    if(lyricSong !== ""){
+      return
+    }
+    await getLyric(code).then(res =>{
+      readText(res.data.file)
+    })
+    console.log(lyricSong)
+  }
+  const readText = (filePath, callBack) => {
+    if (filePath && filePath !== null) {
+      fetch(filePath)
+        .then((response) => response.text())
+        .then((data) => {
+          let output = data.split("\n");
+          let dataLrc = output.map((text, index) => [
+            {
+              time: text.replace(/(^.*\[|\].*$)/g, ""),
+              lyric: text.replace(/ *\[[^\]]*]/, "").trim(),
+            },
+          ]);
+          setLyricSong(dataLrc);
+        });
+    } else {
+      setLyricSong("");
+    }
+  };
 
   // const ref2 = useRef()
   return (
@@ -57,6 +86,7 @@ function Detail({
                 onClick={(e) => {
                   setTabActive(false);
                   onClickEvent()
+                  handleGetLyric(code)
                 }}
               >
                 Lời bài hát
@@ -89,8 +119,8 @@ function Detail({
                 <div className={cx("column-is-multiline")}>
                   <div className={cx("column-size")}>
                     <ul className={cx("scroll-content")}>
-                      {lyrics &&
-                        lyrics.map((item, index) => {
+                      {lyricSong &&
+                        lyricSong.map((item, index) => {
                           if(liRef.current[index]?.className.includes("current")){
                             liRef.current[index].scrollIntoView({behavior:"smooth"})
                           }
@@ -127,8 +157,8 @@ function Detail({
                 <div className={cx("column-is-multiline")}>
                   <div className={cx("column-size")}>
                     <ul className={cx("scroll-content")}>
-                      {lyrics &&
-                        lyrics.map((item, index) => {
+                      {lyricSong &&
+                        lyricSong.map((item, index) => {
                           if(liRef.current[index+2]?.className.includes("current")){
                             liRef.current[index].scrollIntoView({behavior:"smooth"})
                           }
