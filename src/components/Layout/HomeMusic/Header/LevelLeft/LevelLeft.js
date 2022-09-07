@@ -1,4 +1,4 @@
-import { useRef, useState,useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import { ArrowLeft, ArrowRight, Search, X, XLg } from "react-bootstrap-icons";
 import Tippy from "@tippyjs/react/headless";
@@ -7,8 +7,9 @@ import LabelSong from "../../../../Label/LabelSong/LabelSong";
 import styles from "../Header.module.scss";
 import classNames from "classnames/bind";
 import { useDebounce } from "~/hooks";
-import {SearchData} from "../../../../../utils/apiMusics"
+import { SearchData } from "../../../../../utils/apiMusics";
 import images from "../../../../../assets/images";
+import Media from "../../../../Media/Media";
 
 const cx = classNames.bind(styles);
 function LevelLeft() {
@@ -27,17 +28,16 @@ function LevelLeft() {
       return;
     }
     setLoading(true);
-      SearchData(debounced)
+    SearchData(debounced)
       .then((res) => {
-        setSearchResult(res.data.songs.slice(0,8));
+        setSearchResult(res.data.songs.slice(0, 8));
         setLoading(false);
       })
       .catch(() => {
         setLoading(false);
       });
-      
   }, [debounced]);
-  console.log(searchResult);
+
   const handleClear = () => {
     setSearchValue("");
     inputRef.current.focus();
@@ -75,11 +75,12 @@ function LevelLeft() {
                     key={list.encodeId}
                     className={cx("success-item-li") + " " + cx("success-item")}
                   >
-                    <LabelSong
+                    <Media
                       code={list.encodeId}
-                      title={list.title}
+                      name={list.title}
                       img={list.thumbnail}
-                      auths={list.artistsNames}
+                      author={list.artistsNames}
+                      className={"image-is40"}
                     />
                   </li>
                 ))}
@@ -102,16 +103,19 @@ function LevelLeft() {
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </div>
-            {searchValue.length > 0 && (          
-              loading ? (
-                <img src={images.spiner} alt="" className={cx("icon-loading")} />
+            {searchValue.length > 0 &&
+              (loading ? (
+                <img
+                  src={images.spiner}
+                  alt=""
+                  className={cx("icon-loading")}
+                />
               ) : (
                 <XLg
                   className={cx("icon") + " " + cx("icon-close")}
                   onClick={handleClear}
                 />
-              )              
-            )}
+              ))}
           </div>
         </Tippy>
       </form>

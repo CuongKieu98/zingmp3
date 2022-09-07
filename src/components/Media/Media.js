@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux/es/exports";
 import stringUtils from "../../utils/stringUtils";
 import { addPlaylist } from "../../redux/actions/actions";
 import { getInfoSong, getSong } from "../../utils/apiMusics";
+import { htmlToReact } from "../../utils/htmlUtils";
 const cx = classNames.bind(styles);
 
 function Media({
@@ -34,7 +35,44 @@ function Media({
   const [loading, setLoading] = useState(isLoading);
   const dispatch = useDispatch();
   let classRank = "";
-
+  const rightView = () =>{
+    if(duration){
+      return (
+        <div className={cx("action-item")}>
+            <div className={cx("duration")}>
+              {stringUtils.convertSeconds(duration)}
+            </div>
+          </div>
+      )
+    }
+    return (
+      <></>
+    )
+  }
+  const rankView = () =>{
+    if(rank){
+      return (
+      <div className={cx("song-prefix")}>
+          <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
+          {right === RIGHT_ACTIONS.timeAction && (
+            <div className={cx("sort")}>
+              {rankStatus?.toLowerCase() === "up" ? (
+                <ArrowDropUpIcon fontSize="large" sx={{ color: "#6cff72" }} />
+              ) : rankStatus?.toLowerCase() === "down" ? (
+                <ArrowDropDownIcon fontSize="large" sx={{ color: "#e35050" }} />
+              ) : (
+                <HorizontalRuleIcon />
+              )}
+            </div>
+          )}
+        </div>
+      )
+    }
+    return (
+      <></>
+    )
+    
+  }
   switch (rank) {
     case 1:
       classRank = "is-top1";
@@ -84,20 +122,7 @@ function Media({
   return (
     <div className={cx("media")} onClick={handleAddPlaylist}>
       <div className={cx("media-left")}>
-        <div className={cx("song-prefix")}>
-          <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
-          {right === RIGHT_ACTIONS.timeAction && (
-            <div className={cx("sort")}>
-              {rankStatus?.toLowerCase() === "up" ? (
-                <ArrowDropUpIcon fontSize="large" sx={{ color: "#6cff72" }} />
-              ) : rankStatus?.toLowerCase() === "down" ? (
-                <ArrowDropDownIcon fontSize="large" sx={{ color: "#e35050" }} />
-              ) : (
-                <HorizontalRuleIcon />
-              )}
-            </div>
-          )}
-        </div>
+        {rankView()}
         <div className={cx("song-thumb")}>
           <figure className={cx(className)} title="aaa">
             <img src={img} alt={name} />
@@ -121,11 +146,7 @@ function Media({
             <span>40%</span>
           </div>
         ) : (
-          <div className={cx("action-item")}>
-            <div className={cx("duration")}>
-              {stringUtils.convertSeconds(duration)}
-            </div>
-          </div>
+          rightView()
         )}
       </div>
     </div>

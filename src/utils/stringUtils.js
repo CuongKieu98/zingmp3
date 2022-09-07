@@ -1,3 +1,4 @@
+
 export default class stringUtils {
   static stringToColor(string) {
     let hash = 0;
