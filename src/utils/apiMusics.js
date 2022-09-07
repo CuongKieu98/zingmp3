@@ -83,7 +83,7 @@ export function getLyric (param){
     return makeApiCall(option)
 }
 
-export function Search (value){
+export function SearchData (value){
     const url = `${baseUrl}/search?keyword=${value}`
     var option = {
         url:url,

@@ -1,26 +1,43 @@
-import { useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleLeft,
-  faCircleRight,
-  faXmarkCircle,
-} from "@fortawesome/free-regular-svg-icons";
+import { useRef, useState,useEffect } from "react";
+
 import { ArrowLeft, ArrowRight, Search, X, XLg } from "react-bootstrap-icons";
-import { faSearchengin } from "@fortawesome/free-brands-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 import SUCCESS_LIST from "../../../../../const/SUCESS_LIST";
 import LabelSong from "../../../../Label/LabelSong/LabelSong";
 import styles from "../Header.module.scss";
 import classNames from "classnames/bind";
+import { useDebounce } from "~/hooks";
+import {SearchData} from "../../../../../utils/apiMusics"
+import images from "../../../../../assets/images";
 
 const cx = classNames.bind(styles);
 function LevelLeft() {
   const [isShow, setIsShow] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const [isColapse, setIsColapse] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const debounced = useDebounce(searchValue, 800);
 
   const inputRef = useRef();
-
+  useEffect(() => {
+    if (!debounced.trim()) {
+      setSearchResult([]);
+      return;
+    }
+    setLoading(true);
+      SearchData(debounced)
+      .then((res) => {
+        setSearchResult(res.data.songs.slice(0,8));
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+      
+  }, [debounced]);
+  console.log(searchResult);
   const handleClear = () => {
     setSearchValue("");
     inputRef.current.focus();
@@ -34,6 +51,7 @@ function LevelLeft() {
       setIsShow(false);
     }
   };
+
   return (
     <div className={cx("level-left")}>
       <button className={cx("cnk-btn")}>
@@ -52,15 +70,16 @@ function LevelLeft() {
             <ul className={cx("success-list")}>
               <div className={cx("success-list-contet")}>
                 <div className={cx("search-title")}>Gợi ý kết quả</div>
-                {SUCCESS_LIST.map((list) => (
+                {searchResult?.map((list) => (
                   <li
-                    key={list.id}
+                    key={list.encodeId}
                     className={cx("success-item-li") + " " + cx("success-item")}
                   >
                     <LabelSong
-                      title={list.name}
-                      img={list.img}
-                      auths={list.author}
+                      code={list.encodeId}
+                      title={list.title}
+                      img={list.thumbnail}
+                      auths={list.artistsNames}
                     />
                   </li>
                 ))}
@@ -83,11 +102,15 @@ function LevelLeft() {
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </div>
-            {searchValue.length > 0 && (
-              <XLg
-                className={cx("icon") + " " + cx("icon-close")}
-                onClick={handleClear}
-              />
+            {searchValue.length > 0 && (          
+              loading ? (
+                <img src={images.spiner} alt="" className={cx("icon-loading")} />
+              ) : (
+                <XLg
+                  className={cx("icon") + " " + cx("icon-close")}
+                  onClick={handleClear}
+                />
+              )              
             )}
           </div>
         </Tippy>

@@ -19,7 +19,6 @@ function Chart({ className }) {
   useEffect(() => {
       getCharthome().then(res =>{
         setChart(res.data.RTChart.items?.slice(0, datasize))
-        console.log(res.data);
       })
   }, []);
 

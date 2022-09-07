@@ -167,7 +167,7 @@
   color: var(--text-primary);
 }
 .success-list-contet {
-  max-height: calc(100vh - 180px);
+  max-height: calc(100vh - 330px);
   overflow-y: auto;
 }
 .search-title {
@@ -202,7 +202,16 @@
   cursor: pointer;
   color: var(--text-primary);
 }
+.icon-loading {
+  right: 8px;
+  left: auto;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  position: absolute;
 
+  color: var(--text-primary);
+}
 .is-copalse {
   border-radius: 20px 20px 0 0;
   box-shadow: 0 1px 5px 0rgba (0, 0, 0, 0.2);

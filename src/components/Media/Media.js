@@ -12,8 +12,7 @@ import RIGHT_ACTIONS from "../../const/RIGHT_ACTION";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useDispatch } from "react-redux/es/exports";
-import { green } from "@mui/material/colors";
-import axios from "axios";
+
 
 import stringUtils from "../../utils/stringUtils";
 import { addPlaylist } from "../../redux/actions/actions";
@@ -56,6 +55,8 @@ function Media({
     let source = "";
     await getSong(code).then((res) => {
       source = res.data[128];
+    }).catch(err =>{
+      console.log(err);
     });
     await getInfoSong(code).then((res) => {
       console.log(res.data);

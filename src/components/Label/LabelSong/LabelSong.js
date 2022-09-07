@@ -9,9 +9,8 @@ import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function LabelSong({title,img,auths = []}) {
+function LabelSong({title,img,auths}) {
 
-    const author = auths.map(auth => auth.nameAuth).join(', ')
 
   return (
     <div className={cx('media-song')}>
@@ -30,7 +29,7 @@ function LabelSong({title,img,auths = []}) {
             <h3 className={cx('title-media')}>
                 <a href='https://zingmp3.vn/bai-hat/Song-Gio/ZWAEIUUB.html' >{title}</a>
             </h3>
-            <h3 className={cx('subtitle-media')}>{author}</h3>
+            <h3 className={cx('subtitle-media')}>{auths}</h3>
         </div>
     </div>
   )
