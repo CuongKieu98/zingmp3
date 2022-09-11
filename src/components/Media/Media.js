@@ -13,11 +13,10 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useDispatch } from "react-redux/es/exports";
 
-
 import stringUtils from "../../utils/stringUtils";
 import { addPlaylist } from "../../redux/actions/actions";
 import { getInfoSong, getSong } from "../../utils/apiMusics";
-import { htmlToReact } from "../../utils/htmlUtils";
+import { Skeleton } from "@mui/material";
 const cx = classNames.bind(styles);
 
 function Media({
@@ -30,30 +29,36 @@ function Media({
   rankStatus,
   className,
   code,
+  loadingPage,
 }) {
   const isLoading = false;
   const [loading, setLoading] = useState(isLoading);
   const dispatch = useDispatch();
   let classRank = "";
-  const rightView = () =>{
-    if(duration){
+
+  const rightView = () => {
+    if (duration) {
       return (
         <div className={cx("action-item")}>
-            <div className={cx("duration")}>
-              {stringUtils.convertSeconds(duration)}
-            </div>
+          <div className={cx("duration")}>
+            {stringUtils.convertSeconds(duration)}
           </div>
-      )
+        </div>
+      );
     }
-    return (
-      <></>
-    )
-  }
-  const rankView = () =>{
-    if(rank){
+    return <></>;
+  };
+
+  const rankView = () => {
+    if (rank) {
       return (
-      <div className={cx("song-prefix")}>
-          <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
+        <div className={cx("song-prefix")}>
+          {loadingPage ? (
+            <Skeleton animation="wave" width={40} height={40} />
+          ) : (
+            <span className={cx("number") + " " + cx(classRank)}>{rank}</span>
+          )}
+
           {right === RIGHT_ACTIONS.timeAction && (
             <div className={cx("sort")}>
               {rankStatus?.toLowerCase() === "up" ? (
@@ -66,13 +71,10 @@ function Media({
             </div>
           )}
         </div>
-      )
+      );
     }
-    return (
-      <></>
-    )
-    
-  }
+    return <></>;
+  };
   switch (rank) {
     case 1:
       classRank = "is-top1";
@@ -91,13 +93,14 @@ function Media({
     setLoading(!isLoading);
     let data = {};
     let source = "";
-    await getSong(code).then((res) => {
-      source = res.data[128];
-    }).catch(err =>{
-      console.log(err);
-    });
+    await getSong(code)
+      .then((res) => {
+        source = res.data[128];
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     await getInfoSong(code).then((res) => {
-      console.log(res.data);
       data = res.data;
       setLoading(isLoading);
     });
@@ -124,8 +127,8 @@ function Media({
       <div className={cx("media-left")}>
         {rankView()}
         <div className={cx("song-thumb")}>
-          <figure className={cx(className)} title="aaa">
-            <img src={img} alt={name} />
+          <figure className={cx(className)} title="aaa">         
+              <img src={img} alt={name} />
           </figure>
           {loading && (
             <>
@@ -138,7 +141,8 @@ function Media({
             </>
           )}
         </div>
-        <CardInfo author={author} name={name} />
+        
+        <CardInfo author={author} name={name} loading={loadingPage}/>
       </div>
       <div className={cx("media-right")}>
         {right === RIGHT_ACTIONS.percent ? (

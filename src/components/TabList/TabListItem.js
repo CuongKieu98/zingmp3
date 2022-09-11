@@ -1,15 +1,14 @@
 import React from 'react'
 import styles from "./TabList.module.scss";
 import classNames from "classnames/bind";
-import Media from '../Media/Media';
 import GroupChart from '../GroupChart/GroupChart';
 
 
 const cx = classNames.bind(styles);
  
-function TabListItem(data) {
-  let listItem = data.data.items
-  console.log(listItem);
+function TabListItem({data,loading}) {
+
+  let listItem = data?.items
   return (
     <div className={cx("list")}>
         <div className={cx("song-list")}>
@@ -24,6 +23,7 @@ function TabListItem(data) {
                     code={item.encodeId}
                     className={"image-is40"}
                     customClass={"no-background"}
+                    loading={loading}
                     />
                 </div>
             ))}

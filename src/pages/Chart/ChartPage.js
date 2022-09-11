@@ -11,7 +11,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CircularProgress from "@mui/material/CircularProgress";
 import { getCharthome } from "../../utils/apiMusics";
 
-import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
@@ -23,6 +22,7 @@ function ChartPage() {
   const [chart, setChart] = useState([]);
   const [datasize, setDatasize] = useState(10);
   const [loading, setLoading] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(false);
   const [value, setValue] = useState("vn");
   const [chartWeek, setChartWeek] = useState([]);
   const [itemChartWeek, setItemChartWeek] = useState([]);
@@ -33,10 +33,12 @@ function ChartPage() {
     };
   }, []);
   useEffect(() => {
+    setLoadingPage(true);
     getCharthome().then((res) => {
       setChart(res.data.RTChart.items);
       setChartWeek(res.data.weekChart);
       setItemChartWeek(res.data.weekChart.vn);
+      setLoadingPage(false);
     });
   }, []);
 
@@ -63,7 +65,7 @@ function ChartPage() {
               <PlayArrowIcon fontSize="large" className={cx("btn-play")} />
             </div>
           </div>
-          {chart.length !== 0 ? (
+          {!loadingPage ? (
             chart
               .slice(0, datasize)
               .map((item, index) => (
@@ -79,16 +81,17 @@ function ChartPage() {
                   duration={item.duration}
                   className={"image-is40"}
                   customClass={"no-background"}
+                  loading={loadingPage}
                 />
               ))
           ) : (
-            <div className="loading-skeleton">
-              <Skeleton animation="wave" height={100} />
-              <Skeleton height={100} />
-              <Skeleton animation="wave" height={100} />
-              <Skeleton height={100} />
-              <Skeleton animation="wave" height={100} />
-            </div>
+            <>
+              <Skeleton animation="wave" height={80} />
+              <Skeleton height={80} />
+              <Skeleton animation="wave" height={80} />
+              <Skeleton height={80} />
+              <Skeleton animation="wave" height={80} />
+            </>
           )}
           {chart.slice(0, datasize).length < 20 &&
             chart.slice(0, datasize).length !== 0 && (
@@ -136,13 +139,13 @@ function ChartPage() {
               />
             </TabList>
             <TabPanel value="vn" sx={{ height: "80%", padding: "0px" }}>
-              <TabListItem data={itemChartWeek} />
+              <TabListItem data={itemChartWeek} loading={loadingPage} />
             </TabPanel>
             <TabPanel value="us" sx={{ height: "80%", padding: "0px" }}>
-              <TabListItem data={itemChartWeek} />
+              <TabListItem data={itemChartWeek} loading={loadingPage} />
             </TabPanel>
             <TabPanel value="korea" sx={{ height: "80%", padding: "0px" }}>
-              <TabListItem data={itemChartWeek} />
+              <TabListItem data={itemChartWeek} loading={loadingPage} />
             </TabPanel>
           </TabContext>
         </main>

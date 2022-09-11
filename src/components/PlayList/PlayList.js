@@ -1,9 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
 import styles from "./PlayList.module.scss";
-import { Container } from "@mui/system";
-import { Grid } from "@mui/material";
-import CardPlayList from "../CardPlayList/CardPlayList";
+
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 

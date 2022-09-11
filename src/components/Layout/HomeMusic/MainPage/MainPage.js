@@ -45,13 +45,7 @@ function MainPage() {
       ])
     );
   };
-  useEffect(() => {
-    const changeBackground = () => {
-      console.log("test", window.scrollY);
-    };
-    window.addEventListener("scroll", changeBackground, true);
-    return () => window.removeEventListener("scroll", changeBackground, true);
-  }, []);
+
   return (
     <div className={cx("cnk-mainpage")}>
       <div className={cx("body-mainpage")}>

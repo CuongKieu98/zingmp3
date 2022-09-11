@@ -1,6 +1,6 @@
 import { makeApiCall } from "./apiUtils";
 
-const baseUrl = "https://apizingmp3.herokuapp.com/api";
+const baseUrl = "https://api-zing-ver1.herokuapp.com/api";
 
 export function getTop100 () {
     const url = `${baseUrl}/${"top100"}`

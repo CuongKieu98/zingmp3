@@ -16,6 +16,7 @@ function GroupChart({
   rankStatus,
   customClass,
   code,
+  loading
 }) {
   return (
     <div className={cx("list")}>
@@ -31,6 +32,7 @@ function GroupChart({
             right={right}
             code={code}
             className={className}
+            loadingPage={loading}
           />
         </div>
       </div>
